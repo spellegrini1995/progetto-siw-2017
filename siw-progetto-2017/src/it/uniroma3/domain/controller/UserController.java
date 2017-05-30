@@ -1,4 +1,4 @@
-package it.uniroma3.services.controller;
+package it.uniroma3.domain.controller;
 
 import java.util.Date;
 import java.util.List;
@@ -69,12 +69,12 @@ public class UserController {
 		return "users";
 	}
 
-	public String findCustomer(Long id) {
+	public String findUser(Long id) {
 		this.user = userFacade.getUser(id);
 		return "user";
 	}
 
-	public String customerLogin(){
+	public String userLogin(){
 		String nextPage = "loginError";
 		try{ 
 			User user = userFacade.checkEmail(email);

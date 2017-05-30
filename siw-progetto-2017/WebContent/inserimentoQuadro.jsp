@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=US-ASCII" pageEncoding="US-ASCII"%>
 <%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +19,7 @@
                      requiredMessage="Titolo obbligatorio"
                      id="titolo"/> <h:message for="titolo" />
 	</div>
-    <div>Anno di realizzazione: <h:inputText value="#{paintingController.anno}" 
+    <div>Anno di realizzazione: <h:inputText value="#{paintingController.annoRealizzazione}" 
                      required="false"
                      converterMessage="L'anno deve essere un numero"
                      id="anno"/> <h:message for="anno" />
@@ -39,10 +42,11 @@
                      
 	</div>
 	<div>
-		<h:commandButton value="Submit"  action="#{paintingController.createProduct}"/>
+		<h:commandButton value="Submit"  action="#{paintingController.createPainting}"/>
 	</div>
-	<h:commandLink action="#{paintingController.listProducts}"
-						value="List all Products" />
+	<c:if test="${fn:length(paintingController.paintings) gt 1}">
+		<h:commandLink action="#{paintingController.listPaintings}" value="Lista dei Quadri" />
+	</c:if>
 </h:form>
 </f:view>
 </body>

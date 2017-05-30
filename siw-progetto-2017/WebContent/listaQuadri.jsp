@@ -21,7 +21,7 @@
 				</tr>
 				<c:forEach var="quadro" items="#{paintingController.paintings}">
 					<tr>
-						<td><h:commandLink action="#{paintingController.findPaintng}" value="#{quadro.titolo}">
+						<td><h:commandLink action="#{paintingController.findPainting}" value="#{quadro.titolo}">
 								<f:param name="id" value="#{quadro.id}" />
 							</h:commandLink></td>
 						<td>${quadro.tecnica}</td>
