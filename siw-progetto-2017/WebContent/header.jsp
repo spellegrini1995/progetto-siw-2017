@@ -28,46 +28,32 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><h:commandLink action="#{paintingController.paintings}"
-							value="Lista quadri" /></li>
+					<li><h:commandLink action="#{paintingController.paintings}" value="Lista quadri" /></li>
 
 					<!-- Menu a tendina amministratore -->
-					<c:if
-						test="${administratorController.currentAdministrator != null}">
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">Clienti<b class="caret"></b></a>
+					<c:if test="${administratorController.currentAdministrator != null}">
+						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Clienti<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><h:commandLink
-										action="#{customerController.listCustomers}"
-										value="Clienti registrati" /></li>
-								<li><h:commandLink
-										action="#{administratorController.newCustomer}"
-										value="Registra un nuovo cliente" /></li>
-								<li><a href='<c:url value="/faces/deleteCustomer.jsp" />'>Elimina
-										un cliente registrato</a></li>
+								<li><h:commandLink action="#{userController.users}" value="Utenti registrati" /></li>
+								<li><h:commandLink action="#{administratorController.newUser}" value="Registra un nuovo cliente" /></li>
+								<li><a href='<c:url value="/faces/deleteCustomer.jsp" />'>Elimina un cliente registrato</a></li>
 								<li class="divider"></li>
-
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">Operazioni amministrazione<b
-								class="caret"></b></a>
+							</ul>
+								<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Operazioni amministrazione<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><h:commandLink
-										action="#{administratorController.newProduct}"
-										value="Inserisci un nuovo quadro" /></li>
+										action="#{administratorController.newPainting}" value="Inserisci un nuovo quadro" /></li>
 							</ul></li>
 					</c:if>
 
 					<!-- Menu a tendina utente -->
-					<c:if test="${customerController.currentCustomer != null}">
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">Operazioni utente<b
-								class="caret"></b></a>
+					<c:if test="${userController.currentUser != null}">
+						<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Operazioni utente <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><h:commandLink action="#{orderController.createOrder}"
-										value="Crea un nuovo ordine" /></li>
-								<li><h:commandLink
-										action="#{customerController.listOrders}"
-										value="Lista ordini già effettuati" /></li>
+								<li><h:commandLink action="#{paintingController.viewPaintings}" value="Visualizza tutti i quadri" /></li>
+								<!-- bisogna fare la selezione dei dipinti per autore -->
 							</ul></li>
 						<c:if test="${currentOrder != null}">
 							<li><a href='<c:url value="/faces/order.jsp" />'>Torna
@@ -88,27 +74,21 @@
 								action="#{administratorController.logoutAdministrator}" /></li>
 					</c:if>
 
-					<c:if test="${customerController.currentCustomer != null}">
-						<li><a href='<c:url value="/faces/customerPage.jsp" />'>Il
-								mio profilo: <b>${customerController.currentCustomer.firstName}
-									${customerController.currentCustomer.lastName}</b>
+					<c:if test="${userController.currentCustomer != null}">
+						<li><a href='<c:url value="/faces/userHome.jsp" />'>Il
+								mio profilo: <b>${userController.currentUser.nome}${userController.currentUser.cognome}</b>
 						</a></li>
 						<li><h:commandLink value="Logout"
-								action="#{customerController.logoutCustomer}" /></li>
+								action="#{userController.logoutUser}" /></li>
 					</c:if>
 
-					<c:if
-						test="${administratorController.currentAdministrator == null && customerController.currentCustomer == null}">
+					<c:if test="${administratorController.currentAdministrator == null && customerController.currentCustomer == null}">
 						<li><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
-						<li><a
-							href='<c:url value="/faces/customerRegistration.jsp" />'>Registrati</a></li>
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">Amministrazione<b
+						<li><a href='<c:url value="/faces/registrazioneUtente.jsp" />'>Registrati</a></li>
+						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Amministrazione<b
 								class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a
-									href='<c:url value="/faces/loginAdministrator.jsp" />'>Login
-										amministratore</a></li>
+								<li><a href='<c:url value="/faces/administratorLogin.jsp" />'>Login amministratore</a></li>
 							</ul></li>
 					</c:if>
 				</ul>

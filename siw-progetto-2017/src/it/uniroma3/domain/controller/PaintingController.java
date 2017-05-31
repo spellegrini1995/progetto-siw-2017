@@ -44,18 +44,18 @@ public class PaintingController {
 			this.painting = paintingFacade.createPainting(titolo,annoRealizzazione,tecnica,dimensioni,autore);
 			this.autore.getQuadri().add(painting);
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentPainting", this.painting);
-			return "painting";
+			return "datiQuadro";
 		}catch(Exception e){
 			/*id quadro gia esistente nel DB*/
 			this.resetPainting();
 			FacesContext.getCurrentInstance().addMessage("newProduct:createProduct", new FacesMessage("Codice Prodotto gia esistente!"));
-			return "newPainting";
+			return "inserimentoQuadro";
 		}
 	}
 	
 	public String updatePainting() {
 		paintingFacade.updatePainting(this.painting);
-		return "painting";
+		return "datiQuadro";
 	}
 
 	
@@ -64,8 +64,7 @@ public class PaintingController {
 		this.painting.setAutore(autore);
 		paintingFacade.updatePainting(this.painting);
 		authorFacade.updateAuthor(this.autore);
-		
-		return "modifyProduct";
+		return "modificaQuadro";
 	}
 	
 	private void resetPainting(){
@@ -80,25 +79,29 @@ public class PaintingController {
 		this.autore = null;
 		this.painting.setAutore(autore);
 		paintingFacade.updatePainting(this.painting);
-		
-		return "modifyProduct";
+		return "modificaQuadro";
 	}
 
 	public String deletePainting(){
 		paintingFacade.deletePainting(id);
 		this.paintings = paintingFacade.getAllPaintings();
-		return "paintings";
+		return "listaQuadri";
 	}
 	
 	public String findPainting() {
 		this.painting = paintingFacade.getPainting(id);
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentPainting", this.painting);
-		return "painting";
+		return "datiQuadro";
 	}
 	
 	public String findProduct(Long id) {
 		this.painting = paintingFacade.getPainting(id);
-		return "painting";
+		return "datiQuadro";
+	}	
+	
+	public String viewPaintings() {
+		this.paintings = paintingFacade.getAllPaintings();
+		return "listaQuadri";
 	}
 	
 	//getter and setter

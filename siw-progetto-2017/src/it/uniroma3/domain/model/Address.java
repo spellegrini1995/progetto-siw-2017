@@ -20,12 +20,12 @@ public class Address {
 	
 	public Address(){}
 	
-	public Address (String street, String city, String state, String zipcode, String country){
+	public Address (String street, String city, String country , String zipcode, String state){
 		this.via = street;
 		this.comune = city;
-		this.provincia = state;
+		this.provincia = country;
 		this.codicePostale = zipcode;
-		this.nazione = country;
+		this.nazione = state;
 	}
 
 	public Long getId() {

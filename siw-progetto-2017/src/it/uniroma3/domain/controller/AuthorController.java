@@ -24,28 +24,33 @@ public class AuthorController {
 	private Date dataMorte;
 	private Author author;
 	private List<Painting> quadri;
+	private List<Author> autori;
 
 	@EJB(beanName="authorFacade")
 	private AuthorFacade authorFacade;
 
 	public String createAuthor() {
 		this.author = authorFacade.createAuthor(nome,cognome,nazionalità,dataNascita,dataMorte);
-		return "authorInfo"; 
+		return "datiAutore"; 
 	}
 
 	public String listPaintings() {
 		this.quadri = author.getQuadri();
-		return "authorPaintings"; 
+		return "listaQuadri"; 
 	}
 	
 	public String findAuthor() {
 		this.author = authorFacade.getAuthor(id);
-		return "author";
+		return "datiAutore";
 	}
 
 	public String findAuthor(Long id) {
 		this.author = authorFacade.getAuthor(id);
-		return "author";
+		return "datiAutore";
+	}	
+	public String viewAuthors() {
+		this.autori = authorFacade.getAllAuthors();
+		return "listaAutori";
 	}
 	
 	public Author getByNameAuthor(String nome, String cognome){
@@ -126,6 +131,12 @@ public class AuthorController {
 	public void setQuadri(List<Painting> quadri) {
 		this.quadri = quadri;
 	}
-	
 
+	public List<Author> getAutori() {
+		return autori;
+	}
+
+	public void setAutori(List<Author> autori) {
+		this.autori = autori;
+	}
 }

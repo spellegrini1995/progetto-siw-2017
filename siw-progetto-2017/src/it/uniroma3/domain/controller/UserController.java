@@ -36,18 +36,17 @@ public class UserController {
 	@EJB(beanName="userFacade")
 	private UserFacade userFacade;
 	
-
 	public String createUser() {
 		try{
 			/*Genera automaticamente la data di oggi */
 			this.dataRegistrazione = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
 			this.currentUser = userFacade.createUser(nome, cognome,email,password,numeroTelefono,dataNascita,dataRegistrazione,via,comune,provincia,codicePostale,nazione);
-			return "registrationDone";
+			return "registrazioneAvvenuta";
 		}catch(Exception e){
 			/*Utente già registrato*/
 			this.resetUser();
-			FacesContext.getCurrentInstance().addMessage("registrationCustomer:signinCustomer", new FacesMessage("Utente già registrato!"));
-			return "customerRegistration";
+			FacesContext.getCurrentInstance().addMessage("registrationUser:signinUser", new FacesMessage("Utente già registrato!"));
+			return "registrazioneUtente";
 		}
 	}
 
@@ -57,18 +56,18 @@ public class UserController {
 			User user = userFacade.getUserByEmail(email);
 			if (user.checkPassword(this.password)) {
 				setCurrentUser(user);
-				return "customerPage";
+				return "userHome";
 			}
 			else{
 				// Password Errata
-				FacesContext.getCurrentInstance().addMessage("loginCustomer:accedi", new FacesMessage("Login Errato! Email o password non inseriti correttamente!"));
-				return "login";
+				FacesContext.getCurrentInstance().addMessage("loginUser:accedi", new FacesMessage("Login Errato! Email o password non inseriti correttamente!"));
+				return "userLogin";
 			}
 		}
 		catch (Exception e) {
 			// Cliente non trovato
-			FacesContext.getCurrentInstance().addMessage("loginCustomer:accedi", new FacesMessage("Login Errato! Email o password non inseriti correttamente!"));
-			return "login";
+			FacesContext.getCurrentInstance().addMessage("loginUser:accedi", new FacesMessage("Login Errato! Email o password non inseriti correttamente!"));
+			return "userLogin";
 		}
 	}
 
@@ -111,7 +110,7 @@ public class UserController {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "index";
 	}
-	
+
 	//getter and setter
 	public Long getId() {
 		return id;

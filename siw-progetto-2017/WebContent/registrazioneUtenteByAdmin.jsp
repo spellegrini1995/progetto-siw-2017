@@ -113,7 +113,7 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-5 col-sm-3">
-						<h:commandButton styleClass="btn btn-primary" id="signinCustomerByAdmin"
+						<h:commandButton styleClass="btn btn-primary" id="signinUserByAdmin"
 							value="Registra Utente" action="#{administratorController.createUser}" />
 					</div>
 				</div>

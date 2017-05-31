@@ -25,7 +25,7 @@ import it.uniroma3.domain.model.Painting;
 public class AdministratorController {
 
 	/*Dati per la registrazione di un nuovo utente da parte dell'amministratore */
-	private String firstName, lastName, passwordUser, email, phoneNumber, street, city, state, zipcode, country;
+	private String firstName, lastName, passwordUser, email, phoneNumber, street, city, country, zipcode, state;
 	private Date dateOfBirth;
 	private Calendar registrationDate;
 	
@@ -85,14 +85,14 @@ public class AdministratorController {
 		try{
 			/*Genera automaticamente la data di oggi */
 			this.registrationDate = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
-			userFacade.createUser(firstName, lastName, passwordUser, email, phoneNumber, dateOfBirth, registrationDate,street, city, state, zipcode, country);
+			userFacade.createUser(firstName, lastName, passwordUser, email, phoneNumber, dateOfBirth, registrationDate,street, city, country, zipcode, state);
 			this.message = "Registrazione utente effettuata!";
-			return "registrationDone";
+			return "registrazioneAvvenuta";
 		}catch(Exception e){
 			/*Utente già registrato*/
 			this.resetUser();
-			FacesContext.getCurrentInstance().addMessage("registrationCustomerByAdmin:signinCustomerByAdmin", new FacesMessage("Utente già registrato!"));
-			return "customerRegistrationByAdmin";
+			FacesContext.getCurrentInstance().addMessage("registrationUserByAdmin:signinUserByAdmin", new FacesMessage("Utente già registrato!"));
+			return "registrazioneUtenteByAdmin";
 		}
 	}
 	
@@ -100,10 +100,10 @@ public class AdministratorController {
 		try{
 			userFacade.deleteUserByEmail(email);
 			this.message = "Cliente cancellato correttamente!";
-			return "administratorPage";
+			return "administratorHome";
 		}catch(Exception e){
-			FacesContext.getCurrentInstance().addMessage("deletingCustomer:deleteCustomer", new FacesMessage("Utente inesistente!"));
-			return "deleteCustomer";
+			FacesContext.getCurrentInstance().addMessage("deletingUser:deleteUser", new FacesMessage("Utente inesistente!"));
+			return "deleteUser";
 		}
 	}
 
@@ -129,17 +129,17 @@ public class AdministratorController {
 	
 	public String newPainting() {
 		this.authors = authorFacade.getAllAuthors();
-		return "newProduct";
+		return "inserimentoQuadro";
 	}
 	
 	public String newUser() {
-		return "customerRegistrationByAdmin";
+		return "registrazioneUtenteByAdmin";
 	}
 	
 	public String modifyPainting() {
 		this.authors = new ArrayList<>(authorFacade.getAllAuthors());
 		this.painting = (Painting) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("currentPainting");
-		return "modifyProduct";
+		return "modificaQuadro";
 	}
 	
 	public void setPassword(String password) {
