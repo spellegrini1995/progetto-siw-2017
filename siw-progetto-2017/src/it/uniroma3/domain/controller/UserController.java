@@ -91,24 +91,23 @@ public class UserController {
 		this.dataRegistrazione = null;
 	}
 
-	public String listUsers() {
-		this.users = userFacade.getAllUsers();
-		return "allUsers";
-	}
-
 	public String findUser() {
 		this.currentUser = userFacade.getUser(this.email);
-		return "userInfo";
+		return "datiUtente";
 	}
 
 	public String findUser(String email) {
 		this.currentUser = userFacade.getUser(email);
-		return "userInfo";
+		return "datiUtente";
 	}
 	
 	public String logout (){
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "index";
+	}
+	public String viewUsers() {
+		this.users = userFacade.getAllUsers();
+		return "listaUtentiRegistrati";
 	}
 
 	//getter and setter

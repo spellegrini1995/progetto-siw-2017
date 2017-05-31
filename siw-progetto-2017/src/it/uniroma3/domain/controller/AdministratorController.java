@@ -103,7 +103,7 @@ public class AdministratorController {
 			return "administratorHome";
 		}catch(Exception e){
 			FacesContext.getCurrentInstance().addMessage("deletingUser:deleteUser", new FacesMessage("Utente inesistente!"));
-			return "deleteUser";
+			return "cancellaUtente";
 		}
 	}
 
