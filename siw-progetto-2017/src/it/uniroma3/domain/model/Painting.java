@@ -22,12 +22,14 @@ public class Painting {
 	@Column
 	private String dimensioni;
 	@Column
-	private String autore;
+	private Author autore;
 	
-	public Painting(String titolo, String tecnica, String dimensioni) {
+	public Painting(String titolo, Integer annoRealizzazione, String tecnica, String dimensioni, Author autore) {
 		this.titolo = titolo;
 		this.tecnica = tecnica;
 		this.dimensioni = dimensioni;
+		this.annoRealizzazione = annoRealizzazione;
+		this.autore=autore;
 	}	
 	public Painting() {
 	}
@@ -72,11 +74,11 @@ public class Painting {
 		this.dimensioni = dimensioni;
 	}
 
-	public String getAutore() {
+	public Author getAutore() {
 		return autore;
 	}
 
-	public void setAutore(String autore) {
+	public void setAutore(Author autore) {
 		this.autore = autore;
 	}
 	

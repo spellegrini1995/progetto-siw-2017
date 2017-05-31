@@ -34,12 +34,16 @@ public class Author {
 	
 	private List<Painting> quadri;
 
-	public Author(String nome, String cognome, Date dataNascita) {
+	public Author(String nome, String cognome, String nazionalità, Date dataNascita, Date dataMorte) {
 		this.nome = nome;
 		this.cognome = cognome;
+		this.nazionalità=nazionalità;
 		this.dataNascita = dataNascita;
+		this.dataMorte = dataMorte;
 		this.quadri = new ArrayList<>();
 	}
+	
+	public Author(){}
 
 	public Long getId() {
 		return id;

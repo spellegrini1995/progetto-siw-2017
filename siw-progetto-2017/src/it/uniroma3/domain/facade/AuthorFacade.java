@@ -16,8 +16,8 @@ public class AuthorFacade {
     @PersistenceContext(unitName = "progetto-siw")
     private EntityManager em;
     
-	public Author createAuthor(String nome, String cognome, Date dataNascita) {
-		Author author = new Author(nome,cognome,dataNascita);
+	public Author createAuthor(String nome, String cognome,String nazionalità, Date dataNascita, Date dataMorte) {
+		Author author = new Author(nome,cognome,nazionalità,dataNascita,dataMorte);
 		em.persist(author);
 		return author;
 	}
@@ -25,6 +25,13 @@ public class AuthorFacade {
 	public Author getAuthor(Long id) {
 		Author author = em.find(Author.class, id);
 		return author;
+	}
+	
+	public Author getAuthor(String nome) {
+		Query q = em.createQuery("SELECT a FROM Author a WHERE a.nome = :nome");
+		q.setParameter("nome", nome);
+		Author a = (Author) q.getSingleResult();
+		return a;
 	}
 	
 	public List<Author> getAllAuthors() {

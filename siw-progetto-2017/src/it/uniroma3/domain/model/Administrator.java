@@ -18,17 +18,17 @@ public class Administrator {
 	@Column(nullable = false)
 	private String lastName;
 	@Column(unique = true, nullable = false)
-	private String email;
+	private String nickname;
 	@Column(nullable = false)
 	private String password;
 	
 	public Administrator() {
 	}	
 
-	public Administrator(String firstName, String lastName, String email, String password) {
+	public Administrator(String firstName, String lastName, String nickname, String password) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.email = email;
+		this.nickname = nickname;
 		this.password = password;
 	}
 	
@@ -64,21 +64,21 @@ public class Administrator {
 		this.password = password;
 	}
 
-	public String getEmail() {
-		return this.email;
+	public String getNickname() {
+		return this.nickname;
 	}
 	
-	public void setEmail(String email) {
-		this.email = email;
+	public void setNickname(String nick) {
+		this.nickname = nick;
 	}
 	
 	public boolean equals(Object obj) {
         Administrator administrator = (Administrator)obj;
-        return this.getEmail().equals(administrator.getEmail());
+        return this.getNickname().equals(administrator.getNickname());
     }
 
     public int hashCode() {
-         return this.email.hashCode();
+         return this.getNickname().hashCode();
     }
 
 	public boolean checkPassword(String password) {

@@ -1,37 +1,46 @@
-<%@ page language="java" contentType="text/html; charset=US-ASCII"
-	pageEncoding="US-ASCII"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<title>Painting</title>
+<title>Quadro: "${paintingController.painting.titolo}"</title>
 </head>
 <body>
 	<f:view>
-		<h1>${paintingController.painting.titolo}</h1>
-		<h2>Informazioni sul quadro</h2>
-		<div>Anno di realizzazione:
-			${paintingController.painting.annoRealizzazione}</div>
-		<div>Tecnica utilizzata: ${paintingController.painting.tecnica}</div>
-		<div>Dimensioni: ${paintingController.painting.dimensioni}</div>
+		<jsp:include page="/faces/header.jsp" />
 
-		<div>
-			<li>Clicca <a href='<c:url value="/faces/index.jsp" />'>QUI</a>
-				per tornare alla pagina iniziale
-			</li>
-		</div>
-		<h:form>
-			<c:if test="${fn:length(paintingController.paintings) gt 1}">
-				<li>Clicca al seguente link per vedere la lista di tutti i
-					quadri <h:commandLink action="#{productController.viewPaintings}"
-						value="Lista Quadri" />
-				</li>
+		<div align="center">
+			<h2>${paintingController.painting.titolo}</h2>
+			<h3>Dettagli</h3>
+			<div>Anno Realizzazione: ${paintingController.painting.annoRealizzazione}</div>
+			<div>Tecnica: ${paintingController.painting.tecnica}</div>
+			<div>Dimensioni: ${paintingController.painting.dimensioni}</div>
+			<div> <a href="/faces/datiAutore.jsp"> ${paintingController.painting.autore.nome} ${paintingController.painting.autore.cognome}
+			</a></div>
+
+			<!-- Sono un amministratore -->
+			<c:if test="${administratorController.currentAdministrator != null}">
+				<h:form styleClass="form-horizontal">
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-2">
+							<h:commandButton styleClass="btn btn-warning"
+								action="#{administratorController.modifyProduct}"
+								value="Modifica" />
+						</div>
+						<div class="col-sm-2">
+							<h:commandButton styleClass="btn btn-danger"
+								action="#{paintingController.deletePainting}" value="Elimina" />
+						</div>
+					</div>
+				</h:form>
 			</c:if>
-		</h:form>
+		</div>
 	</f:view>
+		<div>
+			Clicca <a href='<c:url value="/faces/index.jsp" />'>QUI</a>	per tornare alla pagina iniziale
+		</div>
 </body>
 </html>

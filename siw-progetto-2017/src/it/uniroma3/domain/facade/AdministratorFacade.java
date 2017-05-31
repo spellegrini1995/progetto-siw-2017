@@ -7,31 +7,35 @@ import javax.persistence.Query;
 
 import it.uniroma3.domain.model.Administrator;
 
-@Stateless
+@Stateless(name="administratorFacade")
 public class AdministratorFacade {
-	@PersistenceContext(unitName= "progetto-siw")
-	private EntityManager em;
 	
-	public Administrator createAdministrator(String firstName, String lastName, String email, String password){
-		Administrator administrator = new Administrator(firstName, lastName, email, password);
+    @PersistenceContext(unitName = "siw-project")
+    private EntityManager em;
+    
+	public Administrator createAdministrator(String nome, String cognome, String nickname, String password) {
+		Administrator administrator = new Administrator(nome, cognome, nickname, password);
 		em.persist(administrator);
 		return administrator;
 	}
-
-	public Administrator getAdministratorByMail(String email) {
-		Administrator administrator = em.find(Administrator.class, email);
+	
+	public Administrator getAdministratorByNickname(String nickname) {
+		Query q = em.createQuery("SELECT a FROM Administrator a WHERE a.nickname = :nickname");
+		q.setParameter("nickname", nickname);
+		Administrator administrator = (Administrator) q.getSingleResult();
 		return administrator;
 	}
 	
-	public Administrator getAmministratore(Long id){
-		Administrator amministratore = em.find(Administrator.class, id);
-		return amministratore;
+	public void updateAdministrator(Administrator administrator) {
+        em.merge(administrator);
 	}
 	
-	public Administrator checkEmail(String email){
-		Query query = em.createQuery("SELECT a FROM Administrator a WHERE a.email =:email");
-		query.setParameter("email",  email);
-		return (Administrator)query.getSingleResult();
-	}
+    private void deleteAdministrator(Administrator administrator) {
+        em.remove(administrator);
+    }
 
+	public void deleteAdministrator(Long id) {
+        Administrator administrator = em.find(Administrator.class, id);
+        deleteAdministrator(administrator);
+	}
 }

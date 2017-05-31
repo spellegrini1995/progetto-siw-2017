@@ -11,8 +11,8 @@ import javax.faces.bean.SessionScoped;
 import it.uniroma3.domain.facade.AddressFacade;
 import it.uniroma3.domain.model.Address;
 
-@ManagedBean(name="addressController")
-@SessionScoped
+@ManagedBean(name = "addressController")
+//@SessionScoped
 public class AddressController {
 	
 	@ManagedProperty(value="#{param.id}")
@@ -32,7 +32,7 @@ public class AddressController {
 	public String deleteAddress(){
 		addressFacade.deleteAddress(id);
 		this.addresses = addressFacade.getAllAddresses();
-		return "orders";
+		return "addresses";
 	}
 	
 	public String updateAddress(){

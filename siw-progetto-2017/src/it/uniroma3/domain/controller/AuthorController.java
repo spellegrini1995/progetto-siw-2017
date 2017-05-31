@@ -16,48 +16,26 @@ public class AuthorController {
 
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
+	
 	private String nome;
 	private String cognome;
 	private String nazionalità;
 	private Date dataNascita;
 	private Date dataMorte;
 	private Author author;
-	private List<Author> authors;
 	private List<Painting> quadri;
 
-	@EJB
+	@EJB(beanName="authorFacade")
 	private AuthorFacade authorFacade;
 
-	public String deleteAuthor(){
-		authorFacade.deleteAuthor(id);
-		this.authors = authorFacade.getAllAuthors();
-		return "authors";
-	}
-
-	public String updateAuthor(){
-		this.author = authorFacade.getAuthor(id);
-
-		return "update";
-	}
-
 	public String createAuthor() {
-		this.author = authorFacade.createAuthor(nome,cognome,dataNascita);
-		return "author"; 
+		this.author = authorFacade.createAuthor(nome,cognome,nazionalità,dataNascita,dataMorte);
+		return "authorInfo"; 
 	}
 
-	public String listAuthors() {
-		this.authors = authorFacade.getAllAuthors();
-		return "authors"; 
-	}
-	
-	public String viewAuthors() {
-		this.authors = authorFacade.getAllAuthors();
-		return "viewAuthors"; 
-	}
-	
-	public String orderAuthors() {
-		this.authors = authorFacade.getAllAuthors();
-		return "orderAuthors"; 
+	public String listPaintings() {
+		this.quadri = author.getQuadri();
+		return "authorPaintings"; 
 	}
 	
 	public String findAuthor() {
@@ -131,14 +109,6 @@ public class AuthorController {
 
 	public void setAuthor(Author author) {
 		this.author = author;
-	}
-
-	public List<Author> getAuthors() {
-		return authors;
-	}
-
-	public void setAuthors(List<Author> authors) {
-		this.authors = authors;
 	}
 
 	public AuthorFacade getAuthorFacade() {

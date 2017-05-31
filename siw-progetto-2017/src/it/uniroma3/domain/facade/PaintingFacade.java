@@ -6,6 +6,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
+import it.uniroma3.domain.model.Author;
 import it.uniroma3.domain.model.Painting;
 
 import java.util.List;
@@ -16,8 +17,8 @@ public class PaintingFacade {
     @PersistenceContext(unitName = "progetto-siw")
     private EntityManager em;
     
-	public Painting createPainting(String titolo, String tecnica,String dimensioni) {
-		Painting painting = new Painting(titolo, tecnica, dimensioni);
+	public Painting createPainting(String titolo,Integer anno, String tecnica,String dimensioni,Author autore) {
+		Painting painting = new Painting(titolo, anno,tecnica, dimensioni,autore);
 		em.persist(painting);
 		return painting;
 	}

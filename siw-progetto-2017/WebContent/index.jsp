@@ -2,27 +2,28 @@
 	pageEncoding="US-ASCII"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Pagina Iniziale</title>
+<title>Index</title>
 </head>
 <body>
 	<f:view>
-		<h1>Benvenuto!</h1>
-		<ul>
-				<li><a href='<c:url value="/faces/newUser.jsp" />'>Registrazione Utente</a></li>
-				<li><a href='<c:url value="/faces/userLogin.jsp" />'>Login User</a></li>
-				<li><a href='<c:url value="/faces/administratorLogin.jsp" />'>Login Administrator</a></li>
-				<h:form>
-				<c:if test="${fn:length(paintingController.paintings) gt 1}">
-				<li><h:commandLink action="#{paintingController.viewPaintings}" value="Lista dei Quadri" /></li>
-				</c:if>
-				</h:form>
-		</ul>
+
+		<jsp:include page="header.jsp" />
+		<div align="center">
+			<h1>Benvenuto nella nostra galleria d'arte!</h1>
+			<h2>Puoi visualizzare tutti i quadri al nostro interno per titolo o per autore!</h2>
+			<h3>Per iniziare registrati, oppure dai un'occhiata subito al nostro elenco.</h3>
+		</div>
+		<div class="text-right col-md-6 col-md-offset-6">
+			<h5><em>Sito creato da:</em></h5>
+			<h5><em>Pellegrini Simone Matr: 487515</em></h5>
+			<h5><em>Napolitano Nicholas Matr: 490495</em></h5>
+			<h5><em><strong>Universita' degli Studi Roma Tre</strong></em></h5>
+		</div>
 	</f:view>
 </body>
 </html>

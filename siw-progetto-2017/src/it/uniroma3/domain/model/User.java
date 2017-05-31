@@ -1,5 +1,6 @@
 package it.uniroma3.domain.model;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.*;
@@ -29,19 +30,31 @@ public class User {
 
 	@Temporal(TemporalType.DATE)
 	private Date dataNascita;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar dataRegistrazione;
 
 	@OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	private Address address;
 
 	public User(){}
 
-	public User(String nome, String cognome, String email, String password) {
+	public User(String nome, String cognome, String email, String password, String numeroTelefono, Date dataNascita, Calendar dataRegistrazione, Address address) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.email = email;
 		this.password = password;
+		this.numeroTelefono = numeroTelefono;
+		this.dataNascita = dataNascita;
+		this.dataRegistrazione=dataRegistrazione;
+		this.address=address;
+	}
+	
+	public boolean checkPassword(String password){
+		return this.password.equals(password);
 	}
 
+	//getters AND setters
 	public Long getId() {
 		return id;
 	}
@@ -105,9 +118,14 @@ public class User {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+	
 
-	public boolean checkPassword(String password){
-		return this.password.equals(password);
+	public Calendar getDataRegistrazione() {
+		return dataRegistrazione;
+	}
+
+	public void setDataRegistrazione(Calendar dataRegistrazione) {
+		this.dataRegistrazione = dataRegistrazione;
 	}
 
 	@Override

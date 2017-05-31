@@ -9,6 +9,7 @@
 <title>Registrazione utente </title>
 </head>
 <body>
+<h1> Inserisci i dati per registrarti al sistema </h1>
 <f:view>
 <h:form>
     <div>Nome: <h:inputText value="#{userController.nome}" 
@@ -42,7 +43,8 @@
                      required="false" />
     </div>
     
-    <div>Address:</div>
+    <h2>Indirizzo:</h2>
+    
     <div>Comune: <h:inputText value="#{addressController.comune}" 
     				 required="true"
                      requiredMessage="Comune obbligatorio"
@@ -70,7 +72,7 @@
 	</div> 
 	
 	<div>
-		<h:commandButton value="Submit"    action="#{userController.createUser}" actionListener="#{addressController.createAddress}"/>
+		<h:commandButton value="Submit" action="#{userController.createUser}" actionListener="#{addressController.createAddress}"/>
 	</div>
 	
 </h:form>

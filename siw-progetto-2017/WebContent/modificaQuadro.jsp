@@ -1,25 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=US-ASCII" pageEncoding="US-ASCII"%>
+<%@ page language="java" contentType="text/html; charset=US-ASCII"
+	pageEncoding="US-ASCII"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Nuovo Quadro</title>
+<title>Modifica quadro</title>
 </head>
 <body>
 	<f:view>
 		<jsp:include page="/faces/header.jsp" />
 
 		<div align="center">
-			
-			<h:form id="newProduct" styleClass="form-horizontal">
+			<h1>Modifica Quadro</h1>
+				<h:form styleClass="form-horizontal">
 				<h:message for="createProduct" styleClass="error alert alert-danger" />
 				<div>
-					<h1>Inserimento nuovo Quadro</h1>
+					<h1>Modifica Quadro</h1>
 				</div>
 				<div class="form-group">
 					<label for="titolo" class="col-sm-1 control-label col-lg-offset-4">Titolo</label>
@@ -61,28 +61,54 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="addAuthorList"
-						class="col-sm-1 control-label col-lg-offset-4">Autore</label>
-					<div class="col-sm-2">
-						<h:selectOneMenu styleClass="form-control" id="addAuthorList"
-							value="#{paintingController.nomeAutore}">
-							<c:forEach var="author" items="#{administratorController.authors}">
-								<f:selectItem itemValue="#{author.nome}" itemLabel="#{author.nome}" />
-							</c:forEach>
-						</h:selectOneMenu>
-						<h:message for="authorName" style="color:red" />
-					</div>
-				</div>
-				<div class="form-group">
 					<div class="col-sm-offset-5 col-sm-2">
-						<h:commandButton id="createPainting" styleClass="btn btn-success" value="Inserisci"
-							action="#{paintingController.createPainting}" />
+						<h:commandButton value="Salva Modifiche"
+							styleClass="btn btn-primary"
+							action="#{productController.updateProduct}" />
 					</div>
 				</div>
-				<c:if test="${fn:length(paintingController.paintings) gt 1}">
-					<h:commandLink action="#{paintingController.paintings}" value="Lista dei Quadri" />
-				</c:if>
 			</h:form>
+
+			<c:if test="${not empty currentPainting.autore}">
+				<hr>
+				<div class="form-group">
+					<h:form id="removePaintingMenu">
+						<div class="form-group">
+							<label for="painting"
+								class="col-sm-1 control-label col-lg-offset-4">Autore: </label>
+							<div class="col-sm-2">
+								<h:commandButton styleClass="btn btn-warning"
+									id="removeAuthor" value="Rimuovi autore e salva"
+									action="#{paintingController.nullAuthor}" />
+							</div>
+						</div>
+					</h:form>
+				</div>
+			</c:if>
+			<br> <br>
+			<hr>
+			<c:if test="${not empty authorsPainting}">
+				<div class="form-group">
+					<h:form id="addAuthorMenu">
+						<div class="form-group">
+							<label for="addAuthorList"
+								class="col-sm-1 control-label col-lg-offset-4">Aggiungi Autore</label>
+							<div class="col-sm-2">
+								<h:selectOneMenu styleClass="form-control" id="addAuthorList" value="#{paintingController.nomeAutore}">
+									<c:forEach var="autore" items="#{authorsPainting}">
+										<f:selectItem itemValue="#{autore.id}" itemLabel="#{autore.nome}" />
+									</c:forEach>
+								</h:selectOneMenu>
+							</div>
+							<div class="col-sm-2">
+								<h:commandButton styleClass="btn btn-success"
+									id="removeAuthor" value="Aggiungi autore e salva"
+									action="#{paintingController.setAuthor()}" />
+							</div>
+						</div>
+					</h:form>
+				</div>
+			</c:if>
 		</div>
 	</f:view>
 </body>
