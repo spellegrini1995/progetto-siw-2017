@@ -8,7 +8,7 @@
 </head>
 <body>
 	<f:view>
-		<jsp:include page="/faces/header.jsp" />
+		<jsp:include page="header.jsp" />
 		<div align="center">
 			<h1> Benvenuto <strong>${userController.currentUser.nome} ${userController.currentUser.cognome}</strong></h1>
 			<h2>Informazioni</h2>

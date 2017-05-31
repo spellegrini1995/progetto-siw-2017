@@ -13,7 +13,7 @@
 <body>
 	<f:view>
 		<!-- Menu' di testa -->
-		<jsp:include page="/faces/header.jsp" />
+		<jsp:include page="header.jsp" />
 		<!-- -------------- -->
 		<div align="center">
 			<h:form id="loginAdministrator" styleClass="form-horizontal">

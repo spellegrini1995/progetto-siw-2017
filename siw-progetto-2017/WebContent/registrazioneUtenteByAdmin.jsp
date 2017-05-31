@@ -14,7 +14,7 @@
 <body>
 	<f:view>
 		<!-- Menu' di testa -->
-		<jsp:include page="/faces/header.jsp" />
+		<jsp:include page="header.jsp" />
 		<!-- -------------- -->
 		<div align="center">
 			<h:form id="registrationUserByAdmin" styleClass="form-horizontal">

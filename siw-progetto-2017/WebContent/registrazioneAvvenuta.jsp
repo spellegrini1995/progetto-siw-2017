@@ -13,7 +13,7 @@
 <body>
 	<f:view>
 		<!-- Menù di testa -->
-		<jsp:include page="/faces/header.jsp" />
+		<jsp:include page="header.jsp" />
 		<!-- -------------- -->
 		<div align="center">
 			<h:form>
@@ -24,8 +24,7 @@
 				<c:choose>
 					<c:when
 						test="${administratorController.currentAdministrator != null}">
-						<meta http-equiv="refresh"
-							content="0; url=faces/administratorPage.jsp"/>
+						<meta http-equiv="refresh" content="0; url=faces/administratorPage.jsp"/>
 					</c:when>
 					<c:otherwise>
 						<meta http-equiv="refresh" content="0; url=faces/customerPage.jsp"/>

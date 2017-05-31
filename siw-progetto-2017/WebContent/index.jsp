@@ -11,7 +11,7 @@
 </head>
 <body>
 	<f:view>
-		<jsp:include page="/faces/header.jsp" />
+		<jsp:include page="header.jsp" />
 		<div align="center">
 			<h1>Benvenuto nella nostra galleria d'arte!</h1>
 			<h2>Puoi visualizzare tutti i quadri al nostro interno per titolo o per autore!</h2>

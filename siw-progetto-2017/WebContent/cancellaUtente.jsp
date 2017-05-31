@@ -12,7 +12,7 @@
 </head>
 <body>
 	<f:view>
-		<jsp:include page="/faces/header.jsp" />
+		<jsp:include page="header.jsp" />
 		<div align="center">
 			<h:form id="deletingCustomer" styleClass="form-horizontal">
 				<h:message for="deleteCustomer" styleClass="error alert alert-danger" />

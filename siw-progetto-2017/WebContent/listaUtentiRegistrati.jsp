@@ -10,7 +10,7 @@
 <body>
 	<f:view>
 		<!-- Menù di testa -->
-		<jsp:include page="/faces/header.jsp" />
+		<jsp:include page="header.jsp" />
 		<!-- -------------- -->
 		<div align="center">
 			<h1>Utenti registrati</h1>

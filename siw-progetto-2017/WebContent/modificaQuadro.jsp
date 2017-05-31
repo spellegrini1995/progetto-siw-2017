@@ -12,12 +12,12 @@
 </head>
 <body>
 	<f:view>
-		<jsp:include page="/faces/header.jsp" />
+		<jsp:include page="header.jsp" />
 
 		<div align="center">
 			<h1>Modifica Quadro</h1>
 				<h:form styleClass="form-horizontal">
-				<h:message for="createProduct" styleClass="error alert alert-danger" />
+				<h:message for="createPainting" styleClass="error alert alert-danger" />
 				<div>
 					<h1>Modifica Quadro</h1>
 				</div>
@@ -103,7 +103,7 @@
 							<div class="col-sm-2">
 								<h:commandButton styleClass="btn btn-success"
 									id="removeAuthor" value="Aggiungi autore e salva"
-									action="#{paintingController.setAuthor()}" />
+									action="#{paintingController.setAuthor}" />
 							</div>
 						</div>
 					</h:form>

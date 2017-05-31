@@ -12,12 +12,12 @@
 </head>
 <body>
 	<f:view>
-		<jsp:include page="/faces/header.jsp" />
+		<jsp:include page="header.jsp" />
 
 		<div align="center">
 			
-			<h:form id="newProduct" styleClass="form-horizontal">
-				<h:message for="createProduct" styleClass="error alert alert-danger" />
+			<h:form id="newPainting" styleClass="form-horizontal">
+				<h:message for="createPainting" styleClass="error alert alert-danger" />
 				<div>
 					<h1>Inserimento nuovo Quadro</h1>
 				</div>

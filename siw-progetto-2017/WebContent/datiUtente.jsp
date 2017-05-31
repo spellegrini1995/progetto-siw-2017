@@ -10,7 +10,7 @@
 </head>
 <body>
 	<f:view>
-		<jsp:include page="/faces/header.jsp" />
+		<jsp:include page="header.jsp" />
 
 		<div align="center">
 			<h1>${userController.nome} ${userController.cognome}</h1>
