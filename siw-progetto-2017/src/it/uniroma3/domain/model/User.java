@@ -25,15 +25,19 @@ public class User {
 	
 	@Column(nullable = false)
 	private String password;
-
+	
+	@Column
 	private String numeroTelefono;
-
+	
+	@Column
 	@Temporal(TemporalType.DATE)
 	private Date dataNascita;
 	
+	@Column
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataRegistrazione;
 
+	@Column
 	@OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	private Address address;
 

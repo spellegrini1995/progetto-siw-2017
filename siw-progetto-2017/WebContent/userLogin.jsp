@@ -47,7 +47,7 @@
 				</div>
 				<div>
 					<h4>
-						oppure <a href='<c:url value="/faces/customerRegistration.jsp" />'>Registrati</a>
+						oppure <a href='<c:url value="/faces/registrazioneUtente.jsp" />'>Registrati</a>
 					</h4>
 				</div>
 			</h:form>

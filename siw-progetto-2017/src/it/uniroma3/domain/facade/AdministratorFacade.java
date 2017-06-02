@@ -10,7 +10,7 @@ import it.uniroma3.domain.model.Administrator;
 @Stateless(name="administratorFacade")
 public class AdministratorFacade {
 	
-    @PersistenceContext(unitName = "progetto-siw")
+    @PersistenceContext(unitName = "progetto-siw-unit")
     private EntityManager em;
     
 	public Administrator createAdministrator(String nome, String cognome, String nickname, String password) {

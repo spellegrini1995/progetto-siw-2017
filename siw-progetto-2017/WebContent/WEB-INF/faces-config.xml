@@ -11,5 +11,5 @@
 			<property-name>id</property-name>
 			<value>#{id}</value>
 		</managed-property>
-	</managed-bean> 
+	</managed-bean> 	
 </faces-config>

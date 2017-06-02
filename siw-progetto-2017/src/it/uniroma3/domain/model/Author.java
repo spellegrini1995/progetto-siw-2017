@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -31,7 +32,8 @@ public class Author {
 	@Column
 	@Temporal(TemporalType.DATE)
 	private Date dataMorte;
-	
+	@Column
+	@OneToMany(mappedBy="autore")
 	private List<Painting> quadri;
 
 	public Author(String nome, String cognome, String nazionalità, Date dataNascita, Date dataMorte) {

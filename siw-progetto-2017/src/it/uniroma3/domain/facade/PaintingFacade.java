@@ -14,7 +14,7 @@ import java.util.List;
 @Stateless
 public class PaintingFacade {
 	
-    @PersistenceContext(unitName = "progetto-siw")
+    @PersistenceContext(unitName = "progetto-siw-unit")
     private EntityManager em;
     
 	public Painting createPainting(String titolo,Integer anno, String tecnica,String dimensioni,Author autore) {

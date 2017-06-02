@@ -29,5 +29,6 @@
 	<classpathentry kind="lib" path="/home/simone/Scaricati/javaee-api-7.0.jar"/>
 	<classpathentry kind="lib" path="/home/simone/Scaricati/jstl-1.2.jar"/>
 	<classpathentry kind="lib" path="/home/simone/Scaricati/standard-1.1.2.jar"/>
+	<classpathentry kind="lib" path="/home/simone/Scaricati/commons-lang-2.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

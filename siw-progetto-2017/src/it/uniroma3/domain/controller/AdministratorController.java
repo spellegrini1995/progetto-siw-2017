@@ -20,7 +20,7 @@ import it.uniroma3.domain.model.Administrator;
 import it.uniroma3.domain.model.Author;
 import it.uniroma3.domain.model.Painting;
 
-@ManagedBean(name="administratoreController")
+@ManagedBean(name="administratorController")
 @SessionScoped
 public class AdministratorController {
 
@@ -57,27 +57,27 @@ public class AdministratorController {
 	
 	public String createAdministrator() {
 		this.currentAdministrator = administratorFacade.createAdministrator(nome,cognome,nickname, password);
-		return "administratorPage";
+		return "administratorHome";
 	}
 	
 	public String loginAdministrator() {
-		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("customerController");
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("userController");
 		try{
 			Administrator administrator = administratorFacade.getAdministratorByNickname(nickname);
 			if (administrator.checkPassword(this.password)) {
 				setCurrentAdministrator(administrator);
-				return "administratorPage";
+				return "administratorHome";
 			}
 			else{
 				// Password Errata
-				FacesContext.getCurrentInstance().addMessage("loginAdministrator:accediAdmin", new FacesMessage("Login Errato! Nickname o password non inseriti correttamente!"));
-				return "loginAdministrator";
+				FacesContext.getCurrentInstance().addMessage("loginAdministrator:accediAdmin", new FacesMessage("Login Errato! Nickname1 o password non inseriti correttamente!"));
+				return "administratorLogin";
 			}
 		}
 		catch (Exception e) {
 			// Amministratore non trovato
-			FacesContext.getCurrentInstance().addMessage("loginAdministrator:accediAdmin", new FacesMessage("Login Errato! Nickname o password non inseriti correttamente!"));
-			return "loginAdministrator";
+			FacesContext.getCurrentInstance().addMessage("loginAdministrator:accediAdmin", new FacesMessage("Login Errato! Nickname2 o password non inseriti correttamente!"));
+			return "administratorLogin";
 		}
 	}
 	
@@ -337,4 +337,5 @@ public class AdministratorController {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
 }

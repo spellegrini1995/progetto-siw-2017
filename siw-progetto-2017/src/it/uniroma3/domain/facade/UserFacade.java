@@ -16,7 +16,7 @@ import java.util.List;
 	@Stateless(name="userFacade")
 	public class UserFacade{
 		
-	    @PersistenceContext(unitName = "progetto-siw")
+	    @PersistenceContext(unitName = "progetto-siw-unit")
 	    private EntityManager em;
 	    
 		public User createUser(String firstName, String lastName, String password, String email, String phoneNumber, Date dateOfBirth, Calendar registrationDate, String street, String city, String country, String zipcode, String state) {

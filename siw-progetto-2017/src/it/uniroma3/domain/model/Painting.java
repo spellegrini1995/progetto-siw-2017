@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
 @Entity
@@ -21,7 +22,9 @@ public class Painting {
 	private String tecnica;	
 	@Column
 	private String dimensioni;
+	
 	@Column
+	@ManyToOne
 	private Author autore;
 	
 	public Painting(String titolo, Integer annoRealizzazione, String tecnica, String dimensioni, Author autore) {

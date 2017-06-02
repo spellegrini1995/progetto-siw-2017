@@ -17,7 +17,7 @@ import it.uniroma3.domain.model.User;
 @SessionScoped
 public class UserController {
 
-@ManagedProperty(value="#{param.id}")
+	@ManagedProperty(value="#{param.id}")
 	private Long id;
 	private String nome;
 	private String cognome;

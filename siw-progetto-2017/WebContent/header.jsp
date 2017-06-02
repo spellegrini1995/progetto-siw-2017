@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,13 +25,14 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/faces/index.jsp">Home</a>
+				<a class="navbar-brand" href="<c:url value="/faces/index.jsp" />">Home</a>
 			</div>
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><h:commandLink action="#{paintingController.viewPaintings}" value="Lista quadri" /></li>
-
+					<c:if test="${fn:length(paintingController.paintings) ge 1}">
+						<li><h:commandLink action="#{paintingController.viewPaintings}" value="Lista quadri" /></li>
+					</c:if>
 					<!-- Menu a tendina amministratore -->
 					<c:if test="${administratorController.currentAdministrator != null}">
 						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Clienti<b class="caret"></b></a>

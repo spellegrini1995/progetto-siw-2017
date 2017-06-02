@@ -13,7 +13,7 @@ import java.util.List;
 @Stateless
 public class AuthorFacade {
 	
-    @PersistenceContext(unitName = "progetto-siw")
+    @PersistenceContext(unitName = "progetto-siw-unit")
     private EntityManager em;
     
 	public Author createAuthor(String nome, String cognome,String nazionalità, Date dataNascita, Date dataMorte) {
