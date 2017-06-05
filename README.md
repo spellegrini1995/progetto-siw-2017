@@ -11,4 +11,3 @@ Gestione della persistenza tramite Base di Dati
 Implementazione delle pagine Web tramite HTML
 Linguaggio di stile utilizzato: CSS
 Implementazione grafica tramite Bootstrap
-
