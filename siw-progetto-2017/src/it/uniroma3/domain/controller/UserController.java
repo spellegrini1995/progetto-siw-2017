@@ -45,7 +45,7 @@ public class UserController {
 		}catch(Exception e){
 			/*Utente già registrato*/
 			this.resetUser();
-			FacesContext.getCurrentInstance().addMessage("registrationUser:signinUser", new FacesMessage("Utente già registrato!"));
+			FacesContext.getCurrentInstance().addMessage("registrationUser:signinUser", new FacesMessage("Utente gi� registrato!"));
 			return "registrazioneUtente";
 		}
 	}

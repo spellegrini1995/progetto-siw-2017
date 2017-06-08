@@ -19,8 +19,8 @@
 		</div>
 		<div class="text-right col-md-6 col-md-offset-6">
 			<h5><em>Sito creato da:</em></h5>
-			<h5><em>Pellegrini Simone Matr: 487515</em></h5>
 			<h5><em>Napolitano Nicholas Matr: 490495</em></h5>
+			<h5><em>Pellegrini Simone Matr: 487515</em></h5>
 			<h5><em><strong>Universita' degli Studi Roma Tre</strong></em></h5>
 		</div>
 	</f:view>

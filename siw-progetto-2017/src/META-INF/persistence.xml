@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
 <persistence version="2.0"
 	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/persistencehttp://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	<persistence-unit name="progetto-siw-unit" transaction-type="JTA">
-        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+       <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider> 
 		<jta-data-source>PostgreSQL Database</jta-data-source>
 		<class>it.uniroma3.domain.model.Painting</class>
 		<class>it.uniroma3.domain.model.Administrator</class>
 		<class>it.uniroma3.domain.model.Address</class>
-		<class>it.uniroma3.domain.model.User</class>
 		<class>it.uniroma3.domain.model.Author</class>
+		<class>it.uniroma3.domain.model.User</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 			<property name="javax.persistence.jdbc.user" value="postgres" />
-			<property name="javax.persistence.jdbc.password" value="postgres" />
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:postgresql://localhost:5432/progetto_siw" />
-
+			<property name="javax.persistence.jdbc.password" value="Vuototetro95" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/progetto_siw" />
+            
+            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)" />
+            
 			<!-- Hibernate properties -->
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+			
+			<!-- specifica che ad ogni esecuzione viene creato lo schema, 
+			cancellando il contenuto delle tabelle (molto utile in fase di sviluppo e testing) -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 		</properties>
 	</persistence-unit>
 </persistence>

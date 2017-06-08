@@ -80,7 +80,7 @@
 					</div>
 				</div>
 				<c:if test="${fn:length(paintingController.paintings) gt 1}">
-					<h:commandLink action="#{paintingController.paintings}" value="Lista dei Quadri" />
+					<h:commandLink action="#{paintingController.viewPaintings}" value="Lista dei Quadri" />
 				</c:if>
 			</h:form>
 		</div>

@@ -23,7 +23,7 @@ public class Painting {
 	@Column
 	private String dimensioni;
 	
-	@Column
+	
 	@ManyToOne
 	private Author autore;
 	

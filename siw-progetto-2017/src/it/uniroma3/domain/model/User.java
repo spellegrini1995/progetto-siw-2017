@@ -19,20 +19,20 @@ public class User {
 
 	@Column(nullable = false)
 	private String cognome;
-	
+
 	@Column(unique = true, nullable = false)
 	private String email;
-	
+
 	@Column(nullable = false)
 	private String password;
-	
+
 	@Column
 	private String numeroTelefono;
-	
+
 	@Column
 	@Temporal(TemporalType.DATE)
 	private Date dataNascita;
-	
+
 	@Column
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataRegistrazione;
@@ -41,7 +41,9 @@ public class User {
 	@OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	private Address address;
 
-	public User(){}
+	public User(){
+
+	}
 
 	public User(String nome, String cognome, String email, String password, String numeroTelefono, Date dataNascita, Calendar dataRegistrazione, Address address) {
 		this.nome = nome;
@@ -53,7 +55,7 @@ public class User {
 		this.dataRegistrazione=dataRegistrazione;
 		this.address=address;
 	}
-	
+
 	public boolean checkPassword(String password){
 		return this.password.equals(password);
 	}
@@ -122,7 +124,7 @@ public class User {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	
+
 
 	public Calendar getDataRegistrazione() {
 		return dataRegistrazione;
