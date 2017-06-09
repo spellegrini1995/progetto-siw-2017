@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
@@ -30,23 +29,23 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<c:if test="${fn:length(paintingController.paintings) ge 1}">
-						<li><h:commandLink action="#{paintingController.viewPaintings}" value="Lista quadri" /></li>
-					</c:if>
 					<!-- Menu a tendina amministratore -->
 					<c:if test="${administratorController.currentAdministrator != null}">
-						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Clienti<b class="caret"></b></a>
+						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Utenti<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><h:commandLink action="#{userController.viewUsers}" value="Utenti registrati" /></li>
 								<li><h:commandLink action="#{administratorController.newUser}" value="Registra un nuovo cliente" /></li>
-								<li><a href='<c:url value="/faces/cancellaUtente.jsp" />'>Elimina un cliente registrato</a></li>
+								<li><a href='<c:url value="/faces/cancellaUtente.jsp" />'>Elimina un utente registrato</a></li>
 								<li class="divider"></li>
 							</ul>
 								<li class="dropdown">
 								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Operazioni amministrazione<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><h:commandLink
-										action="#{administratorController.newPainting}" value="Inserisci un nuovo quadro" /></li>
+								<li><a href='<c:url value="/faces/inserimentoQuadro.jsp" />'>Inserisci un nuovo quadro </a></li>
+								<c:if test="${fn:length(paintingController.paintings) ge 1}">
+						            <li><h:commandLink 
+						                action="#{paintingController.viewPaintings}" value="Lista quadri" /></li>
+					            </c:if>		
 							</ul></li>
 					</c:if>
 
@@ -64,7 +63,7 @@
 				<!-- Login e amministrazione -->
 				<ul class="nav navbar-nav navbar-right">
 					<c:if test="${administratorController.currentAdministrator != null}">
-						<li><a href='<c:url value="/faces/administratorPage.jsp" />'>Il mio profilo: <strong>${administratorController.currentAdministrator.nickname}</strong>
+						<li><a href='<c:url value="/faces/administratorHome.jsp" />'>Il mio profilo: <strong>${administratorController.currentAdministrator.nickname}</strong>
 						</a></li>
 						<li><h:commandLink value="Logout" action="#{administratorController.logoutAdministrator}" /></li>
 					</c:if>

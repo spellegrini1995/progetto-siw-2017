@@ -49,7 +49,7 @@
 				</div>
 				<div class="form-group">
 					<label for="dimensioni"
-						class="col-sm-1 control-label col-lg-offset-4"> Dimensione </label>
+						class="col-sm-1 control-label col-lg-offset-4">Dimensione</label>
 					<div class="col-sm-2">
 						<h:inputText styleClass="form-control"
 							value="#{paintingController.dimensioni}" required="true"
@@ -77,8 +77,8 @@
 							action="#{paintingController.createPainting}" />
 					</div>
 				</div>
-				<c:if test="${fn:length(paintingController.paintings) gt 1}">
-					<h:commandLink action="#{paintingController.viewPaintings}" value="Lista dei Quadri" />
+				<c:if test="${fn:length(paintingController.paintings) ge 1}">
+					<h:commandLink action="#{paintingController.viewPaintings}" value="Lista Quadri" />
 				</c:if>
 			</h:form>
 		</div>

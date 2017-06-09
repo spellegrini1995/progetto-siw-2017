@@ -56,7 +56,7 @@ public class AdministratorController {
 	private PaintingFacade paintingFacade;
 	
 	public String createAdministrator() {
-		this.currentAdministrator = administratorFacade.createAdministrator(nome,cognome,nickname, password);
+		this.currentAdministrator = administratorFacade.createAdministrator(nome,cognome,nickname,password);
 		return "administratorHome";
 	}
 	
@@ -66,17 +66,17 @@ public class AdministratorController {
 			Administrator administrator = administratorFacade.getAdministratorByNickname(nickname);
 			if (administrator.checkPassword(this.password)) {
 				setCurrentAdministrator(administrator);
-				return "administratorHome";
+				return "registrazioneAvvenuta";
 			}
 			else{
 				// Password Errata
-				FacesContext.getCurrentInstance().addMessage("loginAdministrator:accediAdmin", new FacesMessage("Login Errato! Nickname1 o password non inseriti correttamente!"));
+				FacesContext.getCurrentInstance().addMessage("loginAdministrator:accediAdmin", new FacesMessage("Login non permesso! Password errata!"));
 				return "administratorLogin";
 			}
 		}
 		catch (Exception e) {
 			// Amministratore non trovato
-			FacesContext.getCurrentInstance().addMessage("loginAdministrator:accediAdmin", new FacesMessage("Login Errato! Nickname2 o password non inseriti correttamente!"));
+			FacesContext.getCurrentInstance().addMessage("loginAdministrator:accediAdmin", new FacesMessage("Login Errato! Nickname o password non inseriti correttamente!"));
 			return "administratorLogin";
 		}
 	}
@@ -89,7 +89,7 @@ public class AdministratorController {
 			this.message = "Registrazione utente effettuata!";
 			return "registrazioneAvvenuta";
 		}catch(Exception e){
-			/*Utente gi√† registrato*/
+			/*Utente gi‡† registrato*/
 			this.resetUser();
 			FacesContext.getCurrentInstance().addMessage("registrationUserByAdmin:signinUserByAdmin", new FacesMessage("Utente gi‡† registrato!"));
 			return "registrazioneUtenteByAdmin";
@@ -128,7 +128,6 @@ public class AdministratorController {
 	}
 	
 	public String newPainting() {
-		this.authors = authorFacade.getAllAuthors();
 		return "inserimentoQuadro";
 	}
 	
@@ -141,6 +140,11 @@ public class AdministratorController {
 		this.painting = (Painting) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("currentPainting");
 		return "modificaQuadro";
 	}
+	
+	public String viewPaintings(){
+		return "listaQuadri";
+	}
+	
 	
 	public void setPassword(String password) {
 		this.password = password;

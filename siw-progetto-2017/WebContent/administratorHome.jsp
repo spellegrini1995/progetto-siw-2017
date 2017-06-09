@@ -8,9 +8,7 @@
 </head>
 <body>
 	<f:view>
-
-		<jsp:include page="/faces/header.jsp" />
-		
+		<jsp:include page="header.jsp" />
 		<div align="center">
 			<c:if test="${administratorController.message != null && administratorController.message != ''}">
 				<span class="error alert alert-success">${administratorController.message }</span>

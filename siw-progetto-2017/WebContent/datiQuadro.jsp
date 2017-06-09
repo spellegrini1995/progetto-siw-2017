@@ -27,7 +27,7 @@
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-2">
 							<h:commandButton styleClass="btn btn-warning"
-								action="#{administratorController.modifyProduct}"
+								action="#{administratorController.modifyPainting}"
 								value="Modifica" />
 						</div>
 						<div class="col-sm-2">

@@ -25,19 +25,19 @@ public class PaintingController {
 	private Author autore;
 	private String nomeAutore;
 	private List<Painting> paintings;
-	
+
 	@ManagedProperty(value="#{sessionScope['authorsPainting']}")
 	private List<Author> authors;
 
 	@ManagedProperty(value="#{sessionScope['currentPainting']}")
 	private Painting painting;
-	
+
 	@EJB(beanName="paintingFacade")
 	private PaintingFacade paintingFacade;
-	
+
 	@EJB(beanName="authorFacade")
 	private AuthorFacade authorFacade;
-	
+
 	public String createPainting() {
 		try{
 			this.autore = authorFacade.getAuthor(this.nomeAutore);
@@ -48,17 +48,21 @@ public class PaintingController {
 		}catch(Exception e){
 			/*id quadro gia esistente nel DB*/
 			this.resetPainting();
-			FacesContext.getCurrentInstance().addMessage("newProduct:createProduct", new FacesMessage("Codice Prodotto gia esistente!"));
+			FacesContext.getCurrentInstance().addMessage("newPainting:createPainting", new FacesMessage("Codice Quadro gia esistente!"));
 			return "inserimentoQuadro";
 		}
 	}
-	
+
 	public String updatePainting() {
-		paintingFacade.updatePainting(this.painting);
-		return "datiQuadro";
+		try{
+			paintingFacade.updatePainting(this.painting);
+			return "datiQuadro";
+		}catch(Exception e){
+			return "inserimentoQuadro";
+		}
 	}
 
-	
+
 	public String setAuthor() {
 		this.autore = authorFacade.getAuthor(this.nomeAutore);
 		this.painting.setAutore(autore);
@@ -66,7 +70,7 @@ public class PaintingController {
 		authorFacade.updateAuthor(this.autore);
 		return "modificaQuadro";
 	}
-	
+
 	private void resetPainting(){
 		this.titolo=null;
 		this.annoRealizzazione=null;
@@ -74,7 +78,7 @@ public class PaintingController {
 		this.dimensioni=null;
 		this.autore=null;
 	}
-	
+
 	public String nullAuthor() {
 		this.autore = null;
 		this.painting.setAutore(autore);
@@ -87,23 +91,23 @@ public class PaintingController {
 		this.paintings = paintingFacade.getAllPaintings();
 		return "listaQuadri";
 	}
-	
+
 	public String findPainting() {
 		this.painting = paintingFacade.getPainting(id);
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentPainting", this.painting);
 		return "datiQuadro";
 	}
-	
-	public String findProduct(Long id) {
+
+	public String findPainting(Long id) {
 		this.painting = paintingFacade.getPainting(id);
 		return "datiQuadro";
 	}	
-	
+
 	public String viewPaintings() {
 		this.paintings = paintingFacade.getAllPaintings();
 		return "listaQuadri";
 	}
-	
+
 	//getter and setter
 	public Long getId() {
 		return id;

@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Nuovo cliente</title>
+<title>Nuovo Utente</title>
 </head>
 <body>
 	<f:view>
@@ -20,7 +20,7 @@
 			<h:form id="registrationUser" styleClass="form-horizontal">
 				<h:message for="signinUser" styleClass="error alert alert-danger" />
 				<div>
-					<h1>Registrazione utente</h1>
+					<h1>Registrazione Utente</h1>
 				</div>
 				<div class="form-group">
 					<label for="nome"

@@ -26,16 +26,16 @@ public class UserController {
 	private String numeroTelefono;
 	private Date dataNascita;
 	private Calendar dataRegistrazione;
-	
+
 	//campi per l'indirizzo
 	private String via,comune,nazione,codicePostale,provincia;
-	
+
 	private List<User> users; //tutti gli utenti registrati nel sistema
 	private User currentUser; //utente corrente
 
 	@EJB(beanName="userFacade")
 	private UserFacade userFacade;
-	
+
 	public String createUser() {
 		try{
 			/*Genera automaticamente la data di oggi */
@@ -43,7 +43,7 @@ public class UserController {
 			this.currentUser = userFacade.createUser(nome, cognome,email,password,numeroTelefono,dataNascita,dataRegistrazione,via,comune,provincia,codicePostale,nazione);
 			return "registrazioneAvvenuta";
 		}catch(Exception e){
-			/*Utente gi√† registrato*/
+			/*Utente gi‡† registrato*/
 			this.resetUser();
 			FacesContext.getCurrentInstance().addMessage("registrationUser:signinUser", new FacesMessage("Utente gi‡† registrato!"));
 			return "registrazioneUtente";
@@ -60,7 +60,7 @@ public class UserController {
 			}
 			else{
 				// Password Errata
-				FacesContext.getCurrentInstance().addMessage("loginUser:accedi", new FacesMessage("Login Errato! Email o password non inseriti correttamente!"));
+				FacesContext.getCurrentInstance().addMessage("loginUser:accedi", new FacesMessage("Login non consentito! Password errata!"));
 				return "userLogin";
 			}
 		}
@@ -100,16 +100,19 @@ public class UserController {
 		this.currentUser = userFacade.getUser(email);
 		return "datiUtente";
 	}
-	
+
 	public String logout (){
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "index";
 	}
 	public String viewUsers() {
-		this.users = userFacade.getAllUsers();
-		return "listaUtentiRegistrati";
+		try{
+			this.users = userFacade.getAllUsers();
+			return "listaUtentiRegistrati";
+		}catch(Exception e){
+			return "index";
+		}
 	}
-
 	//getter and setter
 	public Long getId() {
 		return id;

@@ -8,14 +8,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Cancella cliente</title>
+<title>Cancella Utente</title>
 </head>
 <body>
 	<f:view>
 		<jsp:include page="header.jsp" />
 		<div align="center">
-			<h:form id="deletingCustomer" styleClass="form-horizontal">
-				<h:message for="deleteCustomer" styleClass="error alert alert-danger" />
+			<h:form id="deletingUser" styleClass="form-horizontal">
+				<h:message for="deleteUser" styleClass="error alert alert-danger" />
 				<div>
 					<h2>Elimina un cliente</h2>
 					<h5>Inserisci l'e-mail </h5>
@@ -33,9 +33,9 @@
 				<div></div>
 				<div class="form-group">
 					<div class="col-sm-offset-5 col-sm-2">
-						<h:commandButton styleClass="btn btn-primary" id="deleteCustomer"
+						<h:commandButton styleClass="btn btn-primary" id="deleteUser"
 							value="Elimina Utente"
-							action="#{administratorController.deleteCustomer}" />
+							action="#{administratorController.deleteUser}" />
 					</div>
 				</div>
 			</h:form>

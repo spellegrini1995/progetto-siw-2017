@@ -63,7 +63,7 @@
 					<div class="col-sm-offset-5 col-sm-2">
 						<h:commandButton value="Salva Modifiche"
 							styleClass="btn btn-primary"
-							action="#{productController.updateProduct}" />
+							action="#{paintingController.updatePainting}" />
 					</div>
 				</div>
 			</h:form>

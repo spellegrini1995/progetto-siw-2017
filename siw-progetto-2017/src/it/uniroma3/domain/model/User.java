@@ -38,14 +38,16 @@ public class User {
 	private Calendar dataRegistrazione;
 
 	@Column
-	@OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
 	private Address address;
 
+
 	public User(){
-
+		
 	}
-
+	
 	public User(String nome, String cognome, String email, String password, String numeroTelefono, Date dataNascita, Calendar dataRegistrazione, Address address) {
+		super();
 		this.nome = nome;
 		this.cognome = cognome;
 		this.email = email;
@@ -55,7 +57,7 @@ public class User {
 		this.dataRegistrazione=dataRegistrazione;
 		this.address=address;
 	}
-
+	
 	public boolean checkPassword(String password){
 		return this.password.equals(password);
 	}
