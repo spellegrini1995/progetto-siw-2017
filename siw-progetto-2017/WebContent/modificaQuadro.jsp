@@ -15,7 +15,6 @@
 		<jsp:include page="header.jsp" />
 
 		<div align="center">
-			<h1>Modifica Quadro</h1>
 				<h:form styleClass="form-horizontal">
 				<h:message for="createPainting" styleClass="error alert alert-danger" />
 				<div>

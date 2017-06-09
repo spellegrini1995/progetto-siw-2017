@@ -18,15 +18,7 @@
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/progetto_siw" />
             
             <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)" />
-            
-			<!-- Hibernate properties -->
-			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.format_sql" value="true" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-			
-			<!-- specifica che ad ogni esecuzione viene creato lo schema, 
-			cancellando il contenuto delle tabelle (molto utile in fase di sviluppo e testing) -->
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+         	
 		</properties>
 	</persistence-unit>
 </persistence>

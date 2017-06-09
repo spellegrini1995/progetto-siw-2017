@@ -9,19 +9,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Index</title>
 </head>
-<body>
+<body background="http://genova.erasuperba.it/wp-content/uploads/2012/10/guidischoen-arte-start-opening-gallerie-d14.jpg">
 	<f:view>
 		<jsp:include page="header.jsp" />
 		<div align="center">
-			<h1>Benvenuto nella nostra galleria d'arte!</h1>
-			<h2>Puoi visualizzare tutti i quadri al nostro interno per titolo o per autore!</h2>
-			<h3>Per iniziare registrati, oppure dai un'occhiata subito al nostro elenco.</h3>
+			<h1><strong>Benvenuto nella nostra galleria d'arte!</strong></h1>
+			<h2><em>Puoi visualizzare tutti i quadri al nostro interno per titolo o per autore!</em></h2>
+			<h3><em>Per iniziare registrati, oppure dai un'occhiata subito al nostro elenco.</em></h3>
 		</div>
-		<div class="text-right col-md-6 col-md-offset-6">
-			<h5><em>Sito creato da:</em></h5>
-			<h5><em>Napolitano Nicholas Matr: 490495</em></h5>
-			<h5><em>Pellegrini Simone Matr: 487515</em></h5>
-			<h5><em><strong>Universita' degli Studi Roma Tre</strong></em></h5>
+		<div class="text-right text-primary col-md-6 col-md-offset-6">
+			<h4><em><strong>Sito creato da:</strong></em></h4>
+			<h4><em><strong>Napolitano Nicholas Matr: 490495</strong></em></h4>
+			<h4><em><strong>Pellegrini Simone Matr: 487515</strong></em></h4>
+			<h4><em><strong>Universita' degli Studi Roma Tre</strong></em></h4>
 		</div>
 	</f:view>
 </body>

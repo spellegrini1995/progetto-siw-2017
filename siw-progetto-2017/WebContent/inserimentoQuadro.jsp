@@ -13,9 +13,7 @@
 <body>
 	<f:view>
 		<jsp:include page="header.jsp" />
-
 		<div align="center">
-			
 			<h:form id="newPainting" styleClass="form-horizontal">
 				<h:message for="createPainting" styleClass="error alert alert-danger" />
 				<div>
