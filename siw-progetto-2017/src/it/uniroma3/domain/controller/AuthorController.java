@@ -19,7 +19,7 @@ public class AuthorController {
 	
 	private String nome;
 	private String cognome;
-	private String nazionalit‡;
+	private String nazionalit√†;
 	private Date dataNascita;
 	private Date dataMorte;
 	private Author author;
@@ -30,7 +30,7 @@ public class AuthorController {
 	private AuthorFacade authorFacade;
 
 	public String createAuthor() {
-		this.author = authorFacade.createAuthor(nome,cognome,nazionalit‡,dataNascita,dataMorte);
+		this.author = authorFacade.createAuthor(nome,cognome,nazionalit√†,dataNascita,dataMorte);
 		return "datiAutore"; 
 	}
 
@@ -84,12 +84,12 @@ public class AuthorController {
 		this.cognome = cognome;
 	}
 
-	public String getNazionalit‡() {
-		return nazionalit‡;
+	public String getNazionalit√†() {
+		return nazionalit√†;
 	}
 
-	public void setNazionalit‡(String nazionalit‡) {
-		this.nazionalit‡ = nazionalit‡;
+	public void setNazionalit√†(String nazionalit√†) {
+		this.nazionalit√† = nazionalit√†;
 	}
 
 	public Date getDataNascita() {

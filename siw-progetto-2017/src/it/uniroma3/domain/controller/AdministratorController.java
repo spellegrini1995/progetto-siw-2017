@@ -66,7 +66,7 @@ public class AdministratorController {
 			Administrator administrator = administratorFacade.getAdministratorByNickname(nickname);
 			if (administrator.checkPassword(this.password)) {
 				setCurrentAdministrator(administrator);
-				return "registrazioneAvvenuta";
+				return "administratorHome";
 			}
 			else{
 				// Password Errata
@@ -89,9 +89,9 @@ public class AdministratorController {
 			this.message = "Registrazione utente effettuata!";
 			return "registrazioneAvvenuta";
 		}catch(Exception e){
-			/*Utente già  registrato*/
+			/*Utente giï¿½ registrato*/
 			this.resetUser();
-			FacesContext.getCurrentInstance().addMessage("registrationUserByAdmin:signinUserByAdmin", new FacesMessage("Utente già  registrato!"));
+			FacesContext.getCurrentInstance().addMessage("registrationUserByAdmin:signinUserByAdmin", new FacesMessage("Utente giï¿½ registrato!"));
 			return "registrazioneUtenteByAdmin";
 		}
 	}

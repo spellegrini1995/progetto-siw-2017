@@ -7,9 +7,9 @@ import javax.persistence.*;
 
 
 @Entity
+@Table(name="users") //altrimenti postgres va in confusione!!!!!!!!!!
 @NamedQuery(name = "findAllUsers", query = "SELECT u FROM User u")
 public class User {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

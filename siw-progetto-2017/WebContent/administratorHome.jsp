@@ -15,7 +15,7 @@
 				<br>
 			</c:if>
 		<h1>Pagina di Amministrazione </h1>
-		<h2>Benvenuto ${administratorController.nome} ${administratorController.cognome} </h2>
+		<h2>Benvenuto ${administratorController.currentAdministrator.firstName} ${administratorController.currentAdministrator.lastName} </h2>
 		<h3><strong><em>Scegli un'operazione sulla barra superiore per iniziare!</em></strong></h3>
 		</div>
 	</f:view>

@@ -16,8 +16,8 @@ public class AuthorFacade {
     @PersistenceContext(unitName = "progetto-siw-unit")
     private EntityManager em;
     
-	public Author createAuthor(String nome, String cognome,String nazionalit‡, Date dataNascita, Date dataMorte) {
-		Author author = new Author(nome,cognome,nazionalit‡,dataNascita,dataMorte);
+	public Author createAuthor(String nome, String cognome,String nazionalit√†, Date dataNascita, Date dataMorte) {
+		Author author = new Author(nome,cognome,nazionalit√†,dataNascita,dataMorte);
 		em.persist(author);
 		return author;
 	}

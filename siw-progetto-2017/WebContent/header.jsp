@@ -69,7 +69,7 @@
 					</c:if>
 
 					<c:if test="${userController.currentUser != null}">
-						<li><a href='<c:url value="/faces/userHome.jsp" />'>Il 	mio profilo: <b>${userController.currentUser.nome}${userController.currentUser.cognome}</b>
+						<li><a href='<c:url value="/faces/userHome.jsp" />'>Il 	mio profilo: <b>${userController.currentUser.nome} ${userController.currentUser.cognome}</b>
 						</a></li>
 						<li><h:commandLink value="Logout" action="#{userController.logoutUser}" /></li>
 					</c:if>
