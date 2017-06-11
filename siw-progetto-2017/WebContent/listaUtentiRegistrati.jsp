@@ -7,33 +7,37 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Utenti registrati</title>
 </head>
-<body>
+<body
+	background="http://www.fixabay.com/reimg/resize-img.php?src=http://www.fixabay.com/images/Nature/235tuqgit2h.jpg&h=768&w=1366">
 	<f:view>
 		<!-- Menù di testa -->
 		<jsp:include page="header.jsp" />
 		<!-- -------------- -->
-		<div align="center">
-			<h1>Utenti registrati</h1>
+		<div align="center" class="text-primary">
+			<h1>
+				<strong>Utenti registrati</strong>
+			</h1>
 
 			<h:form>
-				<table class="table">
+				<table class="table text-primary">
 					<tr>
-						<th>E-mail</th>
-						<th>Nome</th>
-						<th>Cognome</th>
-						<th>Telefono</th>
-						<th>Data Registrazione</th>
+						<th><strong>E-mail</strong></th>
+						<th><strong>Nome</strong></th>
+						<th><strong>Cognome</strong></th>
+						<th><strong>Telefono</strong></th>
+						<th><strong>Data Registrazione</strong></th>
 					</tr>
 					<c:forEach var="u" items="#{userController.users}">
 						<tr>
-							<td>${u.email}</td>
-							<td>${u.nome}</td>
-							<td>${u.cognome}</td>
-							<td>${u.numeroTelefono}</td>
-							<td><h:outputText value="#{u.dataRegistrazione.time}">
-									<f:convertDateTime dateStyle="medium" locale="it_IT" type="both" timeZone="Europe/Rome" />
-								</h:outputText>
-							</td>
+							<td><strong><a href='<c:url value="/faces/datiUtente.jsp" />'><em>${u.email}</em></a></strong></td>
+							<td><strong>${u.nome}</strong></td>
+							<td><strong>${u.cognome}</strong></td>
+							<td><strong>${u.numeroTelefono}</strong></td>
+							<td><strong><h:outputText
+										value="#{u.dataRegistrazione.time}">
+										<f:convertDateTime dateStyle="medium" locale="it_IT"
+											type="both" timeZone="Europe/Rome" />
+									</h:outputText></strong></td>
 						</tr>
 					</c:forEach>
 				</table>

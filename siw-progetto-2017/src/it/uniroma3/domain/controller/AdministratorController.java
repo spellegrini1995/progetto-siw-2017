@@ -66,7 +66,7 @@ public class AdministratorController {
 			Administrator administrator = administratorFacade.getAdministratorByNickname(nickname);
 			if (administrator.checkPassword(this.password)) {
 				setCurrentAdministrator(administrator);
-				return "administratorHome";
+				return "registrazioneAvvenuta";
 			}
 			else{
 				// Password Errata
@@ -85,11 +85,11 @@ public class AdministratorController {
 		try{
 			/*Genera automaticamente la data di oggi */
 			this.registrationDate = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
-			userFacade.createUser(firstName, lastName, passwordUser, email, phoneNumber, dateOfBirth, registrationDate,street, city, country, zipcode, state);
+			userFacade.createUser(firstName, lastName, email, passwordUser, phoneNumber, dateOfBirth, registrationDate,street, city, country, zipcode, state);
 			this.message = "Registrazione utente effettuata!";
 			return "registrazioneAvvenuta";
 		}catch(Exception e){
-			/*Utente giï¿½ registrato*/
+			/*Utente già registrato*/
 			this.resetUser();
 			FacesContext.getCurrentInstance().addMessage("registrationUserByAdmin:signinUserByAdmin", new FacesMessage("Utente giï¿½ registrato!"));
 			return "registrazioneUtenteByAdmin";
@@ -127,6 +127,7 @@ public class AdministratorController {
 		return "index";
 	}
 	
+	
 	public String newPainting() {
 		return "inserimentoQuadro";
 	}
@@ -139,6 +140,11 @@ public class AdministratorController {
 		this.authors = new ArrayList<>(authorFacade.getAllAuthors());
 		this.painting = (Painting) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("currentPainting");
 		return "modificaQuadro";
+	}
+	
+	public String viewUser(){
+		userFacade.getUserByEmail(email);
+		return "datiUtente";
 	}
 	
 	public String viewPaintings(){

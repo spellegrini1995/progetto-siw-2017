@@ -8,18 +8,20 @@ import it.uniroma3.domain.model.Painting;
 import it.uniroma3.domain.facade.AuthorFacade;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
 
 @ManagedBean(name = "authorController")
 public class AuthorController {
 
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
-	
+
 	private String nome;
 	private String cognome;
-	private String nazionalità;
+	private String nazionalita;
 	private Date dataNascita;
 	private Date dataMorte;
 	private Author author;
@@ -30,15 +32,30 @@ public class AuthorController {
 	private AuthorFacade authorFacade;
 
 	public String createAuthor() {
-		this.author = authorFacade.createAuthor(nome,cognome,nazionalità,dataNascita,dataMorte);
-		return "datiAutore"; 
+		try{
+			this.author = authorFacade.createAuthor(nome,cognome,nazionalita,dataNascita,dataMorte);
+			return "datiAutore"; 			
+		}catch(Exception e){
+			/*Autore gi� registrato*/
+			this.resetAuthor();
+			FacesContext.getCurrentInstance().addMessage("newAuthor:createAuthor", new FacesMessage("Autore gi� registrato!"));
+			return "inserimentoNuovoAutore";
+		}
+	}
+
+	private void resetAuthor(){
+		this.nome = null;
+		this.cognome = null;
+		this.nazionalita = null;
+		this.dataNascita = null;
+		this.dataMorte = null;
 	}
 
 	public String listPaintings() {
 		this.quadri = author.getQuadri();
 		return "listaQuadri"; 
 	}
-	
+
 	public String findAuthor() {
 		this.author = authorFacade.getAuthor(id);
 		return "datiAutore";
@@ -52,12 +69,12 @@ public class AuthorController {
 		this.autori = authorFacade.getAllAuthors();
 		return "listaAutori";
 	}
-	
+
 	public Author getByNameAuthor(String nome, String cognome){
 		this.author = authorFacade.getByNameAuthor(nome, cognome);
 		return this.author;
 	}
-	
+
 	//getter and setter
 
 	public Long getId() {
@@ -84,12 +101,12 @@ public class AuthorController {
 		this.cognome = cognome;
 	}
 
-	public String getNazionalità() {
-		return nazionalità;
+	public String getNazionalita() {
+		return nazionalita;
 	}
 
-	public void setNazionalità(String nazionalità) {
-		this.nazionalità = nazionalità;
+	public void setNazionalita(String nazionalita) {
+		this.nazionalita = nazionalita;
 	}
 
 	public Date getDataNascita() {

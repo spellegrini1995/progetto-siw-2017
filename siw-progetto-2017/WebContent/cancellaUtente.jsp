@@ -10,18 +10,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Cancella Utente</title>
 </head>
-<body>
+<body background="http://www.allforwall.net/reimg/resize-img.php?src=http://downimgs.allforwall.net/images/sbqix5dtkus.jpg&h=768&w=1366">
 	<f:view>
 		<jsp:include page="header.jsp" />
-		<div align="center">
+		<div align="center" class="text-primary">
 			<h:form id="deletingUser" styleClass="form-horizontal">
 				<h:message for="deleteUser" styleClass="error alert alert-danger" />
 				<div>
-					<h2>Elimina un cliente</h2>
-					<h5>Inserisci l'e-mail </h5>
+					<h2><strong>Elimina Utente</strong></h2>
+					<h5><strong>Inserisci l'e-mail</strong></h5>
 				</div>
-				<div class="form-group">
-					<label for="email" class="col-sm-1 control-label col-lg-offset-4">Email</label>
+				<div class="form-group text-primary">
+					<label for="email" class="col-sm-1 control-label col-lg-offset-4"><strong>Email</strong></label>
 					<div class="col-sm-2">
 						<h:inputText value="#{administratorController.email}"
 							required="true"

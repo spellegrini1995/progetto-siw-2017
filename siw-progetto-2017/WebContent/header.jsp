@@ -42,6 +42,7 @@
 								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Operazioni amministrazione<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href='<c:url value="/faces/inserimentoQuadro.jsp" />'>Inserisci un nuovo quadro </a></li>
+								<li><a href='<c:url value="/faces/inserimentoNuovoAutore.jsp"/>'>Inserisci un nuovo Autore</a></li>
 								<c:if test="${fn:length(paintingController.paintings) ge 1}">
 						            <li><h:commandLink 
 						                action="#{paintingController.viewPaintings}" value="Lista quadri" /></li>

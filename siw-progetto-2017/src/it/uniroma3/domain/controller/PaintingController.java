@@ -104,8 +104,13 @@ public class PaintingController {
 	}	
 
 	public String viewPaintings() {
-		this.paintings = paintingFacade.getAllPaintings();
-		return "listaQuadri";
+		try{
+			this.paintings = paintingFacade.getAllPaintings();
+			return "listaQuadri";
+		}
+		catch(Exception e){
+			return "index";
+		}
 	}
 
 	//getter and setter

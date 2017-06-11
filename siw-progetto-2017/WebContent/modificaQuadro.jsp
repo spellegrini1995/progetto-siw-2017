@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Modifica quadro</title>
 </head>
-<body>
+<body background = "http://www.tomasopiva.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/p/i/piemontese_frutti.jpg">
 	<f:view>
 		<jsp:include page="header.jsp" />
 

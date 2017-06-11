@@ -6,14 +6,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Fornitore</title>
+<title>Autore</title>
 </head>
 <body>
 	<f:view>
 		<jsp:include page="header.jsp" />
 		<div align="center">
-			<h1>Dettagli fornitore ${autoreController.autore.nome} ${autoreController.autore.cognome}</h1>
-			<div>Nazionalità: ${autoreController.autore.nazionalità}</div>
+			<h1>Dettagli Autore ${autoreController.autore.nome} ${autoreController.autore.cognome}</h1>
+			<div>Nazionalita: ${autoreController.autore.nazionalità}</div>
 			<div>Data Nascita: ${autoreController.autore.dataNascita}</div>
 			<div>Data Morte: ${autoreController.autore.dataMorte}</div>
 			

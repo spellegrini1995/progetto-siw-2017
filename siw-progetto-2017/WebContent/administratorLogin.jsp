@@ -10,7 +10,7 @@
 <title>Login amministratore</title>
 </head>
 
-<body>
+<body background="http://www.hrhwalls.com/reimg/image.php?src=http://img.hrhwalls.com/images178/f5b1v3jcusq.jpg&h=768&w=1366">
 	<f:view>
 		<!-- Menu' di testa -->
 		<jsp:include page="header.jsp" />
@@ -18,15 +18,15 @@
 		<div align="center">
 			<h:form id="loginAdministrator" styleClass="form-horizontal">
 				<h:message for="accediAdmin" styleClass="error alert alert-danger" />
-				<div>
-					<h1>Sezione Amministratore</h1>
+				<div class = "text-primary text-shadow">
+					<h1><strong>Sezione Amministratore</strong></h1>
 				</div>
-				<div>
-					<h2>Login Amministratore</h2>
+				<div class = "text-primary">
+					<h2><strong>Login Amministratore</strong></h2>
 				</div>
-				<div class="form-group">
+				<div class="form-group text-primary" >
 					<label for="nickname"
-						class="col-sm-1 control-label col-lg-offset-4">Nickname</label>
+						class="col-sm-1 control-label col-lg-offset-4"><strong>Nickname</strong></label>
 					<div class="col-sm-2">
 						<h:inputText value="#{administratorController.nickname}"
 							required="true" requiredMessage="Il nickname e' obbligatorio!"
@@ -34,8 +34,8 @@
 						<h:message for="nickname" style="color:red" />
 					</div>
 				</div>
-				<div class="form-group">
-					<label for="password" class="col-sm-1 control-label col-lg-offset-4">Password</label>
+				<div class="form-group text-primary">
+					<label for="password" class="col-sm-1 control-label col-lg-offset-4"><strong>Password</strong></label>
 					<div class="col-sm-2">
 						<h:inputSecret value="#{administratorController.password}"
 							required="true" requiredMessage="La password e' obbligatoria!"
@@ -52,10 +52,10 @@
 				</div>
 			</h:form>
 		</div>
-		<div class="text-right col-md-6 col-md-offset-6">
-			<h5><em>Per accedere e provare la sezione amministrazione:</em></h5>
-			<h5><em>Nickname: admin1</em></h5>
-			<h5><em>Password: admin1</em></h5>
+		<div class="text-right text-primary col-md-6 col-md-offset-6">
+			<h4><em><strong>Per accedere e provare la sezione amministrazione:</strong></em></h4>
+			<h4><em><strong>Nickname: admin1</strong></em></h4>
+			<h4><em><strong>Password: admin1</strong></em></h4>
 		</div>
 	</f:view>
 
