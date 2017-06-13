@@ -33,7 +33,8 @@ public class AuthorController {
 
 	public String createAuthor() {
 		try{
-			this.author = authorFacade.createAuthor(nome,cognome,nazionalita,dataNascita,dataMorte);
+			this.author= authorFacade.createAuthor(nome,cognome,nazionalita,dataNascita,dataMorte);
+			this.setAuthor(author);
 			return "datiAutore"; 			
 		}catch(Exception e){
 			/*Autore già  registrato*/

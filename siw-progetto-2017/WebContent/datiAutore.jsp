@@ -12,10 +12,10 @@
 	<f:view>
 		<jsp:include page="header.jsp" />
 		<div align="center">
-			<h1>Dettagli Autore ${autoreController.autore.nome} ${autoreController.autore.cognome}</h1>
-			<div>Nazionalita: ${autoreController.autore.nazionalità}</div>
-			<div>Data Nascita: ${autoreController.autore.dataNascita}</div>
-			<div>Data Morte: ${autoreController.autore.dataMorte}</div>
+			<h1>Dettagli Autore ${authorController.author.nome} ${authorController.author.cognome}</h1>
+			<div>Nazionalita: ${authorController.author.nazionalita}</div>
+			<div>Data Nascita: ${authorController.author.dataNascita}</div>
+			<div>Data Morte: ${authorController.author.dataMorte}</div>
 			
 			Clicca <a href="/faces/listaQuadri.jsp"> QUI </a> per vedere i quadri di questo autore
 		</div>

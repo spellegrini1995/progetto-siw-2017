@@ -11,7 +11,7 @@ import it.uniroma3.domain.model.Painting;
 
 import java.util.List;
 
-@Stateless
+@Stateless(name="paintingFacade")
 public class PaintingFacade {
 	
     @PersistenceContext(unitName = "progetto-siw-unit")

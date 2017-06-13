@@ -10,7 +10,7 @@
 <body
 	background="http://www.fixabay.com/reimg/resize-img.php?src=http://www.fixabay.com/images/Nature/235tuqgit2h.jpg&h=768&w=1366">
 	<f:view>
-		<!-- Menù di testa -->
+		<!-- MenÃ¹ di testa -->
 		<jsp:include page="header.jsp" />
 		<!-- -------------- -->
 		<div align="center" class="text-primary">

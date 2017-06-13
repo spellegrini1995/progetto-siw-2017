@@ -3,6 +3,7 @@
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
 
 <!DOCTYPE html>
 <html>
@@ -58,7 +59,7 @@
 						<h:message for="dimensioni" style="color:red" />
 					</div>
 				</div>
-		<!--  		<div class="form-group">
+		 		<div class="form-group">
 					<label for="addAuthorList"
 						class="col-sm-1 control-label col-lg-offset-4">Autore</label>
 					<div class="col-sm-2">
@@ -70,7 +71,7 @@
 					</h:selectOneMenu>
 						<h:message for="idAutore" style="color:red" />
 					</div>
-				</div>             -->
+				</div>             
 				<div class="form-group">
 					<div class="col-sm-offset-5 col-sm-2">
 						<h:commandButton id="createPainting" styleClass="btn btn-success" value="Inserisci"

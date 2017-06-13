@@ -113,6 +113,12 @@ public class UserController {
 			return "index";
 		}
 	}
+	
+	public String viewUser(){
+		this.currentUser=userFacade.getUserByEmail(email);
+		this.setCurrentUser(currentUser);
+		return "datiUtente";
+	}
 	//getter and setter
 	public Long getId() {
 		return id;

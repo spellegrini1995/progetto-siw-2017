@@ -142,10 +142,6 @@ public class AdministratorController {
 		return "modificaQuadro";
 	}
 	
-	public String viewUser(){
-		userFacade.getUserByEmail(email);
-		return "datiUtente";
-	}
 	
 	public String viewPaintings(){
 		return "listaQuadri";

@@ -23,45 +23,48 @@
 					<h1>Inserimento nuovo Autore</h1>
 				</div>
 				<div class="form-group">
-					<label for="nome"
-						class="col-sm-1 control-label col-lg-offset-3">Nome</label>
+					<label for="nome" class="col-sm-1 control-label col-lg-offset-3">Nome</label>
 					<div class="col-sm-2">
-						<h:inputText id="nome" value="#{authorController.nome}" requiredMessage="Campo Obbligatorio" 
-						required="true"/>
+						<h:inputText id="nome" value="#{authorController.nome}"
+							requiredMessage="Campo Obbligatorio" required="true" />
 						<h:message for="nome" style="color:red" />
 					</div>
 					<label for="cognome" class="col-sm-1 control-label">Cognome</label>
 					<div class="col-sm-2">
-						<h:inputText value="#{authorController.cognome}"
-							required="true" requiredMessage="Campo Obbligatorio" id="cognome"
+						<h:inputText value="#{authorController.cognome}" required="true"
+							requiredMessage="Campo Obbligatorio" id="cognome"
 							styleClass="form-control" />
 						<h:message for="cognome" style="color:red" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="nazionalita" class="col-sm-1 control-label col-lg-offset-3">Paese di Nascita</label>
+					<label for="nazionalita"
+						class="col-sm-1 control-label col-lg-offset-3">Paese di
+						Nascita</label>
 					<div class="col-sm-2">
-						<h:inputText value="#{authorController.nazionalita}" required="true"
-							requiredMessage="Campo Obbligatorio" id="nazionalita" styleClass="form-control" />
+						<h:inputText value="#{authorController.nazionalita}"
+							required="true" requiredMessage="Campo Obbligatorio"
+							id="nazionalita" styleClass="form-control" />
 						<h:message for="nazionalita" style="color:red" />
 					</div>
-					<label for="data_nascita" class="col-sm-1 control-label">Data di Nascita</label>
+					<label for="data_nascita" class="col-sm-1 control-label">Data
+						di Nascita</label>
 					<div class="col-sm-2">
 						<t:inputDate value="#{authorController.dataNascita}"
-							id="data_nascita"
-							styleClass="form-control" />
+							id="data_nascita" styleClass="form-control" />
 					</div>
-				</div>			
+				</div>
 				<div class="form-group">
-					<label for="data_morte" class="col-sm-1 control-label col-lg-offset-3">Data di Morte</label>
+					<label for="data_morte"
+						class="col-sm-1 control-label col-lg-offset-3">Data di
+						Morte</label>
 					<div class="col-sm-2">
-						<t:inputDate value="#{authorController.dataMorte}"
-							id="data_morte"
+						<t:inputDate value="#{authorController.dataMorte}" id="data_morte"
 							styleClass="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
-						<div class="col-sm-offset-5 col-sm-3">
+					<div class="col-sm-offset-5 col-sm-3">
 						<h:commandButton styleClass="btn btn-primary" id="createAuthor"
 							value="Inserisci" action="#{authorController.createAuthor}" />
 					</div>

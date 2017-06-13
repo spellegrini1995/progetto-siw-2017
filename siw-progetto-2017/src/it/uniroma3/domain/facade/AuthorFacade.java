@@ -10,14 +10,14 @@ import it.uniroma3.domain.model.Author;
 import java.util.Date;
 import java.util.List;
 
-@Stateless
+@Stateless(name="authorFacade")
 public class AuthorFacade {
 	
     @PersistenceContext(unitName = "progetto-siw-unit")
     private EntityManager em;
     
-	public Author createAuthor(String nome, String cognome,String nazionalità, Date dataNascita, Date dataMorte) {
-		Author author = new Author(nome,cognome,nazionalità,dataNascita,dataMorte);
+	public Author createAuthor(String nome, String cognome,String nazionalita, Date dataNascita, Date dataMorte) {
+		Author author = new Author(nome,cognome,nazionalita,dataNascita,dataMorte);
 		em.persist(author);
 		return author;
 	}

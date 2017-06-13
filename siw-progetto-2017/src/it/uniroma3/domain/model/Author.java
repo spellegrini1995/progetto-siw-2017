@@ -25,7 +25,7 @@ public class Author {
 	@Column(nullable=false)
 	private String cognome;
 	@Column
-	private String nazionalità;
+	private String nazionalita;
 	@Column
 	@Temporal(TemporalType.DATE)
 	private Date dataNascita;
@@ -36,10 +36,10 @@ public class Author {
 	@OneToMany(mappedBy="autore")
 	private List<Painting> quadri;
 
-	public Author(String nome, String cognome, String nazionalità, Date dataNascita, Date dataMorte) {
+	public Author(String nome, String cognome, String nazionalita, Date dataNascita, Date dataMorte) {
 		this.nome = nome;
 		this.cognome = cognome;
-		this.nazionalità = nazionalità;
+		this.nazionalita = nazionalita;
 		this.dataNascita = dataNascita;
 		this.dataMorte = dataMorte;
 		this.quadri = new ArrayList<>();
@@ -71,12 +71,12 @@ public class Author {
 		this.cognome = cognome;
 	}
 
-	public String getNazionalità() {
-		return nazionalità;
+	public String getNazionalita() {
+		return nazionalita;
 	}
 
-	public void setNazionalità(String nazionalità) {
-		this.nazionalità = nazionalità;
+	public void setNazionalita(String nazionalita) {
+		this.nazionalita = nazionalita;
 	}
 
 	public Date getDataNascita() {
