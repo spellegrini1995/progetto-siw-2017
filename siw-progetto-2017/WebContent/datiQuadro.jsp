@@ -1,10 +1,10 @@
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ 
 
 <!DOCTYPE html>
-<html>
+<html xmlns:o="http://omnifaces.org/ui">
 <head>
 <title>Quadro: "${paintingController.painting.titolo}"</title>
 </head>
@@ -18,9 +18,9 @@
 			<div>Anno Realizzazione: ${paintingController.painting.annoRealizzazione}</div>
 			<div>Tecnica: ${paintingController.painting.tecnica}</div>
 			<div>Dimensioni: ${paintingController.painting.dimensioni}</div>
-			<div> <a href="/faces/datiAutore.jsp"> ${paintingController.painting.autore.nome} ${paintingController.painting.autore.cognome}
-			</a></div>
-
+			<div> <a href="/faces/datiAutore.jsp"> ${paintingController.painting.autore.nome} ${paintingController.painting.autore.cognome}</a></div>
+            <div>Immagine:<o:graphicImage value="#{imgLoad.get(quadroController.quadroCorrente.id)}"/></div>
+            
 			<!-- Sono un amministratore -->
 			<c:if test="${administratorController.currentAdministrator != null}">
 				<h:form styleClass="form-horizontal">

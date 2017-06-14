@@ -2,16 +2,16 @@
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html xmlns:o="http://omnifaces.org/ui">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Catalogo prodotti</title>
+<title>Lista Quadri</title>
 </head>
 <body>
 	<f:view>
 		<jsp:include page="header.jsp" />
 		<div align="center">
-			<h1>Catalogo Prodotti</h1>
+			<h1>Lista Quadri</h1>
 			<h:form>
 				<table class="table">
 					<tr>
@@ -40,8 +40,5 @@
 			</h:form>
 		</div>
 	</f:view>
-		<div>
-		<a href='<c:url value="/faces/administratorHome.jsp" />'>Home</a>
-	</div>
 </body>
 </html>

@@ -25,6 +25,7 @@ public class PaintingController {
 	private Author autore;
 	private String nomeAutore;
 	private List<Painting> paintings;
+	private Long idAuthor;
 
 	@ManagedProperty(value="#{sessionScope['authorsPainting']}")
 	private List<Author> authors;
@@ -106,6 +107,7 @@ public class PaintingController {
 	public String viewPaintings() {
 		try{
 			this.paintings = paintingFacade.getAllPaintings();
+			this.setPaintings(paintings);
 			return "listaQuadri";
 		}
 		catch(Exception e){
@@ -208,6 +210,14 @@ public class PaintingController {
 
 	public void setAuthorFacade(AuthorFacade authorFacade) {
 		this.authorFacade = authorFacade;
+	}
+	
+	public Long getIdAuthor() {
+		return idAuthor;
+	}
+
+	public void setIdAuthor(Long idAuthor) {
+		this.idAuthor = idAuthor;
 	}
 
 }

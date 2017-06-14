@@ -13,7 +13,9 @@
 </head>
 <body>
 	<f:view>
+	    <!-- Menu' di testa -->
 		<jsp:include page="header.jsp" />
+		<!-- -------------- -->
 		<div align="center">
 			<h:form id="newPainting" styleClass="form-horizontal">
 				<h:message for="createPainting" styleClass="error alert alert-danger" />
@@ -59,19 +61,21 @@
 						<h:message for="dimensioni" style="color:red" />
 					</div>
 				</div>
-		 		<div class="form-group">
-					<label for="addAuthorList"
-						class="col-sm-1 control-label col-lg-offset-4">Autore</label>
-					<div class="col-sm-2">
-					<h:selectOneMenu id="idAutore" value="#{paintingController.id}" >
-				   	<f:selectItem itemValue="" itemLabel="Selezionare l'autore" />
-				   	<c:forEach var="autore" items="#{paintingController.authors}" >
-				   		<f:selectItem itemValue="#{autore.id}" itemLabel="#{autore.cognome}" />
-				   	</c:forEach>
-					</h:selectOneMenu>
-						<h:message for="idAutore" style="color:red" />
-					</div>
-				</div>             
+				<c:if test="${fn:length(authorController.authors) ge 1}">
+		 		  <div class="form-group">
+					  <label for="addAuthorList"
+						  class="col-sm-1 control-label col-lg-offset-4">Autore</label>
+					  <div class="col-sm-2">
+					  <h:selectOneMenu id="idAutore" value="#{paintingController.idAuthor}" >
+				   	  <f:selectItem itemValue="" itemLabel="Selezionare l'autore" />
+				   	  <c:forEach var="autore" items="#{paintingController.authors}" >
+				   	    	<f:selectItem itemValue="#{author.id}" itemLabel="#{author.cognome}" />
+				   	  </c:forEach>
+					  </h:selectOneMenu>
+						  <h:message for="idAutore" style="color:red" />
+					  </div>
+				 </div>
+			   </c:if>             
 				<div class="form-group">
 					<div class="col-sm-offset-5 col-sm-2">
 						<h:commandButton id="createPainting" styleClass="btn btn-success" value="Inserisci"

@@ -24,39 +24,40 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="<c:url value="/faces/index.jsp" />">Home</a>
+				<a class="navbar-brand" href="<c:url value="faces/index.jsp" />">Home</a>
 			</div>
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<!-- Menu a tendina amministratore -->
 					<c:if test="${administratorController.currentAdministrator != null}">
-						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Utenti<b class="caret"></b></a>
+						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Gestione Utenti<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><h:commandLink action="#{userController.viewUsers}" value="Utenti registrati" /></li>
-								<li><h:commandLink action="#{administratorController.newUser}" value="Registra un nuovo cliente" /></li>
-								<li><a href='<c:url value="/faces/cancellaUtente.jsp" />'>Elimina un utente registrato</a></li>
+								<li><h:commandLink action="#{administratorController.signUser}" value="Registra un nuovo utente" /></li>
+								<li><h:commandLink action="#{administratorController.destroyUser}" value="Elimina un utente registrato" /></li>
 								<li class="divider"></li>
 							</ul>
 								<li class="dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Operazioni amministrazione<b class="caret"></b></a>
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Gestione Galleria<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href='<c:url value="/faces/inserimentoQuadro.jsp" />'>Inserisci un nuovo quadro </a></li>
-								<li><a href='<c:url value="/faces/inserimentoNuovoAutore.jsp"/>'>Inserisci un nuovo Autore</a></li>
-								<c:if test="${fn:length(paintingController.paintings) ge 1}">
-						            <li><h:commandLink 
+								<li><h:commandLink action="#{administratorController.newPainting}" value="Inserisci un nuovo quadro" /></li>
+								<li><h:commandLink action="#{administratorController.newAuthor}" value="Inserisci un nuovo Autore" /></li>
+								<li><h:commandLink 
 						                action="#{paintingController.viewPaintings}" value="Lista quadri" /></li>
-					            </c:if>		
-							</ul></li>
+					             <li><h:commandLink 
+						                action="#{authorController.viewAuthors}" value="Lista autori" /></li>
+					            </ul></li>
 					</c:if>
 
 					<!-- Menu a tendina utente -->
 					<c:if test="${userController.currentUser != null}">
 						<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Operazioni utente <b class="caret"></b></a>
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Operazioni Utente <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><h:commandLink action="#{paintingController.viewPaintings}" value="Visualizza tutti i quadri" /></li>
 								<!-- bisogna fare la selezione dei dipinti per autore -->
+					            <li><h:commandLink action="#{authorController.viewAuthors}" value="Visualizza tutti gli Autori" /></li>
 							</ul></li>
 					</c:if>
 				</ul>
@@ -64,18 +65,17 @@
 				<!-- Login e amministrazione -->
 				<ul class="nav navbar-nav navbar-right">
 					<c:if test="${administratorController.currentAdministrator != null}">
-						<li><a href='<c:url value="/faces/administratorHome.jsp" />'>Il mio profilo: <strong>${administratorController.currentAdministrator.nickname}</strong>
-						</a></li>
+						<li><a href='<c:url value="/faces/administratorHome.jsp" />'>Il mio profilo: <b>${administratorController.currentAdministrator.username}</b></a></li>
 						<li><h:commandLink value="Logout" action="#{administratorController.logoutAdministrator}" /></li>
 					</c:if>
 
 					<c:if test="${userController.currentUser != null}">
-						<li><a href='<c:url value="/faces/userHome.jsp" />'>Il 	mio profilo: <b>${userController.currentUser.nome} ${userController.currentUser.cognome}</b>
-						</a></li>
+						<li><a href='<c:url value="/faces/userHome.jsp" />'>Il mio profilo: <b>${userController.currentUser.nome} ${userController.currentUser.cognome}</b></a></li>
 						<li><h:commandLink value="Logout" action="#{userController.logoutUser}" /></li>
 					</c:if>
 
 					<c:if test="${administratorController.currentAdministrator == null && userController.currentUser == null}">
+						<li><h:commandLink action="#{paintingController.viewPaintings}" value="Lista quadri" /></li>
 						<li><a href='<c:url value="/faces/userLogin.jsp" />'>Login</a></li>
 						<li><a href='<c:url value="/faces/registrazioneUtente.jsp" />'>Registrati</a></li>
 						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Amministrazione<b class="caret"></b></a>

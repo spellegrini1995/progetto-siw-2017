@@ -11,7 +11,7 @@
 		<jsp:include page="header.jsp" />
 		<div align="center" class="text-primary">
 			<c:if test="${administratorController.message != null && administratorController.message != ''}">
-				<span class="error alert alert-success">${administratorController.message }</span>
+				<span class="error alert alert-success">${administratorController.message}</span>
 				<br>
 			</c:if>
 		<h1><strong>Pagina di Amministrazione </strong></h1>

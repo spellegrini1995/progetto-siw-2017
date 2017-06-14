@@ -1,20 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>siw-progetto</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-  </welcome-file-list>
-  <servlet>
-    <servlet-name>Faces Servlet</servlet-name>
-    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Faces Servlet</servlet-name>
-    <url-pattern>/faces/*</url-pattern>
-  </servlet-mapping>
-  <context-param>
-     <param-name>javax.faces.STAT_SAVING_METHOD</param-name>
-     <param-value>client</param-value>
-     </context-param>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>siw-progetto</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>/faces/*</url-pattern>
+	</servlet-mapping>
+	<context-param>
+		<param-name>javax.faces.STAT_SAVING_METHOD</param-name>
+		<param-value>client</param-value>
+	</context-param>
+	<filter>
+		<filter-name>Login Admin filter</filter-name>
+		<filter-class>it.uniroma3.domain.filter.LoginAdminFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>Login Admin filter</filter-name>
+		<url-pattern>/faces/administratorHome.jsp</url-pattern>
+		<url-pattern>/faces/inserimentoQuadro.jsp</url-pattern>
+		<url-pattern>/faces/inserimentoNuovoAutore.jsp</url-pattern>
+		<url-pattern>/faces/modificaQuadro.jsp</url-pattern>
+		<url-pattern>/faces/registrazioneUtenteByAdmin.jsp</url-pattern>
+		<url-pattern>/faces/cancellaUtente.jsp</url-pattern>
+		<url-pattern>/faces/listaUtentiRegistrati.jsp</url-pattern>
+		<url-pattern>/faces/datiAutore.jsp</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>Login User filter</filter-name>
+		<filter-class>it.uniroma3.domain.filter.LoginUserFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>Login User filter</filter-name>
+		<url-pattern>/faces/userHome.jsp</url-pattern>
+		<url-pattern>/faces/datiUtente.jsp</url-pattern>
+		<url-pattern>/faces/datiQuadro.jsp</url-pattern>
+    </filter-mapping>
 </web-app>

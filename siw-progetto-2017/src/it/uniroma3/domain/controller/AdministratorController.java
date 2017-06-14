@@ -31,7 +31,7 @@ public class AdministratorController {
 	
 	private String nome;
 	private String cognome;
-	private String nickname;
+	private String username;
 	private String password;
 	private Administrator currentAdministrator;
 	
@@ -56,14 +56,14 @@ public class AdministratorController {
 	private PaintingFacade paintingFacade;
 	
 	public String createAdministrator() {
-		this.currentAdministrator = administratorFacade.createAdministrator(nome,cognome,nickname,password);
+		this.currentAdministrator = administratorFacade.createAdministrator(nome,cognome,username,password);
 		return "administratorHome";
 	}
 	
 	public String loginAdministrator() {
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("userController");
 		try{
-			Administrator administrator = administratorFacade.getAdministratorByNickname(nickname);
+			Administrator administrator = administratorFacade.getAdministratorByUsername(username);
 			if (administrator.checkPassword(this.password)) {
 				setCurrentAdministrator(administrator);
 				return "registrazioneAvvenuta";
@@ -132,8 +132,20 @@ public class AdministratorController {
 		return "inserimentoQuadro";
 	}
 	
-	public String newUser() {
+	public String signUser(){
 		return "registrazioneUtenteByAdmin";
+	}
+	
+	public String destroyUser(){
+		return "cancellaUtente";
+	}
+	
+	public String newAuthor(){
+		return "inserimentoNuovoAutore";
+	}
+	
+	public String viewHome(){
+		return "administratorHome";
 	}
 	
 	public String modifyPainting() {
@@ -156,12 +168,12 @@ public class AdministratorController {
 		return password;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setUsername(String nickname) {
+		this.username = nickname;
 	}
 
 	public Administrator getCurrentAdministrator() {

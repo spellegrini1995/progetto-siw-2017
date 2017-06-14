@@ -26,12 +26,12 @@
 				</div>
 				<div class="form-group text-primary" >
 					<label for="nickname"
-						class="col-sm-1 control-label col-lg-offset-4"><strong>Nickname</strong></label>
+						class="col-sm-1 control-label col-lg-offset-4"><strong>Username</strong></label>
 					<div class="col-sm-2">
-						<h:inputText value="#{administratorController.nickname}"
-							required="true" requiredMessage="Il nickname e' obbligatorio!"
-							id="nickname" styleClass="form-control" />
-						<h:message for="nickname" style="color:red" />
+						<h:inputText value="#{administratorController.username}"
+							required="true" requiredMessage="Lo username e' obbligatorio!"
+							id="username" styleClass="form-control" />
+						<h:message for="username" style="color:red" />
 					</div>
 				</div>
 				<div class="form-group text-primary">
@@ -54,7 +54,7 @@
 		</div>
 		<div class="text-right text-primary col-md-6 col-md-offset-6">
 			<h4><em><strong>Per accedere e provare la sezione amministrazione:</strong></em></h4>
-			<h4><em><strong>Nickname: admin1</strong></em></h4>
+			<h4><em><strong>Username: admin1</strong></em></h4>
 			<h4><em><strong>Password: admin1</strong></em></h4>
 		</div>
 	</f:view>

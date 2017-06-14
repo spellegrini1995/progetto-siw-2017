@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Registrazione effettuata</title>
 </head>
-<body>
+<body background="https://images5.alphacoders.com/487/thumb-1920-487176.jpg">
 	<f:view>
 		<!-- Menù di testa -->
 		<jsp:include page="header.jsp" />
@@ -24,10 +24,10 @@
 				<c:choose>
 					<c:when
 						test="${administratorController.currentAdministrator != null}">
-						<meta http-equiv="refresh" content="0; url=faces/administratorHome.jsp"/>
+						<meta http-equiv="refresh" content="4; url=faces/administratorHome.jsp"/>
 					</c:when>
 					<c:otherwise>
-						<meta http-equiv="refresh" content="0; url=faces/userHome.jsp"/>
+						<meta http-equiv="refresh" content="4; url=faces/userHome.jsp"/>
 					</c:otherwise>
 				</c:choose>
 			</h:form>

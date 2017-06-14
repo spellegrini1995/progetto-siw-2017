@@ -13,15 +13,15 @@ public class AdministratorFacade {
     @PersistenceContext(unitName = "progetto-siw-unit")
     private EntityManager em;
     
-	public Administrator createAdministrator(String nome, String cognome, String nickname, String password) {
-		Administrator administrator = new Administrator(nome, cognome, nickname, password);
+	public Administrator createAdministrator(String nome, String cognome, String username, String password) {
+		Administrator administrator = new Administrator(nome, cognome, username, password);
 		em.persist(administrator);
 		return administrator;
 	}
 	
-	public Administrator getAdministratorByNickname(String nickname) {
-		Query q = em.createQuery("SELECT a FROM Administrator a WHERE a.nickname = :nickname");
-		q.setParameter("nickname", nickname);
+	public Administrator getAdministratorByUsername(String username) {
+		Query q = em.createQuery("SELECT a FROM Administrator a WHERE a.username = :username");
+		q.setParameter("username", username);
 		Administrator administrator = (Administrator) q.getSingleResult();
 		return administrator;
 	}
