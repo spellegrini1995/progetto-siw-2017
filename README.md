@@ -11,3 +11,4 @@
 - Implementazione delle pagine Web tramite HTML
 - Linguaggio di stile utilizzato: CSS
 - Implementazione grafica tramite Bootstrap
+- Deploy su server Cloud AWS: indirizzo -> https://console.aws.amazon.com/s3/buckets/siw-progetto-2017/?region=us-east-1&tab=overview
