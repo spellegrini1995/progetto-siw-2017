@@ -1,18 +1,18 @@
-<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
-<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Utenti registrati</title>
-</head>
-<body
-	background="http://www.fixabay.com/reimg/resize-img.php?src=http://www.fixabay.com/images/Nature/235tuqgit2h.jpg&h=768&w=1366">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Utenti Registrati</title>	
+	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII"/>
+</h:head>
+<h:body background="http://it.wallpapersja.com/wp-content/uploads/sites/15/2016/06/Incantata-Foresta-Widescreen-sfondi-1366x768.jpg">
 	<f:view>
-		<!-- Menù di testa -->
-		<jsp:include page="header.jsp" />
-		<!-- -------------- -->
+		<!-- Menu di testa -->
+		<ui:include src="header.xhtml" />
 		<div align="center" class="text-primary">
 			<h1>
 				<strong>Utenti registrati</strong>
@@ -29,7 +29,7 @@
 					</tr>
 					<c:forEach var="u" items="#{userController.users}">
 						<tr>
-							<td><strong><a href='<c:url value="/faces/datiUtente.jsp" />'><em>${u.email}</em></a></strong></td>
+							<td><strong><a href='datiUtente.xhtml'><em>${u.email}</em></a></strong></td>
 							<td><strong>${u.nome}</strong></td>
 							<td><strong>${u.cognome}</strong></td>
 							<td><strong>${u.numeroTelefono}</strong></td>
@@ -44,5 +44,5 @@
 			</h:form>
 		</div>
 	</f:view>
-</body>
+</h:body>
 </html>

@@ -76,7 +76,7 @@ public class AdministratorController {
 		}
 		catch (Exception e) {
 			// Amministratore non trovato
-			FacesContext.getCurrentInstance().addMessage("loginAdministrator:accediAdmin", new FacesMessage("Login Errato! Nickname o password non inseriti correttamente!"));
+			FacesContext.getCurrentInstance().addMessage("loginAdministrator:accediAdmin", new FacesMessage("Login Errato! Username o password non inseriti correttamente!"));
 			return "administratorLogin";
 		}
 	}
@@ -89,7 +89,7 @@ public class AdministratorController {
 			this.message = "Registrazione utente effettuata!";
 			return "registrazioneAvvenuta";
 		}catch(Exception e){
-			/*Utente già registrato*/
+			/*Utente giï¿½ registrato*/
 			this.resetUser();
 			FacesContext.getCurrentInstance().addMessage("registrationUserByAdmin:signinUserByAdmin", new FacesMessage("Utente giï¿½ registrato!"));
 			return "registrazioneUtenteByAdmin";

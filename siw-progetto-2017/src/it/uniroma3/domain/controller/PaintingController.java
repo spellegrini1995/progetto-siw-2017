@@ -1,223 +1,183 @@
 package it.uniroma3.domain.controller;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
-
-import it.uniroma3.domain.model.Author;
-import it.uniroma3.domain.model.Painting;
-import it.uniroma3.domain.facade.AuthorFacade;
-import it.uniroma3.domain.facade.PaintingFacade;
+import java.util.Map;
 
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.Part;
 
-@ManagedBean(name = "paintingController")
+
+import it.uniroma3.domain.facade.PaintingFacade;
+import it.uniroma3.domain.model.Author;
+import it.uniroma3.domain.model.Painting;
+
+
+
+@ManagedBean(name="paintingController")
 public class PaintingController {
-
-	@ManagedProperty(value="#{param.id}")
 	private Long id;
 	private String titolo;
 	private Integer annoRealizzazione;
-	private String tecnica;	
 	private String dimensioni;
+	private String tecnica;
 	private Author autore;
 	private String nomeAutore;
-	private List<Painting> paintings;
-	private Long idAuthor;
-
-	@ManagedProperty(value="#{sessionScope['authorsPainting']}")
-	private List<Author> authors;
-
-	@ManagedProperty(value="#{sessionScope['currentPainting']}")
-	private Painting painting;
-
+	private Part immagine;
+	private Painting operaCorrente;
+	private List<Painting> opere;
+	//occorre perchè nella form specifico l'autore e ne acquisisco l'id
+	private Long idAutore;
+	private Map<String,Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 	@EJB(beanName="paintingFacade")
 	private PaintingFacade paintingFacade;
-
-	@EJB(beanName="authorFacade")
-	private AuthorFacade authorFacade;
-
-	public String createPainting() {
+	
+	
+	public String salvaQuadro(){
+		byte[] datiImmagine;
 		try{
-			this.autore = authorFacade.getAuthor(this.nomeAutore);
-			this.painting = paintingFacade.createPainting(titolo,annoRealizzazione,tecnica,dimensioni,autore);
-			this.autore.getQuadri().add(painting);
-			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentPainting", this.painting);
-			return "datiQuadro";
-		}catch(Exception e){
-			/*id quadro gia esistente nel DB*/
-			this.resetPainting();
-			FacesContext.getCurrentInstance().addMessage("newPainting:createPainting", new FacesMessage("Codice Quadro gia esistente!"));
+			InputStream is = immagine.getInputStream();
+			byte[] buffer = new byte[(int)immagine.getSize()];
+			ByteArrayOutputStream output = new ByteArrayOutputStream();
+			for (int length=0;(length=is.read(buffer))>0;) 
+				output.write(buffer,0,length);
+			datiImmagine=output.toByteArray();
+		} catch (IOException | NullPointerException e) {
 			return "inserimentoQuadro";
 		}
+		operaCorrente=this.paintingFacade.salva(titolo, annoRealizzazione, dimensioni,tecnica,idAutore,datiImmagine);
+		return "datiQuadro";
 	}
-
-	public String updatePainting() {
-		try{
-			paintingFacade.updatePainting(this.painting);
-			return "datiQuadro";
-		}catch(Exception e){
-			return "inserimentoQuadro";
-		}
+	public List<Painting> getOpere(){
+		this.opere=paintingFacade.getAll();
+		return this.opere;
 	}
-
-
-	public String setAuthor() {
-		this.autore = authorFacade.getAuthor(this.nomeAutore);
-		this.painting.setAutore(autore);
-		paintingFacade.updatePainting(this.painting);
-		authorFacade.updateAuthor(this.autore);
-		return "modificaQuadro";
+	public String visualizzaOpera(Long id){
+		this.operaCorrente=paintingFacade.find(id);
+		return "datiQuadro";
 	}
-
-	private void resetPainting(){
-		this.titolo=null;
-		this.annoRealizzazione=null;
-		this.tecnica=null;
-		this.dimensioni=null;
-		this.autore=null;
+	public String vediOpera(){
+		this.operaCorrente=paintingFacade.find(id);
+		return "datiQuadro";
 	}
-
-	public String nullAuthor() {
-		this.autore = null;
-		this.painting.setAutore(autore);
-		paintingFacade.updatePainting(this.painting);
-		return "modificaQuadro";
-	}
-
-	public String deletePainting(){
-		paintingFacade.deletePainting(id);
-		this.paintings = paintingFacade.getAllPaintings();
+	public String cancellaOpera(){
+		this.paintingFacade.remove(id);
 		return "listaQuadri";
 	}
-
-	public String findPainting() {
-		this.painting = paintingFacade.getPainting(id);
-		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentPainting", this.painting);
-		return "datiQuadro";
+	public String modificaOpera(Long id){
+		this.operaCorrente=paintingFacade.find(id);
+		this.sessionMap.put("editQuadro",operaCorrente);
+		return "modificaOpera";
 	}
-
-	public String findPainting(Long id) {
-		this.painting = paintingFacade.getPainting(id);
-		return "datiQuadro";
-	}	
-
+	public String updatePainting() {
+		try{
+			paintingFacade.merge(this.operaCorrente);
+			return "datiQuadro";
+		}catch(Exception e){
+			return "inserimentoQuadro";
+		}
+	}
+	
 	public String viewPaintings() {
 		try{
-			this.paintings = paintingFacade.getAllPaintings();
-			this.setPaintings(paintings);
+			this.opere = paintingFacade.getAll();
+			this.setOpere(opere);
 			return "listaQuadri";
 		}
 		catch(Exception e){
 			return "index";
 		}
 	}
-
-	//getter and setter
-	public Long getId() {
-		return id;
+	
+	public String setAuthor(){
+		this.setAutore(autore);
+		return "listaQuadri";
 	}
-
-	public void setId(Long id) {
-		this.id = id;
+	
+	public String nullAuthor() {
+		this.autore=null;
+		this.setAutore(autore);
+		return "listaQuadri";
 	}
-
+	
 	public String getTitolo() {
 		return titolo;
 	}
-
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
-
 	public Integer getAnnoRealizzazione() {
 		return annoRealizzazione;
 	}
-
 	public void setAnnoRealizzazione(Integer annoRealizzazione) {
 		this.annoRealizzazione = annoRealizzazione;
 	}
-
-	public String getTecnica() {
-		return tecnica;
-	}
-
-	public void setTecnica(String tecnica) {
-		this.tecnica = tecnica;
-	}
-
-	public String getDimensioni() {
-		return dimensioni;
-	}
-
-	public void setDimensioni(String dimensioni) {
-		this.dimensioni = dimensioni;
-	}
-
 	public Author getAutore() {
 		return autore;
 	}
-
 	public void setAutore(Author autore) {
 		this.autore = autore;
 	}
-
-	public String getNomeAutore() {
-		return nomeAutore;
+	public Painting getOperaCorrente() {
+		return operaCorrente;
 	}
-
-	public void setNomeAutore(String nomeAutore) {
-		this.nomeAutore = nomeAutore;
+	public void setOperaCorrente(Painting quadroCorrente) {
+		this.operaCorrente = quadroCorrente;
 	}
-
-	public List<Painting> getPaintings() {
-		return paintings;
-	}
-
-	public void setPaintings(List<Painting> paintings) {
-		this.paintings = paintings;
-	}
-
-	public List<Author> getAuthors() {
-		return authors;
-	}
-
-	public void setAuthors(List<Author> authors) {
-		this.authors = authors;
-	}
-
-	public Painting getPainting() {
-		return painting;
-	}
-
-	public void setPainting(Painting painting) {
-		this.painting = painting;
-	}
-
 	public PaintingFacade getPaintingFacade() {
 		return paintingFacade;
 	}
-
 	public void setPaintingFacade(PaintingFacade paintingFacade) {
 		this.paintingFacade = paintingFacade;
 	}
-
-	public AuthorFacade getAuthorFacade() {
-		return authorFacade;
+	public Long getId() {
+		return id;
 	}
-
-	public void setAuthorFacade(AuthorFacade authorFacade) {
-		this.authorFacade = authorFacade;
+	public Long getIdAutore() {
+		return idAutore;
+	}
+	public void setIdAutore(Long idAutore) {
+		this.idAutore = idAutore;
+	}
+	public void setOpere(List<Painting> opere) {
+		this.opere = opere;
+	}
+	public Map<String, Object> getSessionMap() {
+		return sessionMap;
+	}
+	public Part getImmagine() {
+		return immagine;
+	}
+	public void setImmagine(Part immagine) {
+		this.immagine = immagine;
+	}
+	public String getTecnica() {
+		return tecnica;
+	}
+	public void setTecnica(String tecnica) {
+		this.tecnica = tecnica;
+	}
+	public String getDimensioni() {
+		return dimensioni;
+	}
+	public void setDimensioni(String dimensioni) {
+		this.dimensioni = dimensioni;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public void setSessionMap(Map<String, Object> sessionMap) {
+		this.sessionMap = sessionMap;
+	}
+	public String getNomeAutore() {
+		return nomeAutore;
+	}
+	public void setNomeAutore(String nomeAutore) {
+		this.nomeAutore = nomeAutore;
 	}
 	
-	public Long getIdAuthor() {
-		return idAuthor;
-	}
-
-	public void setIdAuthor(Long idAuthor) {
-		this.idAuthor = idAuthor;
-	}
-
 }

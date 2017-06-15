@@ -37,9 +37,9 @@ public class AuthorController {
 			this.setAuthor(author);
 			return "datiAutore"; 			
 		}catch(Exception e){
-			/*Autore già  registrato*/
+			/*Autore giï¿½ registrato*/
 			this.resetAuthor();
-			FacesContext.getCurrentInstance().addMessage("newAuthor:createAuthor", new FacesMessage("Autore già registrato!"));
+			FacesContext.getCurrentInstance().addMessage("newAuthor:createAuthor", new FacesMessage("Autore giï¿½ registrato!"));
 			return "inserimentoNuovoAutore";
 		}
 	}
@@ -160,6 +160,7 @@ public class AuthorController {
 	}
 
 	public List<Author> getAutori() {
+		this.autori = authorFacade.getAllAuthors();
 		return autori;
 	}
 

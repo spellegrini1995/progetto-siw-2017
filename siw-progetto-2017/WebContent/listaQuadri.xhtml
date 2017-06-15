@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Quadri</title>	
+	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII"/>
+</h:head>
+<h:body>
+	<f:view>
+		<ui:include src="header.xhtml" />
+		<div align="center">
+			<h1>Lista Quadri</h1>
+			<h:form>
+				<table class="table">
+					<tr>
+					<th>Titolo</th>
+					<th>Tecnica</th>
+					<th>Dimensioni</th>
+					<th>Autore</th>
+					<th>Azione</th>
+					</tr>
+					<c:forEach var="quadro" items="#{paintingController.opere}">
+					<tr>
+						<td><h:commandLink action="#{paintingController.vediOpera}" value="#{quadro.titolo}">
+								<f:param name="id" value="#{quadro.id}" />
+							</h:commandLink></td>
+						<td>${quadro.tecnica}</td>
+						<td>${quadro.dimensioni}</td>
+						<td>${quadro.autore}</td>
+						<td><h:commandLink	action="#{paintingController.cancellaOpera}" value="Delete">
+								<f:param name="id" value="#{quadro.id}" />
+							</h:commandLink> - <h:commandLink action="#{paintingController.updatePainting}"	value="Update">
+								<f:param name="id" value="#{quadro.id}" />
+							</h:commandLink></td>
+					</tr>
+				</c:forEach>
+				</table>
+			</h:form>
+		</div>
+	</f:view>
+</h:body>
+</html>

@@ -1,21 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=US-ASCII"
-	pageEncoding="US-ASCII"%>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
-<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Login Utente</title>
-</head>
-
-<body
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Login Utente</title>	
+	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII"/>
+</h:head>
+<h:body
 	background="http://www.drogbaster.it/sfondi-spazio/orizzonte-pianeta.jpg">
 	<f:view>
 		<!-- Menu' di testa -->
-		<jsp:include page="header.jsp" />
-		<!-- -------------- -->
+		<ui:include src="header.xhtml" />
 		<div align="center" class="text-primary">
 			<h:form id="loginUser" styleClass="form-horizontal">
 				<h:message for="accedi" styleClass="error alert alert-danger" />
@@ -53,11 +51,11 @@
 					<h4>oppure</h4>
 				</div>
 				<div class="text-success">
-					<a href='<c:url value="/faces/registrazioneUtente.jsp" />'><strong><em>Registrati</em></strong></a>
+					<a href='registrazioneUtente.xhtml'><strong><em>Registrati</em></strong></a>
 				</div>
 			</h:form>
 		</div>
 	</f:view>
-</body>
+</h:body>
 
 </html>

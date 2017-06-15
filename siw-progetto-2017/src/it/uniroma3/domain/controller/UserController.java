@@ -56,7 +56,7 @@ public class UserController {
 			User user = userFacade.getUserByEmail(email);
 			if (user.checkPassword(this.password)) {
 				setCurrentUser(user);
-				return "userHome";
+				return "registrazioneAvvenuta";
 			}
 			else{
 				// Password Errata
@@ -65,7 +65,7 @@ public class UserController {
 			}
 		}
 		catch (Exception e) {
-			// Cliente non trovato
+			// Utente non trovato
 			FacesContext.getCurrentInstance().addMessage("loginUser:accedi", new FacesMessage("Login Errato! Email o password non inseriti correttamente!"));
 			return "userLogin";
 		}

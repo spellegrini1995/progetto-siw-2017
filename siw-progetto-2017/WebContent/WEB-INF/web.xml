@@ -13,9 +13,9 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Faces Servlet</servlet-name>
-		<url-pattern>/faces/*</url-pattern>
-	</servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.xhtml</url-pattern>
+  </servlet-mapping>
 	<context-param>
 		<param-name>javax.faces.STAT_SAVING_METHOD</param-name>
 		<param-value>client</param-value>
@@ -26,14 +26,13 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>Login Admin filter</filter-name>
-		<url-pattern>/faces/administratorHome.jsp</url-pattern>
-		<url-pattern>/faces/inserimentoQuadro.jsp</url-pattern>
-		<url-pattern>/faces/inserimentoNuovoAutore.jsp</url-pattern>
-		<url-pattern>/faces/modificaQuadro.jsp</url-pattern>
-		<url-pattern>/faces/registrazioneUtenteByAdmin.jsp</url-pattern>
-		<url-pattern>/faces/cancellaUtente.jsp</url-pattern>
-		<url-pattern>/faces/listaUtentiRegistrati.jsp</url-pattern>
-		<url-pattern>/faces/datiAutore.jsp</url-pattern>
+		<url-pattern>/administratorHome.xhtml</url-pattern>
+		<url-pattern>/inserimentoQuadro.xhtml</url-pattern>
+		<url-pattern>/inserimentoNuovoAutore.xhtml</url-pattern>
+		<url-pattern>/modificaQuadro.xhtml</url-pattern>
+		<url-pattern>/registrazioneUtenteByAdmin.xhtml</url-pattern>
+		<url-pattern>/cancellaUtente.xhtml</url-pattern>
+		<url-pattern>/listaUtentiRegistrati.xhtml</url-pattern>
 	</filter-mapping>
 	<filter>
 		<filter-name>Login User filter</filter-name>
@@ -41,8 +40,6 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>Login User filter</filter-name>
-		<url-pattern>/faces/userHome.jsp</url-pattern>
-		<url-pattern>/faces/datiUtente.jsp</url-pattern>
-		<url-pattern>/faces/datiQuadro.jsp</url-pattern>
+		<url-pattern>/userHome.xhtml</url-pattern>
     </filter-mapping>
 </web-app>

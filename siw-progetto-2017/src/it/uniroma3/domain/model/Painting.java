@@ -1,72 +1,70 @@
 package it.uniroma3.domain.model;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.NamedQueries;
 
+@NamedQueries({
+@NamedQuery(name="tuttiIQuadri",query="SELECT q FROM Quadro q"),
+@NamedQuery(name="anniQuadri",query="SELECT DISTINCT q.annoRealizzazione FROM Quadro q")
+})
 @Entity
-@NamedQuery(name = "findAllPaintings", query = "SELECT p FROM Painting p")
 public class Painting {
+	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue (strategy=GenerationType.AUTO)
 	private Long id;
-	@Column(nullable=false)
 	private String titolo;
-	@Column
 	private Integer annoRealizzazione;
-	@Column(nullable=false)
-	private String tecnica;	
-	@Column
+	private String tecnica;
 	private String dimensioni;
-	
-	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Author autore;
 	
-	public Painting(String titolo, Integer annoRealizzazione, String tecnica, String dimensioni, Author autore) {
-		this.titolo = titolo;
-		this.tecnica = tecnica;
-		this.dimensioni = dimensioni;
-		this.annoRealizzazione = annoRealizzazione;
-		this.autore=autore;
-	}	
+	private byte[] immagine;
 	public Painting() {
+		
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	public String getTitolo() {
 		return titolo;
 	}
-
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
-
+	public String getTecnica() {
+		return tecnica;
+	}
+	public void setTecnica(String tecnica) {
+		this.tecnica = tecnica;
+	}
 	public Integer getAnnoRealizzazione() {
 		return annoRealizzazione;
 	}
 
-	public void setAnnoRealizzazione(Integer annoRealizzazione) {
-		this.annoRealizzazione = annoRealizzazione;
+	public Author getAutore() {
+		return autore;
+	}
+	public void setAutore(Author autore) {
+		this.autore = autore;
 	}
 
-	public String getTecnica() {
-		return tecnica;
+	public byte[] getImmagine() {
+		return immagine;
 	}
 
-	public void setTecnica(String tecnica) {
-		this.tecnica = tecnica;
+	public void setImmagine(byte[] immagine) {
+		this.immagine = immagine;
 	}
 
 	public String getDimensioni() {
@@ -77,18 +75,8 @@ public class Painting {
 		this.dimensioni = dimensioni;
 	}
 
-	public Author getAutore() {
-		return autore;
+	public void setAnnoRealizzazione(Integer annoRealizzazione) {
+		this.annoRealizzazione = annoRealizzazione;
 	}
-
-	public void setAutore(Author autore) {
-		this.autore = autore;
-	}
-	
-	@Override
-	public String toString(){
-		return this.getTitolo();
-	}
-	
 	
 }
