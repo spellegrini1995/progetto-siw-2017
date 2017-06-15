@@ -30,28 +30,35 @@ public class PaintingController {
 	private Part immagine;
 	private Painting operaCorrente;
 	private List<Painting> opere;
-	//occorre perchè nella form specifico l'autore e ne acquisisco l'id
+	//occorre perchï¿½ nella form specifico l'autore e ne acquisisco l'id
 	private Long idAutore;
 	private Map<String,Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 	@EJB(beanName="paintingFacade")
 	private PaintingFacade paintingFacade;
 	
 	
-	public String salvaQuadro(){
-		byte[] datiImmagine;
-		try{
-			InputStream is = immagine.getInputStream();
-			byte[] buffer = new byte[(int)immagine.getSize()];
+	public String salvaQuadro() {
+		Painting q = new Painting(titolo, annoRealizzazione, tecnica, dimensioni);
+		q.setImmagine(this.getImgFromPart(immagine));
+		operaCorrente = paintingFacade.salva(q, idAutore);
+		return "datiQuadro";
+	}
+
+	private byte[] getImgFromPart(Part imgPart) {
+		byte[] imgByte;
+		try {
+			InputStream is = imgPart.getInputStream();
+			byte[] buffer = new byte[(int)imgPart.getSize()];
 			ByteArrayOutputStream output = new ByteArrayOutputStream();
 			for (int length=0;(length=is.read(buffer))>0;) 
 				output.write(buffer,0,length);
-			datiImmagine=output.toByteArray();
-		} catch (IOException | NullPointerException e) {
-			return "inserimentoQuadro";
+			imgByte = output.toByteArray();
+		} catch (IOException | NullPointerException e) {	//Nel caso in cui l'immagine non viene inserita
+			imgByte = new byte[0];
 		}
-		operaCorrente=this.paintingFacade.salva(titolo, annoRealizzazione, dimensioni,tecnica,idAutore,datiImmagine);
-		return "datiQuadro";
+		return imgByte;
 	}
+	
 	public List<Painting> getOpere(){
 		this.opere=paintingFacade.getAll();
 		return this.opere;
@@ -60,8 +67,8 @@ public class PaintingController {
 		this.operaCorrente=paintingFacade.find(id);
 		return "datiQuadro";
 	}
-	public String vediOpera(){
-		this.operaCorrente=paintingFacade.find(id);
+	public String vediOpera(String titolo){
+		this.operaCorrente=paintingFacade.getPaintingByTitolo(titolo);
 		return "datiQuadro";
 	}
 	public String cancellaOpera(){
@@ -82,15 +89,11 @@ public class PaintingController {
 		}
 	}
 	
+	
 	public String viewPaintings() {
-		try{
 			this.opere = paintingFacade.getAll();
 			this.setOpere(opere);
 			return "listaQuadri";
-		}
-		catch(Exception e){
-			return "index";
-		}
 	}
 	
 	public String setAuthor(){

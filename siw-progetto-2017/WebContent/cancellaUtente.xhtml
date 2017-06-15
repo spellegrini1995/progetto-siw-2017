@@ -7,15 +7,21 @@
 <h:head>
 	<title>Cancella utente</title>
 </h:head>
-<h:body background="https://www.blogdegliautori.it/wp-content/uploads/2015/02/colline-chianti.jpg">
+<h:body
+	background="https://www.blogdegliautori.it/wp-content/uploads/2015/02/colline-chianti.jpg">
+
 	<f:view>
 		<ui:include src="header.xhtml" />
 		<div align="center" class="text-primary">
 			<h:form id="deletingUser" styleClass="form-horizontal">
 				<h:message for="deleteUser" styleClass="error alert alert-danger" />
 				<div>
-					<h2><strong>Elimina Utente</strong></h2>
-					<h5><strong>Inserisci l'e-mail</strong></h5>
+					<h2>
+						<strong>Elimina Utente</strong>
+					</h2>
+					<h5>
+						<strong>Inserisci l'e-mail</strong>
+					</h5>
 				</div>
 				<div class="form-group text-primary">
 					<label for="email" class="col-sm-1 control-label col-lg-offset-4"><strong>Email</strong></label>

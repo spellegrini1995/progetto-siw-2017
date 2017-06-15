@@ -6,10 +6,12 @@
 	xmlns:t="http://myfaces.apache.org/tomahawk"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
-	<title>Utenti Registrati</title>	
-	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII"/>
+	<title>Utenti Registrati</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
 </h:head>
-<h:body background="http://it.wallpapersja.com/wp-content/uploads/sites/15/2016/06/Incantata-Foresta-Widescreen-sfondi-1366x768.jpg">
+<h:body
+	background="http://it.wallpapersja.com/wp-content/uploads/sites/15/2016/06/Incantata-Foresta-Widescreen-sfondi-1366x768.jpg">
+
 	<f:view>
 		<!-- Menu di testa -->
 		<ui:include src="header.xhtml" />
@@ -29,7 +31,7 @@
 					</tr>
 					<c:forEach var="u" items="#{userController.users}">
 						<tr>
-							<td><strong><a href='datiUtente.xhtml'><em>${u.email}</em></a></strong></td>
+							<td><strong>${u.email}</strong></td>
 							<td><strong>${u.nome}</strong></td>
 							<td><strong>${u.cognome}</strong></td>
 							<td><strong>${u.numeroTelefono}</strong></td>

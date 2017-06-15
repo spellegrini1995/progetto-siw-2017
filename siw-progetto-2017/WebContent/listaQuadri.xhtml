@@ -6,38 +6,38 @@
 	xmlns:t="http://myfaces.apache.org/tomahawk"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
-	<title>Quadri</title>	
+	<title>Utenti Registrati</title>	
 	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII"/>
 </h:head>
 <h:body>
 	<f:view>
+		<!-- Menu di testa -->
 		<ui:include src="header.xhtml" />
-		<div align="center">
-			<h1>Lista Quadri</h1>
+		<div align="center" class="text-primary">
+			<h1>
+				<strong>Lista Quadri</strong>
+			</h1>
+
 			<h:form>
-				<table class="table">
+				<table class="table text-primary">
 					<tr>
-					<th>Titolo</th>
-					<th>Tecnica</th>
-					<th>Dimensioni</th>
-					<th>Autore</th>
-					<th>Azione</th>
+						<th><strong>Titolo</strong></th>
+						<th><strong>Anno Realizzazione</strong></th>
+						<th><strong>Dimensioni</strong></th>
+						<th><strong>Tecnica</strong></th>
+						<th><strong>Autore</strong></th>
 					</tr>
-					<c:forEach var="quadro" items="#{paintingController.opere}">
-					<tr>
-						<td><h:commandLink action="#{paintingController.vediOpera}" value="#{quadro.titolo}">
-								<f:param name="id" value="#{quadro.id}" />
-							</h:commandLink></td>
-						<td>${quadro.tecnica}</td>
-						<td>${quadro.dimensioni}</td>
-						<td>${quadro.autore}</td>
-						<td><h:commandLink	action="#{paintingController.cancellaOpera}" value="Delete">
-								<f:param name="id" value="#{quadro.id}" />
-							</h:commandLink> - <h:commandLink action="#{paintingController.updatePainting}"	value="Update">
-								<f:param name="id" value="#{quadro.id}" />
-							</h:commandLink></td>
-					</tr>
-				</c:forEach>
+					<ui:repeat var="opera" value="#{paintingController.opere}" varStatus="status" >
+						<tr>
+							<td><strong><h:commandLink
+												action="#{paintingController.vediOpera(opera.titolo)}"
+												value="#{opera.titolo}" /></strong></td>
+							<td><strong>#{opera.annoRealizzazione}</strong></td>
+							<td><strong>#{opera.dimensioni}</strong></td>
+							<td><strong>#{opera.tecnica}</strong></td>
+							<td><strong>${opera.autore.nome} ${opera.autore.cognome}</strong></td>			
+						</tr>
+				</ui:repeat>
 				</table>
 			</h:form>
 		</div>

@@ -17,8 +17,8 @@
 			<div>Anno Realizzazione: ${paintingController.operaCorrente.annoRealizzazione}</div>
 			<div>Tecnica: ${paintingController.operaCorrente.tecnica}</div>
 			<div>Dimensioni: ${paintingController.operaCorrente.dimensioni}</div>
-			<div> <a href="/faces/datiAutore.jsp"> ${paintingController.operaCorrente.autore.nome} ${paintingController.operaCorrente.autore.cognome}</a></div>
-            <div>Immagine:<o:graphicImage value="#{imgLoad.get(paintingController.operaCorrente.id)}"/></div>
+			<div> <a href="datiAutore.xhtml"> ${paintingController.operaCorrente.autore.nome} ${paintingController.operaCorrente.autore.cognome}</a></div>
+            <div>Immagine:<o:graphicImage value="#{paintingController.operaCorrente.immagine}" dataURI="true"/></div>
             
 			<!-- Sono un amministratore -->
 			<c:if test="${administratorController.currentAdministrator != null}">

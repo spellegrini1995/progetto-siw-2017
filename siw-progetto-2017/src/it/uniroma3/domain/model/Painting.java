@@ -9,8 +9,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.NamedQueries;
 
 @NamedQueries({
-@NamedQuery(name="tuttiIQuadri",query="SELECT q FROM Quadro q"),
-@NamedQuery(name="anniQuadri",query="SELECT DISTINCT q.annoRealizzazione FROM Quadro q")
+@NamedQuery(name="tuttiIQuadri",query="SELECT q FROM Painting q"),
+@NamedQuery(name="anniQuadri",query="SELECT DISTINCT q.annoRealizzazione FROM Painting q")
 })
 @Entity
 public class Painting {
@@ -26,8 +26,12 @@ public class Painting {
 	private Author autore;
 	
 	private byte[] immagine;
-	public Painting() {
-		
+
+	public Painting(String titolo, Integer anno, String tecnica, String dimensioni) {
+		this.titolo = titolo;
+		this.annoRealizzazione = anno;
+		this.tecnica = tecnica;
+		this.dimensioni = dimensioni;
 	}
 	
 	public Long getId() {

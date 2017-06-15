@@ -21,115 +21,115 @@
 </h:head>
 <h:body>
 	<f:view>
-	  <h:form>
-		<nav class="navbar navbar-custom">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href='index.xhtml'>Home</a>
-			</div>
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<!-- Menu a tendina amministratore -->
-					<c:if
-						test="${administratorController.currentAdministrator != null}">
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">Gestione Utenti<b
-								class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><h:commandLink action="#{userController.viewUsers}"
-									value="Utenti registrati" /></li>
-							<li><h:commandLink
-									action="#{administratorController.signUser}"
-									value="Registra un nuovo utente" /></li>
-							<li><h:commandLink
-									action="#{administratorController.destroyUser}"
-									value="Elimina un utente registrato" /></li>
-							<li class="divider"></li>
-						</ul></li>
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">Gestione Galleria<b
-								class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><h:commandLink
-										action="#{administratorController.newPainting}"
-										value="Inserisci un nuovo quadro" /></li>
-								<li><h:commandLink
-										action="#{administratorController.newAuthor}"
-										value="Inserisci un nuovo Autore" /></li>
-								<li><h:commandLink
-										action="#{paintingController.viewPaintings}"
-										value="Lista quadri" /></li>
-								<li><h:commandLink action="#{authorController.viewAuthors}"
-										value="Lista autori" /></li>
-							</ul></li>
-					</c:if>
+		<h:form>
+			<nav class="navbar navbar-custom">
+				<div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href='index.xhtml'>Home</a>
+					</div>
+					<div class="collapse navbar-collapse"
+						id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<!-- Menu a tendina amministratore -->
+							<c:if
+								test="${administratorController.currentAdministrator != null}">
+								<li class="dropdown"><a class="dropdown-toggle"
+									data-toggle="dropdown" href="#">Gestione Utenti<b
+										class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><h:commandLink action="#{userController.viewUsers}"
+											value="Utenti registrati" /></li>
+									<li><h:commandLink
+											action="#{administratorController.signUser}"
+											value="Registra un nuovo utente" /></li>
+									<li><h:commandLink
+											action="#{administratorController.destroyUser}"
+											value="Elimina un utente registrato" /></li>
+									<li class="divider"></li>
+								</ul></li>
+								<li class="dropdown"><a class="dropdown-toggle"
+									data-toggle="dropdown" href="#">Gestione Galleria<b
+										class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><h:commandLink
+												action="#{administratorController.newPainting}"
+												value="Inserisci un nuovo quadro" /></li>
+										<li><h:commandLink
+												action="#{administratorController.newAuthor}"
+												value="Inserisci un nuovo Autore" /></li>
+										<li><h:commandLink
+												action="#{paintingController.viewPaintings}"
+												value="Lista quadri" /></li>
+										<li><h:commandLink
+												action="#{authorController.viewAuthors}"
+												value="Lista autori" /></li>
+									</ul></li>
+							</c:if>
 
-					<!-- Menu a tendina utente -->
-					<c:if test="${userController.currentUser != null}">
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">Operazioni Utente <b
-								class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><h:commandLink
-										action="#{paintingController.viewPaintings}"
-										value="Visualizza tutti i quadri" /></li>
-								<!-- bisogna fare la selezione dei dipinti per autore -->
-								<li><h:commandLink action="#{authorController.viewAuthors}"
-										value="Visualizza tutti gli Autori" /></li>
-							</ul></li>
-					</c:if>
-				</ul>
+							<!-- Menu a tendina utente -->
+							<c:if test="${userController.currentUser != null}">
+								<li class="dropdown"><a class="dropdown-toggle"
+									data-toggle="dropdown" href="#">Operazioni Utente <b
+										class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><h:commandLink
+												action="#{paintingController.viewPaintings}"
+												value="Visualizza tutti i quadri" /></li>
+										<!-- bisogna fare la selezione dei dipinti per autore -->
+										<li><h:commandLink
+												action="#{authorController.viewAuthors}"
+												value="Visualizza tutti gli Autori" /></li>
+									</ul></li>
+							</c:if>
+						</ul>
 
-				<!-- Login e amministrazione -->
-				<ul class="nav navbar-nav navbar-right">
-					<c:if
-						test="${administratorController.currentAdministrator != null}">
-						<li><a href='administratorHome.xhtml'>Il
-								mio profilo: <b>${administratorController.currentAdministrator.username}</b>
-						</a></li>
-						<li><h:commandLink value="Logout"
-								action="#{administratorController.logoutAdministrator}" /></li>
-					</c:if>
+						<!-- Login e amministrazione -->
+						<ul class="nav navbar-nav navbar-right">
+							<c:if
+								test="${administratorController.currentAdministrator != null}">
+								<li><a href='administratorHome.xhtml'>Il mio profilo: <b>${administratorController.currentAdministrator.username}</b>
+								</a></li>
+								<li><h:commandLink value="Logout"
+										action="#{administratorController.logoutAdministrator}" /></li>
+							</c:if>
 
-					<c:if test="${userController.currentUser != null}">
-						<li><a href='userHome.xhtml'>Il
-								mio profilo: <b>${userController.currentUser.nome}
-									${userController.currentUser.cognome}</b>
-						</a></li>
-						<li><h:commandLink value="Logout"
-								action="#{userController.logoutUser}" /></li>
-					</c:if>
+							<c:if test="${userController.currentUser != null}">
+								<li><a href='userHome.xhtml'>Il mio profilo: <b>${userController.currentUser.nome}
+											${userController.currentUser.cognome}</b>
+								</a></li>
+								<li><h:commandLink value="Logout"
+										action="#{userController.logoutUser}" /></li>
+							</c:if>
 
-					<c:if	test="${administratorController.currentAdministrator == null}">
-					<c:if	test="${userController.currentUser == null}">
-						<li><h:commandLink
-								action="#{paintingController.viewPaintings}"
-								value="Lista quadri" /></li>
-						<li><a href='userLogin.xhtml'>Login</a></li>
-						<li><a
-							href='registrazioneUtente.xhtml'>Registrati</a></li>
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">Amministrazione<b
-								class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a
-									href='administratorLogin.xhtml'>Login amministratore</a></li>
-							</ul></li>
-					</c:if>
-					</c:if>
-				</ul>
-			</div>
-		</div>
-		</nav>
-	  </h:form>
+							<c:if
+								test="${administratorController.currentAdministrator == null}">
+								<c:if test="${userController.currentUser == null}">
+									<li><h:commandLink
+											action="#{paintingController.viewPaintings}"
+											value="Lista quadri" /></li>
+									<li><a href='userLogin.xhtml'>Login</a></li>
+									<li><a href='registrazioneUtente.xhtml'>Registrati</a></li>
+									<li class="dropdown"><a class="dropdown-toggle"
+										data-toggle="dropdown" href="#">Amministrazione<b
+											class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li><a href='administratorLogin.xhtml'>Login
+													amministratore</a></li>
+										</ul></li>
+								</c:if>
+							</c:if>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</h:form>
 	</f:view>
 </h:body>
 </html>

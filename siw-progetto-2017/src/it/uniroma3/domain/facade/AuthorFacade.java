@@ -27,9 +27,10 @@ public class AuthorFacade {
 		return author;
 	}
 	
-	public Author getAuthor(String nome) {
-		Query q = em.createQuery("SELECT a FROM Author a WHERE a.nome = :nome");
+	public Author getAuthor(String nome, String cognome) {
+		Query q = em.createQuery("SELECT a FROM Author a WHERE a.nome = :nome and a.cognome = :cognome");
 		q.setParameter("nome", nome);
+		q.setParameter("cognome", cognome);
 		Author a = (Author) q.getSingleResult();
 		return a;
 	}

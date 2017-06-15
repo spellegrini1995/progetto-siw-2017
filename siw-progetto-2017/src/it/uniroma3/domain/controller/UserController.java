@@ -43,9 +43,9 @@ public class UserController {
 			this.currentUser = userFacade.createUser(nome, cognome,email,password,numeroTelefono,dataNascita,dataRegistrazione,via,comune,provincia,codicePostale,nazione);
 			return "registrazioneAvvenuta";
 		}catch(Exception e){
-			/*Utente già  registrato*/
+			/*Utente giï¿½ registrato*/
 			this.resetUser();
-			FacesContext.getCurrentInstance().addMessage("registrationUser:signinUser", new FacesMessage("Utente già  registrato!"));
+			FacesContext.getCurrentInstance().addMessage("registrationUser:signinUser", new FacesMessage("Utente giï¿½ registrato!"));
 			return "registrazioneUtente";
 		}
 	}
@@ -114,7 +114,7 @@ public class UserController {
 		}
 	}
 	
-	public String viewUser(){
+	public String viewUser(String email){
 		this.currentUser=userFacade.getUserByEmail(email);
 		this.setCurrentUser(currentUser);
 		return "datiUtente";

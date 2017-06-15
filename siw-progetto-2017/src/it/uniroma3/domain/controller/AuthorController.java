@@ -78,6 +78,11 @@ public class AuthorController {
 			return "index";
 		}
 	}
+	public String viewAuthor(String nome, String cognome) {
+			this.author = authorFacade.getAuthor(nome, cognome);
+			this.setAuthor(author);
+			return "datiAutore";
+	}
 
 
 	public Author getByNameAuthor(String nome, String cognome){

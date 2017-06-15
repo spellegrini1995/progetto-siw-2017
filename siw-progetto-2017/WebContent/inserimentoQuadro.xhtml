@@ -74,14 +74,14 @@
 								itemLabel="#{autore.nome} #{autore.cognome}" />
 						</h:selectOneMenu>
 					</div>
-				</div>
-		<!--    <div class="form-group text-primary">
+				</div>			
+				<div class="form-group text-primary">
 					<label for="addImagine"
 						class="col-sm-1 control-label col-lg-offset-4">Immagine</label>
 					<div class="col-sm-2">
-						<h:inputFile value="#{paintingController.immagine}" />
+					    <t:inputFileUpload value="#{paintingController.immagine}" />
 					</div>
-				</div>  -->
+				</div>
 				<div class="form-group text-primary">
 					<div class="col-sm-offset-5 col-sm-2">
 						<h:commandButton id="createPainting" styleClass="btn btn-success"
@@ -89,7 +89,9 @@
 					</div>
 				</div>
 			</h:form>
-		</div>
+			</div>
 	</f:view>
 </h:body>
 </html>
+
+
