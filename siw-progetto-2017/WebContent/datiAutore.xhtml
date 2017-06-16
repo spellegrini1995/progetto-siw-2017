@@ -7,16 +7,16 @@
 <h:head>
 	<title>Dati Autore</title>
 </h:head>
-<h:body>
+<h:body background= "http://2.bp.blogspot.com/-YQa0lziEIsQ/T_SD-7BYi8I/AAAAAAAAOQQ/PvcJIntfE44/s1600/Klimt4.jpg">
 	<f:view>
 		<ui:include src="header.xhtml" />
-		<div align="center">
-			<h1>Dettagli Autore ${authorController.author.nome} ${authorController.author.cognome}</h1>
-			<div>Nazionalita: ${authorController.author.nazionalita}</div>
-			<div>Data Nascita: ${authorController.author.dataNascita}</div>
-			<div>Data Morte: ${authorController.author.dataMorte}</div>
+		<div align="center" class="text-primary">
+			<h1>Dettagli Autore <strong>${authorController.author.nome} ${authorController.author.cognome}</strong></h1>
+			<div>Nazionalita: <strong>${authorController.author.nazionalita}</strong></div>
+			<div>Data Nascita: <strong>${authorController.author.dataNascita}</strong></div>
+			<div>Data Morte: <strong>${authorController.author.dataMorte}</strong></div>
 			
-			Clicca <a href="listaQuadri.xhtml"> QUI </a> per vedere i quadri di questo autore
+			Clicca <a href="listaQuadri.xhtml"> <strong><em>QUI</em></strong></a> per vedere i quadri di questo autore
 		</div>
 	</f:view>
 </h:body>

@@ -1,9 +1,12 @@
 package it.uniroma3.domain.model;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.*;
+
+import it.uniroma3.domain.utility.PwdCoder;
 
 
 @Entity
@@ -51,15 +54,16 @@ public class User {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.email = email;
-		this.password = password;
+		this.password = this.encodePassword(password);
 		this.numeroTelefono = numeroTelefono;
 		this.dataNascita = dataNascita;
 		this.dataRegistrazione=dataRegistrazione;
 		this.address=address;
 	}
 	
-	public boolean checkPassword(String password){
-		return this.password.equals(password);
+	public boolean checkPassword(String password) {
+		String pwd = this.encodePassword(password);
+		return this.password.equals(pwd);
 	}
 
 	//getters AND setters
@@ -134,6 +138,14 @@ public class User {
 
 	public void setDataRegistrazione(Calendar dataRegistrazione) {
 		this.dataRegistrazione = dataRegistrazione;
+	}
+	
+	private String encodePassword(String pwd){
+		try {
+			return PwdCoder.getEncodedPassword(pwd);
+		} catch (NoSuchAlgorithmException e) {
+			return pwd;
+		}
 	}
 
 	@Override

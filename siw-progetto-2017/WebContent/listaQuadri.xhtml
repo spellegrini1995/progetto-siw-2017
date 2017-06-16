@@ -6,10 +6,13 @@
 	xmlns:t="http://myfaces.apache.org/tomahawk"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
-	<title>Utenti Registrati</title>	
+	<title>Quadri</title>	
 	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII"/>
+	<style>
+		.list-group-item {margin-right:10px}
+	</style>
 </h:head>
-<h:body>
+<h:body background="http://fondazionesella.org/img/home-slider/mostra_fondazione-sella_andreea-secara.jpg">
 	<f:view>
 		<!-- Menu di testa -->
 		<ui:include src="header.xhtml" />
@@ -19,7 +22,7 @@
 			</h1>
 
 			<h:form>
-				<table class="table text-primary">
+				<table class="table text-primary table-bordered">
 					<tr>
 						<th><strong>Titolo</strong></th>
 						<th><strong>Anno Realizzazione</strong></th>
@@ -29,9 +32,9 @@
 					</tr>
 					<ui:repeat var="opera" value="#{paintingController.opere}" varStatus="status" >
 						<tr>
-							<td><strong><h:commandLink
+							<td><em><strong><h:commandLink
 												action="#{paintingController.vediOpera(opera.titolo)}"
-												value="#{opera.titolo}" /></strong></td>
+												value="#{opera.titolo}" /></strong></em></td>
 							<td><strong>#{opera.annoRealizzazione}</strong></td>
 							<td><strong>#{opera.dimensioni}</strong></td>
 							<td><strong>#{opera.tecnica}</strong></td>

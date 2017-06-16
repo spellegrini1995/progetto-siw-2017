@@ -119,6 +119,7 @@ public class UserController {
 		this.setCurrentUser(currentUser);
 		return "datiUtente";
 	}
+	
 	//getter and setter
 	public Long getId() {
 		return id;

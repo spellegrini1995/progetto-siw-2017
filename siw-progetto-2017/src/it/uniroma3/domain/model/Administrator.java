@@ -1,11 +1,15 @@
 package it.uniroma3.domain.model;
 
 
+import java.security.NoSuchAlgorithmException;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import it.uniroma3.domain.utility.PwdCoder;
 
 @Entity
 public class Administrator {
@@ -29,7 +33,7 @@ public class Administrator {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;
-		this.password = password;
+		this.password = this.encodePassword(password);
 	}
 	
 	public String getFirstName() {
@@ -82,6 +86,15 @@ public class Administrator {
     }
 
 	public boolean checkPassword(String password) {
-		return this.password.equals(password);
+		String pwd = this.encodePassword(password);
+		return this.password.equals(pwd);
+	}
+	
+	private String encodePassword(String pwd){
+		try {
+			return PwdCoder.getEncodedPassword(pwd);
+		} catch (NoSuchAlgorithmException e) {
+			return pwd;
+		}
 	}
 }

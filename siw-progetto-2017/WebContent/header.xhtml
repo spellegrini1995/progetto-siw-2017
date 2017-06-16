@@ -122,9 +122,16 @@
 										<ul class="dropdown-menu">
 											<li><a href='administratorLogin.xhtml'>Login
 													amministratore</a></li>
-										</ul></li>
+										</ul></li>	
 								</c:if>
 							</c:if>
+							
+							<c:if test="${empty administratorController.administrators}">
+							   <ul class="nav navbar-nav navbar-right">
+							     <li><h:commandLink
+											action="#{administratorController.createAdministrator}"
+											value="Crea Amministratore di prova" /></li></ul>
+							</c:if>				
 						</ul>
 					</div>
 				</div>

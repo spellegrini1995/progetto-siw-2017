@@ -8,38 +8,30 @@
 <h:head>
 <title>Quadro: "${paintingController.operaCorrente.titolo}"</title>
 </h:head>
-<h:body>
+<h:body background = "http://wallpapercave.com/wp/YHlk56g.jpg">
 	<f:view>
 		<ui:include src="header.xhtml" />
-		<div align="center">
-			<h2>${paintingController.operaCorrente.titolo}</h2>
-			<h3>Dettagli</h3>
-			<div>Anno Realizzazione: ${paintingController.operaCorrente.annoRealizzazione}</div>
-			<div>Tecnica: ${paintingController.operaCorrente.tecnica}</div>
-			<div>Dimensioni: ${paintingController.operaCorrente.dimensioni}</div>
-			<div> <a href="datiAutore.xhtml"> ${paintingController.operaCorrente.autore.nome} ${paintingController.operaCorrente.autore.cognome}</a></div>
+		<div align="center" class="text-primary">
+			<h2><strong>${paintingController.operaCorrente.titolo}</strong></h2>
+			<h3><em>Dettagli</em></h3>
+			<div>Anno Realizzazione: <strong>${paintingController.operaCorrente.annoRealizzazione}</strong></div>
+			<div>Tecnica: <strong>${paintingController.operaCorrente.tecnica}</strong></div>
+			<div>Dimensioni: <strong>${paintingController.operaCorrente.dimensioni}</strong></div>
+			<div>Autore:<em><a href="datiAutore.xhtml"> ${paintingController.operaCorrente.autore.nome} ${paintingController.operaCorrente.autore.cognome}</a></em></div>
             <div>Immagine:<o:graphicImage value="#{paintingController.operaCorrente.immagine}" dataURI="true"/></div>
             
 			<!-- Sono un amministratore -->
 			<c:if test="${administratorController.currentAdministrator != null}">
 				<h:form styleClass="form-horizontal">
-					<div class="form-group">
-						<div class="col-sm-offset-4 col-sm-2">
-							<h:commandButton styleClass="btn btn-warning"
-								action="#{administratorController.modifyPainting}"
-								value="Modifica" />
-						</div>
+					<div class="form-group" align="center" >
 						<div class="col-sm-2">
 							<h:commandButton styleClass="btn btn-danger"
 								action="#{paintingController.cancellaOpera}" value="Elimina" />
 						</div>
 					</div>
 				</h:form>
-			</c:if>
+			</c:if>		
 		</div>
 	</f:view>
-		<div>
-			Clicca <a href='index.xhtml'>QUI</a>per tornare alla pagina iniziale
-		</div>
 </h:body>
 </html>

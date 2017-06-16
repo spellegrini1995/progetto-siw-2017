@@ -1,6 +1,5 @@
 package it.uniroma3.domain.controller;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -35,6 +34,9 @@ public class AdministratorController {
 	private String password;
 	private Administrator currentAdministrator;
 	
+	@SuppressWarnings("unused")
+	private List<Administrator> administrators; //serve solo per la creazione dell'admin di prova
+	
 	private String message;
 	
 	@ManagedProperty(value="#{currentPainting}")
@@ -56,8 +58,8 @@ public class AdministratorController {
 	private PaintingFacade paintingFacade;
 	
 	public String createAdministrator() {
-		this.currentAdministrator = administratorFacade.createAdministrator(nome,cognome,username,password);
-		return "administratorHome";
+		administratorFacade.createAdministrator("Nicholas","Napolitano","admin1","admin1");
+		return "index";
 	}
 	
 	public String loginAdministrator() {
@@ -147,13 +149,6 @@ public class AdministratorController {
 	public String viewHome(){
 		return "administratorHome";
 	}
-	
-	public String modifyPainting() {
-		this.authors = new ArrayList<>(authorFacade.getAllAuthors());
-		this.painting = (Painting) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("currentPainting");
-		return "modificaQuadro";
-	}
-	
 	
 	public String viewPaintings(){
 		return "listaQuadri";
@@ -354,6 +349,18 @@ public class AdministratorController {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public List<Administrator> getAdministrators() {
+		return administratorFacade.getAllAdministrators();
+	}
+
+	public int getSize(){
+	    return this.getAdministrators().size();
+	}
+
+	public void setAdministrators(List<Administrator> administrators) {
+		this.administrators = administrators;
 	}
 	
 }
