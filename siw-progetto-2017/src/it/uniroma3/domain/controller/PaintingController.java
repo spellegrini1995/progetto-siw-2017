@@ -35,8 +35,8 @@ public class PaintingController {
 	private Map<String,Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 	@EJB(beanName="paintingFacade")
 	private PaintingFacade paintingFacade;
-	
-	
+
+
 	public String salvaQuadro() {
 		Painting q = new Painting(titolo, annoRealizzazione, tecnica, dimensioni);
 		q.setImmagine(this.getImgFromPart(immagine));
@@ -58,7 +58,7 @@ public class PaintingController {
 		}
 		return imgByte;
 	}
-	
+
 	public List<Painting> getOpere(){
 		this.opere=paintingFacade.getAll();
 		return this.opere;
@@ -71,42 +71,63 @@ public class PaintingController {
 		this.operaCorrente=paintingFacade.getPaintingByTitolo(titolo);
 		return "datiQuadro";
 	}
-	public String cancellaOpera(){
+	public String cancellaOpera(Long id){
 		this.paintingFacade.remove(id);
 		return "listaQuadri";
 	}
-	public String modificaOpera(Long id){
-		this.operaCorrente=paintingFacade.find(id);
-		this.sessionMap.put("editQuadro",operaCorrente);
-		return "modificaOpera";
-	}
-	public String updatePainting() {
-		try{
-			paintingFacade.merge(this.operaCorrente);
-			return "datiQuadro";
-		}catch(Exception e){
-			return "inserimentoQuadro";
-		}
-	}
-	
-	
+
 	public String viewPaintings() {
-			this.opere = paintingFacade.getAll();
-			this.setOpere(opere);
-			return "listaQuadri";
+		this.opere = paintingFacade.getAll();
+		this.setOpere(opere);
+		return "listaQuadri";
+	}		
+	public String viewAuthorPaintings() {
+		this.opere = paintingFacade.getQuadriPerAutore(idAutore);
+		this.setOpere(opere);
+		return "listaQuadriPerAutore";
+	}	
+	public String selezionaAutore() {
+		return "selezionaAutore";
 	}
-	
+
 	public String setAuthor(){
 		this.setAutore(autore);
 		return "listaQuadri";
 	}
-	
+
 	public String nullAuthor() {
 		this.autore=null;
 		this.setAutore(autore);
 		return "listaQuadri";
 	}
-	
+
+	private byte[] converti(Part file){
+		byte[] res;
+		try{
+			InputStream is = file.getInputStream();
+			byte[] buffer = new byte[(int)file.getSize()];
+			ByteArrayOutputStream output = new ByteArrayOutputStream();
+			for (int length=0;(length=is.read(buffer))>0;) 
+				output.write(buffer,0,length);
+			res=output.toByteArray();
+		} catch (IOException | NullPointerException e) {
+			res=new byte[0];
+		}
+		return res;
+	}
+	public String modificaQuadro(Long id){
+		this.operaCorrente=paintingFacade.find(id);
+		this.sessionMap.put("editQuadro",operaCorrente);
+		return "modificaQuadro";
+	}
+	public String updateQuadro(Painting q){
+		byte[] nuovaImm=this.converti(this.immagine);
+		if(nuovaImm.length>0)
+			q.setImmagine(nuovaImm);
+		this.paintingFacade.merge(q, idAutore);
+		this.sessionMap.remove("editQuadro");
+		return "listaQuadri";
+	}
 	public String getTitolo() {
 		return titolo;
 	}
@@ -182,5 +203,5 @@ public class PaintingController {
 	public void setNomeAutore(String nomeAutore) {
 		this.nomeAutore = nomeAutore;
 	}
-	
+
 }

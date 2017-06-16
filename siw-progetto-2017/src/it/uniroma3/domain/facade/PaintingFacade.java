@@ -44,11 +44,22 @@ public class PaintingFacade {
 		em.remove(q);
 		return;
 	}
+	public Painting merge(Painting q,Long idAutore){
+		Author nuovo=this.em.find(Author.class,idAutore);
+		q.setAutore(nuovo);
+		return em.merge(q);
+	}
 	public Painting merge(Painting q){
 		return em.merge(q);
 	}
 	public List<Integer> listaAnni(){
 		TypedQuery<Integer> query=em.createNamedQuery("anniQuadri",Integer.class);
+		return query.getResultList();
+	}
+
+	public List<Painting> getQuadriPerAutore(Long idAutore) {
+		TypedQuery<Painting> query= em.createNamedQuery("quadriPerAutore",Painting.class);
+		query.setParameter("idAutore",idAutore);
 		return query.getResultList();
 	}
 }

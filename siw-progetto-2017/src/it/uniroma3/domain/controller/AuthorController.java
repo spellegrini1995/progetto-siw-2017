@@ -2,6 +2,7 @@ package it.uniroma3.domain.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import it.uniroma3.domain.model.Author;
 import it.uniroma3.domain.model.Painting;
@@ -27,6 +28,8 @@ public class AuthorController {
 	private Author author;
 	private List<Painting> quadri;
 	private List<Author> autori;
+	private Map<String,Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+
 
 	@EJB(beanName="authorFacade")
 	private AuthorFacade authorFacade;
@@ -62,6 +65,10 @@ public class AuthorController {
 		setAuthor(author);
 		return "datiAutore";
 	}
+	public String cancellaAutore(Long id){
+		this.authorFacade.deleteAuthor(id);
+		return "listaAutori";
+	}
 
 	public String findAuthor(Long id) {
 		this.author = authorFacade.getAuthor(id);
@@ -77,7 +84,7 @@ public class AuthorController {
 		catch(Exception e){
 			return "index";
 		}
-	}
+	}	
 	public String viewAuthor(String nome, String cognome) {
 			this.author = authorFacade.getAuthor(nome, cognome);
 			this.setAuthor(author);
@@ -88,6 +95,17 @@ public class AuthorController {
 	public Author getByNameAuthor(String nome, String cognome){
 		this.author = authorFacade.getByNameAuthor(nome, cognome);
 		return this.author;
+	}
+	
+	public String iniziaModifica(Long id){
+		Author scelto=authorFacade.getAuthor(id);
+		this.sessionMap.put("editAutore",scelto);
+		return "modificaAutore";
+	}
+	public String modificaAutore(Author a){
+		this.authorFacade.updateAuthor(a);
+		this.sessionMap.remove("editAutore");
+		return "gestioneAutori";
 	}
 
 	//getter and setter

@@ -25,6 +25,8 @@
 						<th><strong>Nazionalita</strong></th>
 						<th><strong>Data Nascita</strong></th>
 						<th><strong>Data Morte</strong></th>
+						<th><strong>Modifica</strong></th>
+						<th><strong>Cancella</strong></th>
 					</tr>
 					<c:forEach var="a" items="#{authorController.autori}">
 						<tr>
@@ -34,6 +36,13 @@
 							<td><strong>${a.nazionalita}</strong></td>
 							<td><strong>${a.dataNascita}</strong></td>
 							<td><strong>${a.dataMorte}</strong></td>
+							<td><h:commandButton value="Modifica"
+									styleClass="btn btn-primary"
+									action="#{authorController.iniziaModifica(a.id)}" /></td>
+							<td><h:commandButton value="Cancella"
+									styleClass="btn btn-primary"
+									action="#{authorController.cancellaAutore(a.id)}" />
+							</td>
 						</tr>
 					</c:forEach>
 				</table>

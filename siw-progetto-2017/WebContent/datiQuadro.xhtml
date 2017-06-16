@@ -19,18 +19,6 @@
 			<div>Dimensioni: <strong>${paintingController.operaCorrente.dimensioni}</strong></div>
 			<div>Autore:<em><a href="datiAutore.xhtml"> ${paintingController.operaCorrente.autore.nome} ${paintingController.operaCorrente.autore.cognome}</a></em></div>
             <div>Immagine:<o:graphicImage value="#{paintingController.operaCorrente.immagine}" dataURI="true"/></div>
-            
-			<!-- Sono un amministratore -->
-			<c:if test="${administratorController.currentAdministrator != null}">
-				<h:form styleClass="form-horizontal">
-					<div class="form-group" align="center" >
-						<div class="col-sm-2">
-							<h:commandButton styleClass="btn btn-danger"
-								action="#{paintingController.cancellaOpera}" value="Elimina" />
-						</div>
-					</div>
-				</h:form>
-			</c:if>		
 		</div>
 	</f:view>
 </h:body>

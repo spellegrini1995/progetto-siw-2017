@@ -10,7 +10,8 @@ import javax.persistence.NamedQueries;
 
 @NamedQueries({
 @NamedQuery(name="tuttiIQuadri",query="SELECT q FROM Painting q"),
-@NamedQuery(name="anniQuadri",query="SELECT DISTINCT q.annoRealizzazione FROM Painting q")
+@NamedQuery(name="anniQuadri",query="SELECT DISTINCT q.annoRealizzazione FROM Painting q"),
+@NamedQuery(name="quadriPerAutore",query="SELECT DISTINCT q FROM Painting q WHERE q.autore.id = :idAutore")
 })
 @Entity
 public class Painting {
