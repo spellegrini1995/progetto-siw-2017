@@ -17,4 +17,4 @@
 - Linguaggio di stile utilizzato: CSS
 - Implementazione grafica tramite Bootstrap
 - Deploy su server Cloud AWS: 
-       indirizzo -> http://52.91.130.37:8080/
+       indirizzo -> http://54.209.199.96:8080/
