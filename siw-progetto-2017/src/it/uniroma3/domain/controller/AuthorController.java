@@ -59,7 +59,10 @@ public class AuthorController {
 		this.quadri = author.getQuadri();
 		return "listaQuadri"; 
 	}
-
+	
+	public List<String> listaNazioni(){
+		return authorFacade.listaNazioni();
+	}
 	public String findAuthor() {
 		this.author = authorFacade.getAuthor(id);
 		setAuthor(author);
@@ -69,7 +72,9 @@ public class AuthorController {
 		this.authorFacade.deleteAuthor(id);
 		return "listaAutori";
 	}
-
+	public List<Author> getAll(){
+		return authorFacade.getAllAuthors();
+	}	
 	public String findAuthor(Long id) {
 		this.author = authorFacade.getAuthor(id);
 		setAuthor(author);
@@ -90,8 +95,7 @@ public class AuthorController {
 			this.setAuthor(author);
 			return "datiAutore";
 	}
-
-
+	
 	public Author getByNameAuthor(String nome, String cognome){
 		this.author = authorFacade.getByNameAuthor(nome, cognome);
 		return this.author;
@@ -105,7 +109,12 @@ public class AuthorController {
 	public String modificaAutore(Author a){
 		this.authorFacade.updateAuthor(a);
 		this.sessionMap.remove("editAutore");
-		return "gestioneAutori";
+		return "listaAutori";
+	}
+	public String visualizzaQuadriAutore(Long id){
+		Author a=this.authorFacade.getAuthor(id);
+		this.setAuthor(a);
+		return "listaQuadriPerAutore";
 	}
 
 	//getter and setter

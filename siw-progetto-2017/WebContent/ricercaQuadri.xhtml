@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Ricerca Quadri</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+</h:head>
+<h:body
+	background="http://www.boorp.com/sfondi_gratis_desktop_pc/sfondi_gratis/sfondi_arte_quadri/arte_orientale.jpg">
+	<f:view>
+		<!-- Menu di testa -->
+		<ui:include src="header.xhtml" />
+		<div align="center" class="text-primary">
+			<h1>
+				<strong>Seleziona la ricerca quadri</strong>
+			</h1>
+			<h:form>
+				<div align="center" class="form-group text-primary">
+					<div class="col-sm-2">
+						<ul class="list-group">
+							<li class="list-group-item"> <h:commandLink value="Tutti i Quadri"
+								action="#{paintingController.viewPaintings}" /> </li>
+							<li class="list-group-item"> <h:commandLink value="Ricerca quadro per autore"
+								action="#{paintingController.selezionaAutore}" /></li>
+							<li class="list-group-item"> <h:commandLink value="Ricerca quadro per anno"
+								action="#{paintingController.selezionaAnno}" /> </li>
+							<li class="list-group-item"> <h:commandLink value="Ricerca quadro per nazione"
+								action="#{paintingController.selezionaNazione}" /></li>
+						</ul>
+					</div>
+				</div>
+			</h:form>
+		</div>
+	</f:view>
+</h:body>
+</html>

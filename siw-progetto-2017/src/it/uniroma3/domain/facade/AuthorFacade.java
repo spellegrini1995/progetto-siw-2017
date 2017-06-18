@@ -1,13 +1,14 @@
 package it.uniroma3.domain.facade;
 
 import javax.ejb.Stateless;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 
 import it.uniroma3.domain.model.Author;
-import it.uniroma3.domain.model.Painting;
 
 import java.util.Date;
 import java.util.List;
@@ -69,4 +70,9 @@ public class AuthorFacade {
 		query.setParameter("cognome",  cognome);
 		return (Author)query.getSingleResult();
 }
+
+	public List<String> listaNazioni(){
+		TypedQuery<String> query=em.createNamedQuery("nazioniAutori",String.class);
+		return query.getResultList();
+	}
 	}

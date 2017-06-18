@@ -9,13 +9,11 @@ import javax.persistence.NamedQuery;
 import javax.persistence.NamedQueries;
 
 @NamedQueries({
-@NamedQuery(name="tuttiIQuadri",query="SELECT q FROM Painting q"),
-@NamedQuery(name="anniQuadri",query="SELECT DISTINCT q.annoRealizzazione FROM Painting q"),
-@NamedQuery(name="quadriPerAutore",query="SELECT DISTINCT q FROM Painting q WHERE q.autore.id = :idAutore")
-})
+	@NamedQuery(name="tuttiIQuadri",query="SELECT q FROM Painting q"),
+	@NamedQuery(name="anniQuadri",query="SELECT DISTINCT q.annoRealizzazione FROM Painting q")})
 @Entity
 public class Painting {
-	
+
 	@Id
 	@GeneratedValue (strategy=GenerationType.AUTO)
 	private Long id;
@@ -25,7 +23,7 @@ public class Painting {
 	private String dimensioni;
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Author autore;
-	
+
 	private byte[] immagine;
 
 	public Painting(String titolo, Integer anno, String tecnica, String dimensioni) {
@@ -34,7 +32,11 @@ public class Painting {
 		this.tecnica = tecnica;
 		this.dimensioni = dimensioni;
 	}
-	
+
+	public Painting() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -83,5 +85,5 @@ public class Painting {
 	public void setAnnoRealizzazione(Integer annoRealizzazione) {
 		this.annoRealizzazione = annoRealizzazione;
 	}
-	
+
 }

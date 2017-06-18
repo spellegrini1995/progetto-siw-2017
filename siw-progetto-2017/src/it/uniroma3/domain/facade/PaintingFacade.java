@@ -20,10 +20,17 @@ public class PaintingFacade {
 	@PersistenceContext(unitName = "progetto-siw-unit")
 	private EntityManager em;
 	
-	public Painting salva(Painting q, Long idAutore) {
-		q.setAutore(em.find(Author.class, idAutore));
-		em.persist(q);
-		return q;
+	public Painting salva(String titolo,Integer annoRealizzazione,String dimensioni,
+			String tecnica,Long idAutore,byte[] immagine){
+		Painting q=new Painting();
+		 q.setTitolo(titolo);
+		 q.setAnnoRealizzazione(annoRealizzazione);
+		 q.setDimensioni(dimensioni);
+		 q.setTecnica(tecnica);
+		 q.setAutore(em.find(Author.class,idAutore));
+		 q.setImmagine(immagine);
+		 em.persist(q);
+		 return q;
 	}
 	
 	public Painting find(Long id){
@@ -57,9 +64,18 @@ public class PaintingFacade {
 		return query.getResultList();
 	}
 
-	public List<Painting> getQuadriPerAutore(Long idAutore) {
-		TypedQuery<Painting> query= em.createNamedQuery("quadriPerAutore",Painting.class);
-		query.setParameter("idAutore",idAutore);
+	public List<Painting> getPaintingByAuthor(Long idAutore) {
+		TypedQuery<Painting> query =em.createQuery("SELECT q FROM Painting q WHERE q.autore.id ="+idAutore+"",Painting.class);
+		return query.getResultList();
+	}
+
+	public List<Painting> getPaintingByAnno(Integer anno) {
+		TypedQuery<Painting> query=em.createQuery("SELECT q FROM Painting q where q.annoRealizzazione="+anno+"",Painting.class);
+		return query.getResultList();
+	}
+
+	public List<Painting> getPaintingByNazione(String nazione) {
+		TypedQuery<Painting> query=em.createQuery("SELECT q FROM Painting q WHERE q.autore.nazionalita='"+nazione+"'",Painting.class);
 		return query.getResultList();
 	}
 }

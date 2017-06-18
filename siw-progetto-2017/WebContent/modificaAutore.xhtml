@@ -3,13 +3,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:t="http://myfaces.apache.org/tomahawk"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
-	<title>Modifica Autore</title>	
-	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII"/>
+	<title>Modifica Autore</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
 </h:head>
-<h:body background="http://www.drogbaster.it/sfondi-spazio/spazio-notte-montagne-cielo.jpg">
+<h:body
+	background="http://www.drogbaster.it/sfondi-spazio/spazio-notte-montagne-cielo.jpg">
 	<f:view>
 		<!-- Menu' di testa -->
 		<ui:include src="header.xhtml" />
@@ -17,13 +17,16 @@
 			<h:form id="modifyAuthor" styleClass="form-horizontal">
 				<h:message for="editAuthor" styleClass="error alert alert-danger" />
 				<div>
-					<h1><strong>Modifica Autore</strong></h1>
+					<h1>
+						<strong>Modifica Autore</strong>
+					</h1>
 				</div>
 				<div class="form-group text-primary">
 					<label for="nome" class="col-sm-1 control-label col-lg-offset-3"><strong>Nome</strong></label>
 					<div class="col-sm-2">
 						<h:inputText id="nome" value="#{editAutore.nome}"
-							requiredMessage="Campo Obbligatorio" required="true" styleClass="form-control"/>
+							requiredMessage="Campo Obbligatorio" required="true"
+							styleClass="form-control" />
 						<h:message for="nome" style="color:red" />
 					</div>
 					<label for="cognome" class="col-sm-1 control-label"><strong>Cognome</strong></label>
@@ -36,31 +39,43 @@
 				</div>
 				<div class="form-group text-primary">
 					<label for="nazionalita"
-						class="col-sm-1 control-label col-lg-offset-3"><strong>Paese di Nascita</strong></label>
+						class="col-sm-1 control-label col-lg-offset-3"><strong>Paese
+							di Nascita</strong></label>
 					<div class="col-sm-2">
-						<h:inputText value="#{editAutore.nazionalita}"
-							required="true" requiredMessage="Campo Obbligatorio"
-							id="nazionalita" styleClass="form-control" />
+						<h:inputText value="#{editAutore.nazionalita}" required="true"
+							requiredMessage="Campo Obbligatorio" id="nazionalita"
+							styleClass="form-control" />
 						<h:message for="nazionalita" style="color:red" />
 					</div>
-					<label for="data_nascita" class="col-sm-1 control-label"><strong>Data di Nascita</strong></label>
+					<label for="data_nascita" class="col-sm-1 control-label"><strong>Data
+							di Nascita</strong></label>
 					<div class="col-sm-2">
-						<t:inputDate value="#{editAutore.dataNascita}"
-							id="data_nascita" styleClass="form-control" />
+						<h:inputText value="#{editAutore.dataNascita}" id="data_nascita"
+							styleClass="form-control" placeholder="yyyy-MM-dd">
+							<f:convertDateTime pattern="yyyy-MM-dd" />
+						</h:inputText>
 					</div>
+
+
 				</div>
 				<div class="form-group text-primary">
 					<label for="data_morte"
-						class="col-sm-1 control-label col-lg-offset-3"><strong>Data di Morte</strong></label>
+						class="col-sm-1 control-label col-lg-offset-3"><strong>Data
+							di Morte</strong></label>
 					<div class="col-sm-2">
-						<t:inputDate value="#{editAutore.dataMorte}" id="data_morte"
-							styleClass="form-control" />
+						<h:inputText value="#{editAutore.dataMorte}" id="data_morte"
+							styleClass="form-control" placeholder="yyyy-MM-dd">
+							<f:convertDateTime pattern="yyyy-MM-dd" />
+						</h:inputText>
 					</div>
+
+
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-5 col-sm-3">
 						<h:commandButton styleClass="btn btn-primary" id="editAuthor"
-							value="Modifica" action="#{authorController.modificaAutore(editAutore)}" />
+							value="Modifica"
+							action="#{authorController.modificaAutore(editAutore)}" />
 					</div>
 				</div>
 			</h:form>

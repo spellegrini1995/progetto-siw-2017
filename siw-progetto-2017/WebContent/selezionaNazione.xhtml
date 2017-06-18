@@ -18,17 +18,17 @@
 				<h:message for="selAuthor" styleClass="error alert alert-danger" />
 				<div>
 					<h1>
-						<strong>Seleziona un autore</strong>
+						<strong>Seleziona Nazione</strong>
 					</h1>
 				</div>
 				<div class="form-group text-primary">
 					<div class="col-sm-2" align="center">
 						<ul class="list-group">
-							<ui:repeat var="autore" value="#{authorController.getAll()}"
-								varStatus="status">
+							<ui:repeat var="nazione"
+								value="#{authorController.listaNazioni()}" varStatus="status">
 								<li class="list-group-item"><h:commandLink
-										value="#{autore.nome} #{autore.cognome}"
-										action="#{authorController.visualizzaQuadriAutore(autore.id)}" /></li>
+										value="#{nazione}"
+										action="#{paintingController.visualizzaQuadriNazione(nazione)}" /></li>
 							</ui:repeat>
 						</ul>
 					</div>

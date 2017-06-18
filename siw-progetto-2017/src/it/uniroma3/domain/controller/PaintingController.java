@@ -11,7 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
 
-
+import it.uniroma3.domain.facade.AuthorFacade;
 import it.uniroma3.domain.facade.PaintingFacade;
 import it.uniroma3.domain.model.Author;
 import it.uniroma3.domain.model.Painting;
@@ -38,25 +38,9 @@ public class PaintingController {
 
 
 	public String salvaQuadro() {
-		Painting q = new Painting(titolo, annoRealizzazione, tecnica, dimensioni);
-		q.setImmagine(this.getImgFromPart(immagine));
-		operaCorrente = paintingFacade.salva(q, idAutore);
+		byte[] tmp = this.converti(immagine);
+		operaCorrente = paintingFacade.salva(titolo, annoRealizzazione, dimensioni,tecnica,idAutore,tmp);
 		return "datiQuadro";
-	}
-
-	private byte[] getImgFromPart(Part imgPart) {
-		byte[] imgByte;
-		try {
-			InputStream is = imgPart.getInputStream();
-			byte[] buffer = new byte[(int)imgPart.getSize()];
-			ByteArrayOutputStream output = new ByteArrayOutputStream();
-			for (int length=0;(length=is.read(buffer))>0;) 
-				output.write(buffer,0,length);
-			imgByte = output.toByteArray();
-		} catch (IOException | NullPointerException e) {	//Nel caso in cui l'immagine non viene inserita
-			imgByte = new byte[0];
-		}
-		return imgByte;
 	}
 
 	public List<Painting> getOpere(){
@@ -80,24 +64,42 @@ public class PaintingController {
 		this.opere = paintingFacade.getAll();
 		this.setOpere(opere);
 		return "listaQuadri";
-	}		
-	public String viewAuthorPaintings() {
-		this.opere = paintingFacade.getQuadriPerAutore(idAutore);
+	}			
+	public String searchPaintings() {
+		this.opere = paintingFacade.getAll();
 		this.setOpere(opere);
-		return "listaQuadriPerAutore";
-	}	
+		return "ricercaQuadri";
+	}		
 	public String selezionaAutore() {
 		return "selezionaAutore";
+	}	
+	public String selezionaAnno() {
+		return "selezionaAnno";
+	}	
+	public String selezionaNazione() {
+		return "selezionaNazione";
 	}
 
 	public String setAuthor(){
 		this.setAutore(autore);
 		return "listaQuadri";
 	}
-
+	public List<Integer> listaAnni(){
+		return paintingFacade.listaAnni();
+	}
 	public String nullAuthor() {
 		this.autore=null;
 		this.setAutore(autore);
+		return "listaQuadri";
+	}
+	public String visualizzaQuadriAnno(Integer anno){
+		this.opere = paintingFacade.getPaintingByAnno(anno);
+		this.setOpere(opere);
+		return "listaQuadri";
+	}	
+	public String visualizzaQuadriNazione(String nazione){
+		this.opere = paintingFacade.getPaintingByNazione(nazione);
+		this.setOpere(opere);
 		return "listaQuadri";
 	}
 

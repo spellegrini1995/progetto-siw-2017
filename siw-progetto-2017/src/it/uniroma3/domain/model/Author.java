@@ -9,13 +9,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@NamedQuery(name = "findAllAuthors", query = "SELECT a FROM Author a")
+@NamedQueries({
+	@NamedQuery(name = "findAllAuthors", query = "SELECT a FROM Author a"),
+	@NamedQuery(name = "nazioniAutori", query = "SELECT DISTINCT a.nazionalita FROM Author a")})
 public class Author {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -45,7 +48,10 @@ public class Author {
 		this.quadri = new ArrayList<>();
 	}
 	
-	public Author(){}
+	public Author(){
+		this.quadri = new ArrayList<>();
+
+	}
 
 	public Long getId() {
 		return id;
@@ -96,7 +102,7 @@ public class Author {
 	}
 
 	public List<Painting> getQuadri() {
-		return quadri;
+		return this.quadri;
 	}
 
 	public void setQuadri(List<Painting> quadri) {

@@ -67,14 +67,8 @@
 												value="Inserisci un nuovo Autore" /></li>
 										<c:if test="${fn:length(paintingController.opere) ge 1}">
 											<li><h:commandLink
-													action="#{paintingController.viewPaintings}"
-													value="Lista quadri" /></li>
-										</c:if>
-										<c:if test="${fn:length(paintingController.opere) ge 1}">
-
-											<li><h:commandLink
-													action="#{paintingController.selezionaAutore}"
-													value="Lista quadri per autore" /></li>
+													action="#{paintingController.searchPaintings}"
+													value="Ricerca quadri" /></li>
 										</c:if>
 										<li><h:commandLink
 												action="#{authorController.viewAuthors}"
@@ -91,14 +85,8 @@
 										<c:if test="${fn:length(paintingController.opere) ge 1}">
 
 											<li><h:commandLink
-													action="#{paintingController.viewPaintings}"
-													value="Visualizza tutti i quadri" /></li>
-										</c:if>
-										<c:if test="${fn:length(paintingController.opere) ge 1}">
-
-											<li><h:commandLink
-													action="#{paintingController.selezionaAutore}"
-													value="Visualizza tutti i quadri per autore" /></li>
+													action="#{paintingController.searchPaintings}"
+													value="Ricerca quadri" /></li>
 										</c:if>
 										<li><h:commandLink
 												action="#{authorController.viewAuthors}"
@@ -131,14 +119,8 @@
 									<c:if test="${fn:length(paintingController.opere) ge 1}">
 
 										<li><h:commandLink
-												action="#{paintingController.viewPaintings}"
-												value="Lista quadri" /></li>
-									</c:if>
-									<c:if test="${fn:length(paintingController.opere) ge 1}">
-
-										<li><h:commandLink
-												action="#{paintingController.selezionaAutore}"
-												value="Lista quadri per autore" /></li>
+												action="#{paintingController.searchPaintings}"
+												value="Ricerca quadri" /></li>
 									</c:if>
 									<li><a href='userLogin.xhtml'>Login</a></li>
 									<li><a href='registrazioneUtente.xhtml'>Registrati</a></li>
