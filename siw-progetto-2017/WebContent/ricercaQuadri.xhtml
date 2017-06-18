@@ -13,13 +13,12 @@
 	<f:view>
 		<!-- Menu di testa -->
 		<ui:include src="header.xhtml" />
-		<div align="center" class="text-primary">
+		<div class="text-primary"  align="center">
 			<h1>
 				<strong>Seleziona la ricerca quadri</strong>
 			</h1>
 			<h:form>
-				<div align="center" class="form-group text-primary">
-					<div class="col-sm-2">
+				<div class="form-group text-primary" align="center">
 						<ul class="list-group">
 							<li class="list-group-item"> <h:commandLink value="Tutti i Quadri"
 								action="#{paintingController.viewPaintings}" /> </li>
@@ -30,7 +29,6 @@
 							<li class="list-group-item"> <h:commandLink value="Ricerca quadro per nazione"
 								action="#{paintingController.selezionaNazione}" /></li>
 						</ul>
-					</div>
 				</div>
 			</h:form>
 		</div>

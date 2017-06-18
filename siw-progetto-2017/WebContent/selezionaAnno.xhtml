@@ -21,17 +21,14 @@
 						<strong>Seleziona Anno</strong>
 					</h1>
 				</div>
-				<div class="form-group text-primary">
-					<div class="col-sm-2" align="center">
-						<ul class="list-group">
-							<ui:repeat var="anno" value="#{paintingController.listaAnni()}"
-								varStatus="status">
-								<li class="list-group-item"><h:commandLink
-										value="#{anno}"
-										action="#{paintingController.visualizzaQuadriAnno(anno)}" /></li>
-							</ui:repeat>
-						</ul>
-					</div>
+				<div class="form-group text-primary" align="center">
+					<ul class="list-group">
+						<ui:repeat var="anno" value="#{paintingController.listaAnni()}"
+							varStatus="status">
+							<li class="list-group-item"><h:commandLink value="#{anno}"
+									action="#{paintingController.visualizzaQuadriAnno(anno)}" /></li>
+						</ui:repeat>
+					</ul>
 				</div>
 			</h:form>
 		</div>

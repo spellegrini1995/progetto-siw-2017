@@ -21,8 +21,7 @@
 						<strong>Seleziona un autore</strong>
 					</h1>
 				</div>
-				<div class="form-group text-primary">
-					<div class="col-sm-2" align="center">
+				<div class="form-group text-primary" align="center">
 						<ul class="list-group">
 							<ui:repeat var="autore" value="#{authorController.getAll()}"
 								varStatus="status">
@@ -31,7 +30,6 @@
 										action="#{authorController.visualizzaQuadriAutore(autore.id)}" /></li>
 							</ui:repeat>
 						</ul>
-					</div>
 				</div>
 			</h:form>
 		</div>

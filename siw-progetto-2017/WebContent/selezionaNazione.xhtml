@@ -21,8 +21,7 @@
 						<strong>Seleziona Nazione</strong>
 					</h1>
 				</div>
-				<div class="form-group text-primary">
-					<div class="col-sm-2" align="center">
+				<div class="form-group text-primary" align="center">
 						<ul class="list-group">
 							<ui:repeat var="nazione"
 								value="#{authorController.listaNazioni()}" varStatus="status">
@@ -31,7 +30,6 @@
 										action="#{paintingController.visualizzaQuadriNazione(nazione)}" /></li>
 							</ui:repeat>
 						</ul>
-					</div>
 				</div>
 			</h:form>
 		</div>
