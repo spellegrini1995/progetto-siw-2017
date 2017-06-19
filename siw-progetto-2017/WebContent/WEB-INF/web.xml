@@ -56,7 +56,6 @@
 		<filter-name>Common filter</filter-name>
 		<url-pattern>/datiAutore.xhtml</url-pattern>
 		<url-pattern>/datiQuadro.xhtml</url-pattern>
-		<url-pattern>/listaAutori.xhtml</url-pattern>
 		<url-pattern>/registrazioneAvvenuta.xhtml</url-pattern>
     </filter-mapping>
 </web-app>

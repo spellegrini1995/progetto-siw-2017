@@ -55,9 +55,11 @@
 					<label for="dataNascita"
 						class="col-sm-1 control-label col-lg-offset-3"><strong>Data di Nascita</strong></label>
 					<div class="col-sm-2">
-						<t:inputDate value="#{administratorController.dateOfBirth}"
-							required="true" requiredMessage="Campo Obbligatorio" id="dateOfBirth"
-							styleClass="form-control" />
+						<h:inputText value="#{administratorController.dateOfBirth}" required="true"
+							requiredMessage="Campo Obbligatorio" id="dateOfBirth"
+							styleClass="form-control">
+							<f:convertDateTime pattern="yyyy-MM-dd" />
+						</h:inputText>
 						<h:message for="dateOfBirth" style="color:red" />
 					</div>
 					<label for="phoneNumber" class="col-sm-1 control-label"><strong>Telefono</strong></label>

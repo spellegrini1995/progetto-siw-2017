@@ -50,7 +50,7 @@
 					<label for="data_nascita" class="col-sm-1 control-label"><strong>Data
 							di Nascita</strong></label>
 					<div class="col-sm-2">
-						<h:inputText value="#{editAutore.dataNascita}" id="data_nascita"
+						<h:inputText value="#{authorController.dataNascita}" id="data_nascita"
 							styleClass="form-control" placeholder="yyyy-MM-dd">
 							<f:convertDateTime pattern="yyyy-MM-dd" />
 						</h:inputText>
@@ -63,7 +63,7 @@
 						class="col-sm-1 control-label col-lg-offset-3"><strong>Data
 							di Morte</strong></label>
 					<div class="col-sm-2">
-						<h:inputText value="#{editAutore.dataMorte}" id="data_morte"
+						<h:inputText value="#{authorController.dataMorte}" id="data_morte"
 							styleClass="form-control" placeholder="yyyy-MM-dd">
 							<f:convertDateTime pattern="yyyy-MM-dd" />
 						</h:inputText>
