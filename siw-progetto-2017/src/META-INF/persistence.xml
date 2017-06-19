@@ -7,13 +7,13 @@
 		transaction-type="JTA">
 		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
 		<jta-data-source>PostgreSQL Database</jta-data-source>
-		
+
 		<class>it.uniroma3.domain.model.User</class>
 		<class>it.uniroma3.domain.model.Painting</class>
 		<class>it.uniroma3.domain.model.Administrator</class>
 		<class>it.uniroma3.domain.model.Address</class>
 		<class>it.uniroma3.domain.model.Author</class>
-		
+
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 			<property name="javax.persistence.jdbc.user" value="postgres" />

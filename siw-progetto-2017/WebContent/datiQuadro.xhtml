@@ -4,21 +4,39 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:o="http://omnifaces.org/ui"> 
+	xmlns:o="http://omnifaces.org/ui">
 <h:head>
-<title>Quadro: ${paintingController.operaCorrente.titolo}</title>
+	<title>Dati Quadro</title>
 </h:head>
-<h:body background = "http://www.zerboni.com/immagini/Cornici%20e%20Bordi-5/cornice%2032.gif">
+<h:body
+	background="http://www.zerboni.com/immagini/Cornici%20e%20Bordi-5/cornice%2032.gif">
 	<f:view>
 		<ui:include src="header.xhtml" />
-		<div align="center" class="text-primary">
-			<h2><strong>${paintingController.operaCorrente.titolo}</strong></h2>
-			<h3><em>Dettagli</em></h3>
-			<div>Anno Realizzazione: <strong>${paintingController.operaCorrente.annoRealizzazione}</strong></div>
-			<div>Tecnica: <strong>${paintingController.operaCorrente.tecnica}</strong></div>
-			<div>Dimensioni: <strong>${paintingController.operaCorrente.dimensioni}</strong></div>
-			<div>Autore:<em><strong>${paintingController.operaCorrente.autore.nome} ${paintingController.operaCorrente.autore.cognome}</strong></em></div>
-            <div>Immagine:<o:graphicImage value="#{paintingController.operaCorrente.immagine}" class="img-responsive" dataURI="true"/></div>
+		<div align="center">
+			<h2 class="text-primary">
+				<strong>${paintingController.operaCorrente.titolo}</strong>
+			</h2>
+			<h3 class="text-info">
+				<em>Dettagli</em>
+			</h3>
+			<div class="text-success">
+				Anno Realizzazione: <strong>${paintingController.operaCorrente.annoRealizzazione}</strong>
+			</div>
+			<div class="text-success">
+				Tecnica: <strong>${paintingController.operaCorrente.tecnica}</strong>
+			</div>
+			<div class="text-success">
+				Dimensioni: <strong>${paintingController.operaCorrente.dimensioni}</strong>
+			</div>
+			<div class="text-warning">
+				Autore:<em><strong>${paintingController.operaCorrente.autore.nome}
+						${paintingController.operaCorrente.autore.cognome}</strong></em>
+			</div>
+			<div>
+				Immagine:
+				<o:graphicImage value="#{paintingController.operaCorrente.immagine}"
+					class="img-responsive" dataURI="true" />
+			</div>
 		</div>
 	</f:view>
 </h:body>

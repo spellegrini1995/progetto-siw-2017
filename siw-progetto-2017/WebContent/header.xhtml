@@ -19,14 +19,12 @@
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script
 		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <style>
-    
-    body {
-	background-size:cover;
+	<style>
+body {
+	background-size: cover;
 	text-shadow: black 1px 1px 1px;
-	}
-	
-    </style>	
+}
+</style>
 </h:head>
 <h:body>
 	<f:view>
@@ -85,7 +83,6 @@
 													action="#{authorController.viewAuthors}"
 													value="Lista autori" /></li>
 										</c:if>
-
 									</ul></li>
 							</c:if>
 
@@ -96,7 +93,6 @@
 										class="caret"></b></a>
 									<ul class="dropdown-menu">
 										<c:if test="${fn:length(paintingController.opere) ge 1}">
-
 											<li><h:commandLink
 													action="#{paintingController.searchPaintings}"
 													value="Ricerca quadri" /></li>
@@ -120,7 +116,6 @@
 								<li><h:commandLink value="Logout"
 										action="#{administratorController.logoutAdministrator}" /></li>
 							</c:if>
-
 							<c:if test="${userController.currentUser != null}">
 								<li><a href='userHome.xhtml'>Il mio profilo: <b>${userController.currentUser.nome}
 											${userController.currentUser.cognome}</b>
@@ -128,12 +123,10 @@
 								<li><h:commandLink value="Logout"
 										action="#{userController.logoutUser}" /></li>
 							</c:if>
-
 							<c:if
 								test="${administratorController.currentAdministrator == null}">
 								<c:if test="${userController.currentUser == null}">
 									<c:if test="${fn:length(paintingController.opere) ge 1}">
-
 										<li><h:commandLink
 												action="#{paintingController.viewPaintings}"
 												value="Galleria Quadri" /></li>
@@ -149,7 +142,6 @@
 										</ul></li>
 								</c:if>
 							</c:if>
-
 							<c:if test="${empty administratorController.administrators}">
 								<ul class="nav navbar-nav navbar-right">
 									<li><h:commandLink

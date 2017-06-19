@@ -19,20 +19,20 @@ public class PaintingFacade {
 
 	@PersistenceContext(unitName = "progetto-siw-unit")
 	private EntityManager em;
-	
+
 	public Painting salva(String titolo,Integer annoRealizzazione,String dimensioni,
 			String tecnica,Long idAutore,byte[] immagine){
 		Painting q=new Painting();
-		 q.setTitolo(titolo);
-		 q.setAnnoRealizzazione(annoRealizzazione);
-		 q.setDimensioni(dimensioni);
-		 q.setTecnica(tecnica);
-		 q.setAutore(em.find(Author.class,idAutore));
-		 q.setImmagine(immagine);
-		 em.persist(q);
-		 return q;
+		q.setTitolo(titolo);
+		q.setAnnoRealizzazione(annoRealizzazione);
+		q.setDimensioni(dimensioni);
+		q.setTecnica(tecnica);
+		q.setAutore(em.find(Author.class,idAutore));
+		q.setImmagine(immagine);
+		em.persist(q);
+		return q;
 	}
-	
+
 	public Painting find(Long id){
 		return em.find(Painting.class,id);
 	}
@@ -41,10 +41,10 @@ public class PaintingFacade {
 		return query.getResultList();
 	}	
 	public Painting getPaintingByTitolo(String titolo){
-			Query q = em.createQuery("SELECT c FROM Painting c WHERE c.titolo = :titolo");
-			q.setParameter("titolo", titolo);
-			Painting p = (Painting) q.getSingleResult();
-			return p;
+		Query q = em.createQuery("SELECT c FROM Painting c WHERE c.titolo = :titolo");
+		q.setParameter("titolo", titolo);
+		Painting p = (Painting) q.getSingleResult();
+		return p;
 	}
 	public void remove(Long id){
 		Painting q=this.find(id);
@@ -63,7 +63,7 @@ public class PaintingFacade {
 		TypedQuery<Integer> query=em.createNamedQuery("anniQuadri",Integer.class);
 		return query.getResultList();
 	}
-	
+
 	public List<String> listaTecniche(){
 		TypedQuery<String> query=em.createNamedQuery("tecnicheQuadri",String.class);
 		return query.getResultList();
@@ -80,6 +80,8 @@ public class PaintingFacade {
 		query.setParameter("tecnica", tecnica);
 		return query.getResultList();
 	}
+
+	@SuppressWarnings("unchecked")
 	public List<Painting> getAuthorPaintings(Long id){
 		Query query = em.createQuery("SELECT q FROM Painting q WHERE q.autore.id = :id");
 		query.setParameter("id",  id);

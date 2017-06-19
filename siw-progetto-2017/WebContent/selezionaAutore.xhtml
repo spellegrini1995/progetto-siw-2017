@@ -9,28 +9,28 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
 </h:head>
 <h:body
-	background="http://www.salvatorezeno.com/wp-content/uploads/2015/10/Uomo-Salvatore-Zeno.jpg">
+	background="http://www.firenzeart.it/images_new/opere/4702_large_sguanci_037.jpg">
 	<f:view>
 		<!-- Menu' di testa -->
 		<ui:include src="header.xhtml" />
 		<div align="center" class="text-primary">
 			<h:form>
 				<h:message for="selAuthor" styleClass="error alert alert-danger" />
-				<div>
-					<h1>
-						<strong>Seleziona un autore</strong>
-					</h1>
-				</div>
-				<div class="form-group text-primary" align="center">
-						<ul class="list-group">
-							<ui:repeat var="autore" value="#{authorController.getAll()}"
-								varStatus="status">
-								<li class="list-group-item"><h:commandLink
-										value="#{autore.nome} #{autore.cognome}"
-										action="#{paintingController.visualizzaQuadriAutore(autore.id)}" /></li>
-							</ui:repeat>
-						</ul>
-				</div>
+				<h1 class="text-danger">
+					<strong>Seleziona un Autore</strong>
+				</h1>
+				<table class="table table-bordered">
+					<tr class="text-success">
+						<th><strong>Autore Quadro</strong></th>
+					</tr>
+					<ui:repeat var="autore" value="#{authorController.getAll()}"
+						varStatus="status">
+						<tr>
+							<td><h:commandLink value="#{autore.nome} #{autore.cognome}"
+									action="#{paintingController.visualizzaQuadriAutore(autore.id)}" /></td>
+						</tr>
+					</ui:repeat>
+				</table>
 			</h:form>
 		</div>
 	</f:view>

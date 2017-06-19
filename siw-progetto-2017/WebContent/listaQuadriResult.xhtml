@@ -3,10 +3,9 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:t="http://myfaces.apache.org/tomahawk"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
-	<title>Quadri</title>
+	<title>Quadri Filtrati</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
 	<style>
 .list-group-item {
@@ -15,18 +14,17 @@
 </style>
 </h:head>
 <h:body
-	background="http://fondazionesella.org/img/home-slider/mostra_fondazione-sella_andreea-secara.jpg">
+	background="http://www.pertur.it/wp-content/uploads/2015/12/m2.jpeg">
 	<f:view>
 		<!-- Menu di testa -->
 		<ui:include src="header.xhtml" />
 		<div align="center">
-			<h1>
-				<strong>Lista Quadri</strong>
+			<h1 class="text-danger">
+				<strong>Lista Quadri Filtrata</strong>
 			</h1>
-
 			<h:form>
 				<table class="table table-bordered">
-					<tr>
+					<tr class="text-success">
 						<th><strong>Titolo</strong></th>
 						<th><strong>Anno Realizzazione</strong></th>
 						<th><strong>Dimensioni</strong></th>
@@ -35,7 +33,7 @@
 					</tr>
 					<ui:repeat var="opera" value="#{paintingController.opereResult}"
 						varStatus="status">
-						<tr>
+						<tr class="text-warning">
 							<td><em><strong>#{opera.titolo}</strong></em></td>
 							<td><strong>#{opera.annoRealizzazione}</strong></td>
 							<td><strong>#{opera.dimensioni}</strong></td>

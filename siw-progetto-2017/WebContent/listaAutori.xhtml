@@ -14,33 +14,43 @@
 		<!-- Menu di testa -->
 		<ui:include src="header.xhtml" />
 		<div align="center">
-			<h1>
+			<h1 class="text-danger">
 				<strong>Lista Autori</strong>
 			</h1>
-
 			<h:form>
 				<table class="table table-bordered">
-					<tr>
+					<tr class="text-success">
 						<th><strong>Nome e Cognome</strong></th>
 						<th><strong>Nazionalita</strong></th>
 						<th><strong>Data Nascita</strong></th>
 						<th><strong>Data Morte</strong></th>
-						<c:if test="administratorController.currentAdministrator !0 null">
-
+						<c:if
+							test="${administratorController.currentAdministrator != null}">
 							<th><strong>Modifica</strong></th>
 							<th><strong>Cancella</strong></th>
 						</c:if>
-
 					</tr>
-					<c:forEach var="a" items="#{authorController.autori}">
+					<ui:repeat var="a" value="#{authorController.autori}"
+						varStatus="status">
 						<tr>
-							<td><strong><h:commandLink class="active"
-										action="#{authorController.viewAuthor(a.nome,a.cognome)}"
-										value="#{a.nome} #{a.cognome}" /></strong></td>
+							<td><c:if test="${(userController.currentUser != null) or (administratorController.currentAdministrator != null)}">
+									<strong> <h:commandLink class="active"
+											action="#{authorController.viewAuthor(a.nome,a.cognome)}"
+											value="#{a.nome} #{a.cognome}" /></strong>
+								</c:if> 
+								<c:if test="${userController.currentUser == null}">
+									<c:if test="${administratorController.currentAdministrator==null}">
+										<strong> <h:commandLink class="active"
+												action="#{authorController.findAuthor(a.id)}"
+												value="#{a.nome} #{a.cognome}" /></strong>
+								    </c:if>
+							   </c:if>
+							</td>
 							<td><strong>${a.nazionalita}</strong></td>
 							<td><strong>${a.dataNascita}</strong></td>
 							<td><strong>${a.dataMorte}</strong></td>
-							<c:if test="administratorController.currentAdministrator !0 null">
+							<c:if
+								test="${administratorController.currentAdministrator != null}">
 								<td><h:commandButton value="Modifica"
 										styleClass="btn btn-primary"
 										action="#{authorController.iniziaModifica(a.id)}" /></td>
@@ -49,7 +59,7 @@
 										action="#{authorController.cancellaAutore(a.id)}" /></td>
 							</c:if>
 						</tr>
-					</c:forEach>
+					</ui:repeat>
 				</table>
 			</h:form>
 		</div>

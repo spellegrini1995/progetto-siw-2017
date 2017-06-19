@@ -32,8 +32,8 @@ public class CommonFilter implements Filter{
 		UserController usercontroller=(UserController)(req.getSession().getAttribute("userController"));
 
 		
-		if(admincontroller==null||admincontroller.getCurrentAdministrator()==null && usercontroller==null||usercontroller.getCurrentUser()==null){
-			RequestDispatcher rd=this.application.getRequestDispatcher("/index.xhtml");
+		if((admincontroller==null||admincontroller.getCurrentAdministrator()==null) && (usercontroller==null||usercontroller.getCurrentUser()==null)){
+			RequestDispatcher rd=this.application.getRequestDispatcher("/index.html");
 			rd.forward(request,response);
 		}
 		chain.doFilter(request,response);

@@ -37,9 +37,10 @@ public class PaintingController {
 	private PaintingFacade paintingFacade;
 
 
-	public String salvaQuadro() {
+	public String salvaQuadro() throws IOException {
 		byte[] tmp = this.converti(immagine);
 		operaCorrente = paintingFacade.salva(titolo, annoRealizzazione, dimensioni,tecnica,idAutore,tmp);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/datiQuadro.xhtml");
 		return "datiQuadro";
 	}
 
@@ -47,65 +48,74 @@ public class PaintingController {
 		this.opere=paintingFacade.getAll();
 		return this.opere;
 	}
-	public String visualizzaOpera(Long id){
+	public String visualizzaOpera(Long id) throws IOException{
 		this.operaCorrente=paintingFacade.find(id);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/datiQuadro.xhtml");
 		return "datiQuadro";
 	}
-	public String vediOpera(String titolo){
+	public String vediOpera(String titolo) throws IOException{
 		this.operaCorrente=paintingFacade.getPaintingByTitolo(titolo);
 		return "datiQuadro";
 	}
-	public String cancellaOpera(Long id){
+	public String cancellaOpera(Long id) throws IOException{
 		this.paintingFacade.remove(id);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/listaQuadri.xhtml");
 		return "listaQuadri";
 	}
 
-	public String viewPaintings() {
+	public String viewPaintings() throws IOException {
 		this.opere = paintingFacade.getAll();
 		this.setOpere(opere);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/listaQuadri.xhtml");
 		return "listaQuadri";
 	}			
-	public String searchPaintings() {
+	public String searchPaintings() throws IOException {
 		this.opere = paintingFacade.getAll();
 		this.setOpere(opere);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/ricercaQuadri.xhtml");
 		return "ricercaQuadri";
 	}		
-	public String selezionaAutore() {
+	public String selezionaAutore() throws IOException {
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/selezionaAutore.xhtml");
 		return "selezionaAutore";
 	}	
-	public String selezionaAnno() {
+	public String selezionaAnno() throws IOException {
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/selezionaAnno.xhtml");
 		return "selezionaAnno";
 	}	
-	public String selezionaTecnica() {
+	public String selezionaTecnica() throws IOException {
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/selezionaTecnica.xhtml");
 		return "selezionaTecnica";
 	}
 
-	public String setAuthor(){
+	public String setAuthor() throws IOException{
 		this.setAutore(autore);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/listaQuadri.xhtml");
 		return "listaQuadri";
 	}
 	public List<Integer> listaAnni(){
 		return paintingFacade.listaAnni();
 	}
-	
+
 	public List<String> listaTecniche(){
 		return paintingFacade.listaTecniche();
 	}
-	
-	public String nullAuthor() {
+
+	public String nullAuthor() throws IOException {
 		this.autore=null;
 		this.setAutore(autore);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/listaQuadri.xhtml");
 		return "listaQuadri";
 	}
-	public String visualizzaQuadriAnno(Integer anno){
+	public String visualizzaQuadriAnno(Integer anno) {
 		this.setOpereResult(paintingFacade.getPaintingsByAnno(anno));
 		return "listaQuadriResult";
 	}	
-	public String visualizzaQuadriTecnica(String tecnica){
+	public String visualizzaQuadriTecnica(String tecnica) {
 		this.setOpereResult(paintingFacade.getPaintingsByTecnica(tecnica));
 		return "listaQuadriResult";
 	}
-	public String visualizzaQuadriAutore(Long id){
+	public String visualizzaQuadriAutore(Long id) {
 		this.setOpereResult(this.paintingFacade.getAuthorPaintings(id));
 		return "listaQuadriResult";
 	}
@@ -123,19 +133,24 @@ public class PaintingController {
 		}
 		return res;
 	}
-	public String modificaQuadro(Long id){
+	public String modificaQuadro(Long id) throws IOException{
 		this.operaCorrente=paintingFacade.find(id);
 		this.sessionMap.put("editQuadro",operaCorrente);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/modificaQuadro.xhtml");
 		return "modificaQuadro";
 	}
-	public String updateQuadro(Painting q){
+	public String updateQuadro(Painting q) throws IOException{
 		byte[] nuovaImm=this.converti(this.immagine);
 		if(nuovaImm.length>0)
 			q.setImmagine(nuovaImm);
 		this.paintingFacade.merge(q, idAutore);
 		this.sessionMap.remove("editQuadro");
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/listaQuadri.xhtml");
 		return "listaQuadri";
 	}
+
+	//getter e setter
+
 	public String getTitolo() {
 		return titolo;
 	}
@@ -213,12 +228,12 @@ public class PaintingController {
 	}
 
 	public List<Painting> getOpereResult() {
-		return opereResult;
+		return this.opereResult;
 	}
 
 	public void setOpereResult(List<Painting> opereResult) {
 		this.opereResult = opereResult;
 	}
-	
+
 
 }

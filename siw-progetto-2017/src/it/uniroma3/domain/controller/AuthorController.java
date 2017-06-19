@@ -1,5 +1,6 @@
 package it.uniroma3.domain.controller;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -38,11 +39,12 @@ public class AuthorController {
 		try{
 			this.author= authorFacade.createAuthor(nome,cognome,nazionalita,dataNascita,dataMorte);
 			this.setAuthor(author);
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/datiAutore.xhtml");
 			return "datiAutore"; 			
 		}catch(Exception e){
 			/*Autore gi� registrato*/
 			this.resetAuthor();
-			FacesContext.getCurrentInstance().addMessage("newAuthor:createAuthor", new FacesMessage("Autore gi� registrato!"));
+			FacesContext.getCurrentInstance().addMessage("newAuthor:createAuthor", new FacesMessage("Autore gia registrato!"));
 			return "inserimentoNuovoAutore";
 		}
 	}
@@ -55,57 +57,66 @@ public class AuthorController {
 		this.dataMorte = null;
 	}
 
-	public String listPaintings() {
+	public String listPaintings() throws IOException {
 		this.quadri = author.getQuadri();
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/listaQuadri.xhtml");
 		return "listaQuadri"; 
 	}
-	
+
 	public List<String> listaNazioni(){
 		return authorFacade.listaNazioni();
 	}
-	public String findAuthor() {
+
+	public String findAuthor() throws IOException {
 		this.author = authorFacade.getAuthor(id);
 		setAuthor(author);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/datiAutore.xhtml");
 		return "datiAutore";
 	}
-	public String cancellaAutore(Long id){
+	public String cancellaAutore(Long id) throws IOException{
 		this.authorFacade.deleteAuthor(id);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/listaAutori.xhtml");
 		return "listaAutori";
 	}
 	public List<Author> getAll(){
 		return authorFacade.getAllAuthors();
 	}	
-	public String findAuthor(Long id) {
+	public String findAuthor(Long id) throws IOException {
 		this.author = authorFacade.getAuthor(id);
 		setAuthor(author);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/datiAutore.xhtml");
 		return "datiAutore";
 	}	
-	public String viewAuthors() {
-			this.autori = authorFacade.getAllAuthors();
-			this.setAutori(autori);
-			return "listaAutori";
+	public String viewAuthors() throws IOException {
+		this.autori = authorFacade.getAllAuthors();
+		this.setAutori(autori);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/listaAutori.xhtml");
+		return "listaAutori";
 	}	
 	public String viewAuthor(String nome, String cognome) {
-			this.author = authorFacade.getAuthor(nome, cognome);
-			this.setAuthor(author);
-			return "datiAutore";
+		this.author = authorFacade.getAuthor(nome, cognome);
+		this.setAuthor(author);
+		return "datiAutore";
 	}
-	
+
 	public Author getByNameAuthor(String nome, String cognome){
 		this.author = authorFacade.getByNameAuthor(nome, cognome);
 		return this.author;
 	}
-	
-	public String iniziaModifica(Long id){
+
+	public String iniziaModifica(Long id) throws IOException{
 		Author scelto=authorFacade.getAuthor(id);
 		this.sessionMap.put("editAutore",scelto);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/modificaAutore.xhtml");
 		return "modificaAutore";
 	}
-	public String modificaAutore(Author a){
+	public String modificaAutore(Author a) throws IOException{
 		this.authorFacade.updateAuthor(a);
 		this.sessionMap.remove("editAutore");
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/listaAutori.xhtml");
 		return "listaAutori";
 	}
+
 	//getter and setter
 
 	public Long getId() {

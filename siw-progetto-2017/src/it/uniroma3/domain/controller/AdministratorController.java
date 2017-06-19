@@ -1,5 +1,6 @@
 package it.uniroma3.domain.controller;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -21,54 +22,57 @@ import it.uniroma3.domain.model.Painting;
 
 @ManagedBean(name="administratorController")
 @SessionScoped
-public class AdministratorController {
+public class AdministratorController  {
 
 	/*Dati per la registrazione di un nuovo utente da parte dell'amministratore */
 	private String firstName, lastName, passwordUser, email, phoneNumber, street, city, country, zipcode, state;
 	private Date dateOfBirth;
 	private Calendar registrationDate;
-	
+
 	private String nome;
 	private String cognome;
 	private String username;
 	private String password;
 	private Administrator currentAdministrator;
-	
+
 	@SuppressWarnings("unused")
 	private List<Administrator> administrators; //serve solo per la creazione dell'admin di prova
-	
+
 	private String message;
-	
+
 	@ManagedProperty(value="#{currentPainting}")
 	private Painting painting;
-	
+
 	@ManagedProperty(value="#{authorsPainting}")
 	private List<Author> authors;
 
 	@EJB(beanName="administratorFacade")
 	private AdministratorFacade administratorFacade;
-	
+
 	@EJB(beanName="userFacade")
 	private UserFacade userFacade;	
-	
+
 	@EJB(beanName="authorFacade")
 	private AuthorFacade authorFacade;
-	
+
 	@EJB(beanName="paintingFacade")
 	private PaintingFacade paintingFacade;
-	
-	public String createAdministrator() {
+
+	public String createAdministrator() throws IOException {
 		administratorFacade.createAdministrator("Nicholas","Napolitano","admin1","admin1");
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/index.xhtml");
 		return "index";
 	}
-	
+
 	public String loginAdministrator() {
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("userController");
 		try{
 			Administrator administrator = administratorFacade.getAdministratorByUsername(username);
 			if (administrator.checkPassword(this.password)) {
 				setCurrentAdministrator(administrator);
+				FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/registrazioneAvvenuta.xhtml");
 				return "registrazioneAvvenuta";
+
 			}
 			else{
 				// Password Errata
@@ -82,26 +86,28 @@ public class AdministratorController {
 			return "administratorLogin";
 		}
 	}
-	
-	public String createUser() {
+
+	public String createUser(){
 		try{
 			/*Genera automaticamente la data di oggi */
 			this.registrationDate = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
 			userFacade.createUser(firstName, lastName, email, passwordUser, phoneNumber, dateOfBirth, registrationDate,street, city, country, zipcode, state);
 			this.message = "Registrazione utente effettuata!";
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/registrazioneAvvenuta.xhtml");
 			return "registrazioneAvvenuta";
 		}catch(Exception e){
 			/*Utente gi� registrato*/
 			this.resetUser();
-			FacesContext.getCurrentInstance().addMessage("registrationUserByAdmin:signinUserByAdmin", new FacesMessage("Utente gi� registrato!"));
+			FacesContext.getCurrentInstance().addMessage("registrationUserByAdmin:signinUserByAdmin", new FacesMessage("Utente gia registrato!"));
 			return "registrazioneUtenteByAdmin";
 		}
 	}
-	
+
 	public String deleteUser() {
 		try{
 			userFacade.deleteUserByEmail(email);
 			this.message = "Cliente cancellato correttamente!";
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/administratorHome.xhtml");
 			return "administratorHome";
 		}catch(Exception e){
 			FacesContext.getCurrentInstance().addMessage("deletingUser:deleteUser", new FacesMessage("Utente inesistente!"));
@@ -123,42 +129,50 @@ public class AdministratorController {
 		this.dateOfBirth = null;
 		this.registrationDate = null;
 	}
-		
-	public String logoutAdministrator() {
+
+	public String logoutAdministrator() throws IOException {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/index.xhtml");
 		return "index";
 	}
-	
-	
-	public String newPainting() {
+
+
+	public String newPainting() throws IOException {
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/inserimentoQuadro.xhtml");
 		return "inserimentoQuadro";
 	}
-	
-	public String signUser(){
+
+	public String signUser() throws IOException{
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/registrazioneUtenteByAdmn.xhtml");
 		return "registrazioneUtenteByAdmin";
 	}
-	
-	public String destroyUser(){
+
+	public String destroyUser() throws IOException{
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/cancellaUtente.xhtml");
 		return "cancellaUtente";
 	}
-	
-	public String newAuthor(){
+
+	public String newAuthor() throws IOException{
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/inserimentoNuovoAutore.xhtml");
 		return "inserimentoNuovoAutore";
 	}
-	
-	public String viewHome(){
+
+	public String viewHome() throws IOException{
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/administratorHome.xhtml");
 		return "administratorHome";
 	}
-	
-	public String viewPaintings(){
+
+	public String viewPaintings() throws IOException{
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/listaQuadri.xhtml");
 		return "listaQuadri";
 	}
-	
+  
+	//getter and setter administrator
 	
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
@@ -178,10 +192,10 @@ public class AdministratorController {
 	public void setCurrentAdministrator(Administrator administrator) {
 		this.currentAdministrator = administrator;
 	}
-	
+
 
 	//Seguono i Getters e Setters dei dati del nuovo customer
-	
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -277,8 +291,7 @@ public class AdministratorController {
 	public void setRegistrationDate(Calendar registrationDate) {
 		this.registrationDate = registrationDate;
 	}
-	
-	
+
 	public String getNome() {
 		return nome;
 	}
@@ -356,11 +369,11 @@ public class AdministratorController {
 	}
 
 	public int getSize(){
-	    return this.getAdministrators().size();
+		return this.getAdministrators().size();
 	}
 
 	public void setAdministrators(List<Administrator> administrators) {
 		this.administrators = administrators;
 	}
-	
+
 }

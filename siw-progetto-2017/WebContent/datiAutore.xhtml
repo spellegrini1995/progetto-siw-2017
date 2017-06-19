@@ -8,17 +8,26 @@
 <h:head>
 	<title>Dati Autore</title>
 </h:head>
-<h:body background="http://www.arazzimoderni.it/wp-content/uploads/2016/03/cornice.png">
+<h:body
+	background="https://chaoticartists.files.wordpress.com/2015/10/32e5492.jpg">
 	<f:view>
-	<h:form>
-		<ui:include src="header.xhtml" />
-		<div align="center" class="text-primary">
-			<h1>Dettagli Autore <strong>${authorController.author.nome} ${authorController.author.cognome}</strong></h1>
-			<div>Nazionalita: <strong>${authorController.author.nazionalita}</strong></div>
-			<div>Data Nascita: <strong>${authorController.author.dataNascita}</strong></div>
-			<div>Data Morte: <strong>${authorController.author.dataMorte}</strong></div>
-	
-		</div>
+		<h:form>
+			<ui:include src="header.xhtml" />
+			<div align="center">
+				<h1 class="text-primary">
+					Dettagli Autore <strong>${authorController.author.nome}
+						${authorController.author.cognome}</strong>
+				</h1>
+				<div class="text-danger">
+					Nazionalita: <strong>${authorController.author.nazionalita}</strong>
+				</div>
+				<div class="text-danger">
+					Data Nascita: <strong>${authorController.author.dataNascita}</strong>
+				</div>
+				<div class="text-danger">
+					Data Morte: <strong>${authorController.author.dataMorte}</strong>
+				</div>
+			</div>
 		</h:form>
 	</f:view>
 </h:body>

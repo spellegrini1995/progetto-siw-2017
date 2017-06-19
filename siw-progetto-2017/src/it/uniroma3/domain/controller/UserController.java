@@ -1,5 +1,6 @@
 package it.uniroma3.domain.controller;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -41,11 +42,12 @@ public class UserController {
 			/*Genera automaticamente la data di oggi */
 			this.dataRegistrazione = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
 			this.currentUser = userFacade.createUser(nome, cognome,email,password,numeroTelefono,dataNascita,dataRegistrazione,via,comune,provincia,codicePostale,nazione);
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/registrazioneAvvenuta.xhtml");
 			return "registrazioneAvvenuta";
 		}catch(Exception e){
-			/*Utente gi� registrato*/
+			/*Utente gia registrato*/
 			this.resetUser();
-			FacesContext.getCurrentInstance().addMessage("registrationUser:signinUser", new FacesMessage("Utente gi� registrato!"));
+			FacesContext.getCurrentInstance().addMessage("registrationUser:signinUser", new FacesMessage("Utente gia registrato!"));
 			return "registrazioneUtente";
 		}
 	}
@@ -56,6 +58,7 @@ public class UserController {
 			User user = userFacade.getUserByEmail(email);
 			if (user.checkPassword(this.password)) {
 				setCurrentUser(user);
+				FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/registrazioneAvvenuta.xhtml");
 				return "registrazioneAvvenuta";
 			}
 			else{
@@ -71,8 +74,9 @@ public class UserController {
 		}
 	}
 
-	public String logoutUser() {
+	public String logoutUser() throws IOException {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/index.xhtml");
 		return "index";
 	}
 
@@ -91,35 +95,24 @@ public class UserController {
 		this.dataRegistrazione = null;
 	}
 
-	public String findUser() {
+	public String findUser() throws IOException {
 		this.currentUser = userFacade.getUser(this.email);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/datiUtente.xhtml");
 		return "datiUtente";
 	}
 
-	public String findUser(String email) {
+	public String findUser(String email) throws IOException {
 		this.currentUser = userFacade.getUser(email);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/datiUtente.xhtml");
 		return "datiUtente";
 	}
 
-	public String logout (){
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return "index";
+	public String viewUsers() throws IOException {
+		this.users = userFacade.getAllUsers();
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/listaUtentiRegistrati.xhtml");
+		return "listaUtentiRegistrati";
 	}
-	public String viewUsers() {
-		try{
-			this.users = userFacade.getAllUsers();
-			return "listaUtentiRegistrati";
-		}catch(Exception e){
-			return "index";
-		}
-	}
-	
-	public String viewUser(String email){
-		this.currentUser=userFacade.getUserByEmail(email);
-		this.setCurrentUser(currentUser);
-		return "datiUtente";
-	}
-	
+
 	//getter and setter
 	public Long getId() {
 		return id;

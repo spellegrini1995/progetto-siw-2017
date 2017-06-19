@@ -3,7 +3,6 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:t="http://myfaces.apache.org/tomahawk"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
 	<title>Quadri</title>
@@ -20,13 +19,12 @@
 		<!-- Menu di testa -->
 		<ui:include src="header.xhtml" />
 		<div align="center">
-			<h1>
+			<h1 class="text-danger">
 				<strong>Lista Quadri</strong>
 			</h1>
-
 			<h:form>
 				<table class="table table-bordered">
-					<tr>
+					<tr class="text-success">
 						<th><strong>Titolo</strong></th>
 						<th><strong>Anno Realizzazione</strong></th>
 						<th><strong>Dimensioni</strong></th>
@@ -44,9 +42,19 @@
 					<ui:repeat var="opera" value="#{paintingController.opere}"
 						varStatus="status">
 						<tr>
-							<td><em><strong><h:commandLink  class="active"
-											action="#{paintingController.vediOpera(opera.titolo)}"
-											value="#{opera.titolo}" /></strong></em></td>
+							<td><c:if test="${(userController.currentUser != null) or (administratorController.currentAdministrator != null)}">
+									<em><strong><h:commandLink class="active"
+												action="#{paintingController.vediOpera(opera.titolo)}"
+												value="#{opera.titolo}" /></strong></em>
+								</c:if> 
+								<c:if test="${userController.currentUser == null}">
+									<c:if test="${administratorController.currentAdministrator==null}">
+										<em><strong><h:commandLink class="active"
+													action="#{paintingController.visualizzaOpera(opera.id)}"
+													value="#{opera.titolo}" /></strong></em>
+									</c:if>
+								</c:if>
+							</td>
 							<td><strong>#{opera.annoRealizzazione}</strong></td>
 							<td><strong>#{opera.dimensioni}</strong></td>
 							<td><strong>#{opera.tecnica}</strong></td>

@@ -3,7 +3,6 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:t="http://myfaces.apache.org/tomahawk"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
 	<title>Utenti Registrati</title>
@@ -11,18 +10,16 @@
 </h:head>
 <h:body
 	background="http://it.wallpapersja.com/wp-content/uploads/sites/15/2016/07/Digitale-giapponese-giardino-Widescreen-sfondi-1366x768.jpg">
-
 	<f:view>
 		<!-- Menu di testa -->
 		<ui:include src="header.xhtml" />
 		<div align="center" class="text-primary">
-			<h1>
-				<strong>Utenti registrati</strong>
+			<h1 class="text-danger">
+				<strong>Lista Utenti registrati</strong>
 			</h1>
-
 			<h:form>
 				<table class="table text-primary table-bordered">
-					<tr>
+					<tr class="text-success">
 						<th><strong>E-mail</strong></th>
 						<th><strong>Nome</strong></th>
 						<th><strong>Cognome</strong></th>
@@ -30,7 +27,7 @@
 						<th><strong>Data Registrazione</strong></th>
 					</tr>
 					<c:forEach var="u" items="#{userController.users}">
-						<tr>
+						<tr class="text-warning">
 							<td><strong>${u.email}</strong></td>
 							<td><strong>${u.nome}</strong></td>
 							<td><strong>${u.cognome}</strong></td>

@@ -3,26 +3,25 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:t="http://myfaces.apache.org/tomahawk"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
-	<title>Login Utente</title>	
-	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII"/>
+	<title>Login Utente</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
 </h:head>
 <h:body
 	background="http://www.drogbaster.it/sfondi-spazio/orizzonte-pianeta.jpg">
 	<f:view>
 		<!-- Menu' di testa -->
 		<ui:include src="header.xhtml" />
-		<div align="center" class="text-primary">
+		<div align="center" >
 			<h:form id="loginUser" styleClass="form-horizontal">
 				<h:message for="accedi" styleClass="error alert alert-danger" />
-				<div>
+				<div class="text-success">
 					<h2>
 						<strong>Login utente</strong>
 					</h2>
 				</div>
-				<div class="form-group text-primary">
+				<div class="form-group text-danger">
 					<label for="email" class="col-sm-1 control-label col-lg-offset-4"><strong>Email</strong></label>
 					<div class="col-sm-2">
 						<h:inputText value="#{userController.email}" required="true"
@@ -31,7 +30,7 @@
 						<h:message for="email" style="color:red" />
 					</div>
 				</div>
-				<div class="form-group text-primary">
+				<div class="form-group text-danger">
 					<label for="password"
 						class="col-sm-1 control-label col-lg-offset-4"><strong>Password</strong></label>
 					<div class="col-sm-2">
@@ -47,10 +46,10 @@
 							value="Accedi" action="#{userController.loginUser}" />
 					</div>
 				</div>
-				<div class="text-primary">
+				<div class="text-info">
 					<h4>oppure</h4>
 				</div>
-				<div class="text-success">
+				<div>
 					<a href='registrazioneUtente.xhtml'><strong><em>Registrati</em></strong></a>
 				</div>
 			</h:form>

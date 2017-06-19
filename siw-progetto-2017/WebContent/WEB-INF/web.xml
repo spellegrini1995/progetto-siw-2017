@@ -30,7 +30,7 @@
 		<url-pattern>/inserimentoQuadro.xhtml</url-pattern>
 		<url-pattern>/inserimentoNuovoAutore.xhtml</url-pattern>
 		<url-pattern>/modificaQuadro.xhtml</url-pattern>
-		<url-pattern>/modificaTecnica.xhtml</url-pattern>
+		<url-pattern>/modificaAutore.xhtml</url-pattern>
 		<url-pattern>/registrazioneUtenteByAdmin.xhtml</url-pattern>
 		<url-pattern>/cancellaUtente.xhtml</url-pattern>
 		<url-pattern>/listaUtentiRegistrati.xhtml</url-pattern>
@@ -42,7 +42,7 @@
 	<filter-mapping>
 		<filter-name>Login User filter</filter-name>
 		<url-pattern>/userHome.xhtml</url-pattern>
-		<url-pattern>/listaQuadriPerAutore.xhtml</url-pattern>
+		<url-pattern>/listaQuadriResult.xhtml</url-pattern>
 		<url-pattern>/ricercaQuadri.xhtml</url-pattern>
 		<url-pattern>/selezionaAnno.xhtml</url-pattern>
 		<url-pattern>/selezionaAutore.xhtml</url-pattern>
@@ -57,5 +57,6 @@
 		<url-pattern>/datiAutore.xhtml</url-pattern>
 		<url-pattern>/datiQuadro.xhtml</url-pattern>
 		<url-pattern>/registrazioneAvvenuta.xhtml</url-pattern>
+		<url-pattern>/listaAutori.xhtml</url-pattern>
     </filter-mapping>
 </web-app>
