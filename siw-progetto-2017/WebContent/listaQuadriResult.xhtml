@@ -32,43 +32,16 @@
 						<th><strong>Dimensioni</strong></th>
 						<th><strong>Tecnica</strong></th>
 						<th><strong>Autore</strong></th>
-						<c:if
-							test="${administratorController.currentAdministrator != null}">
-							<th><strong>Modifica</strong></th>
-						</c:if>
-						<c:if
-							test="${administratorController.currentAdministrator != null}">
-							<th><strong>Cancella</strong></th>
-						</c:if>
 					</tr>
 					<ui:repeat var="opera" value="#{paintingController.opereResult}"
 						varStatus="status">
 						<tr>
-							<td><em><strong><h:commandLink  class="active"
-											action="#{paintingController.vediOpera(opera.titolo)}"
-											value="#{opera.titolo}" /></strong></em></td>
+							<td><em><strong>#{opera.titolo}</strong></em></td>
 							<td><strong>#{opera.annoRealizzazione}</strong></td>
 							<td><strong>#{opera.dimensioni}</strong></td>
 							<td><strong>#{opera.tecnica}</strong></td>
 							<td><strong>${opera.autore.nome}
 									${opera.autore.cognome}</strong></td>
-							<!-- Sono un amministratore -->
-							<c:if
-								test="${administratorController.currentAdministrator != null}">
-								<td><h:commandButton
-										styleClass="btn
-													btn-warning"
-										action="#{paintingController.modificaQuadro(opera.id)}"
-										value="Modifica" /></td>
-							</c:if>
-							<c:if
-								test="${administratorController.currentAdministrator != null}">
-								<td><h:commandButton
-										styleClass="btn
-													btn-danger"
-										action="#{paintingController.cancellaOpera(opera.id)}"
-										value="Elimina" /></td>
-							</c:if>
 						</tr>
 					</ui:repeat>
 				</table>
