@@ -69,15 +69,20 @@ public class PaintingFacade {
 		return query.getResultList();
 	}
 
-	public List<Painting> getPaintingByAnno(Integer anno) {
+	public List<Painting> getPaintingsByAnno(Integer anno) {
 		TypedQuery<Painting> query=em.createNamedQuery("quadriPerAnno",Painting.class);
 		query.setParameter("anno", anno);
 		return query.getResultList();
 	}
 
-	public List<Painting> getPaintingByTecnica(String tecnica) {
+	public List<Painting> getPaintingsByTecnica(String tecnica) {
 		TypedQuery<Painting> query=em.createNamedQuery("quadriPerTecnica",Painting.class);
 		query.setParameter("tecnica", tecnica);
+		return query.getResultList();
+	}
+	public List<Painting> getAuthorPaintings(Long id){
+		Query query = em.createQuery("SELECT q FROM Painting q WHERE q.autore.id = :id");
+		query.setParameter("id",  id);
 		return query.getResultList();
 	}
 }

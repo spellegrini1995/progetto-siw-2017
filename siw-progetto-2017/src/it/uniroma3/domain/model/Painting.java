@@ -1,4 +1,5 @@
 package it.uniroma3.domain.model;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,17 +18,21 @@ import javax.persistence.NamedQueries;
  
 @Entity
 public class Painting {
-
 	@Id
 	@GeneratedValue (strategy=GenerationType.AUTO)
 	private Long id;
+	@Column
 	private String titolo;
+	@Column
 	private Integer annoRealizzazione;
+	@Column
 	private String tecnica;
+	@Column
 	private String dimensioni;
+	@Column
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Author autore;
-
+	@Column
 	private byte[] immagine;
 
 	public Painting(String titolo, Integer anno, String tecnica, String dimensioni) {

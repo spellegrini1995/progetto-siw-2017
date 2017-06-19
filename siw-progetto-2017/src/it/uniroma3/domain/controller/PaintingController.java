@@ -29,6 +29,7 @@ public class PaintingController {
 	private Part immagine;
 	private Painting operaCorrente;
 	private List<Painting> opere;
+	private List<Painting> opereResult;
 	//occorre perch� nella form specifico l'autore e ne acquisisco l'id
 	private Long idAutore;
 	private Map<String,Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
@@ -97,16 +98,17 @@ public class PaintingController {
 		return "listaQuadri";
 	}
 	public String visualizzaQuadriAnno(Integer anno){
-		this.opere = paintingFacade.getPaintingByAnno(anno);
-		this.setOpere(opere);
-		return "listaQuadri";
+		this.setOpereResult(paintingFacade.getPaintingsByAnno(anno));
+		return "listaQuadriResult";
 	}	
 	public String visualizzaQuadriTecnica(String tecnica){
-		this.opere = paintingFacade.getPaintingByTecnica(tecnica);
-		this.setOpere(opere);
-		return "listaQuadri";
+		this.setOpereResult(paintingFacade.getPaintingsByTecnica(tecnica));
+		return "listaQuadriResult";
 	}
-
+	public String visualizzaQuadriAutore(Long id){
+		this.setOpereResult(this.paintingFacade.getAuthorPaintings(id));
+		return "listaQuadriResult";
+	}
 	private byte[] converti(Part file){
 		byte[] res;
 		try{
@@ -209,5 +211,14 @@ public class PaintingController {
 	public void setNomeAutore(String nomeAutore) {
 		this.nomeAutore = nomeAutore;
 	}
+
+	public List<Painting> getOpereResult() {
+		return opereResult;
+	}
+
+	public void setOpereResult(List<Painting> opereResult) {
+		this.opereResult = opereResult;
+	}
+	
 
 }

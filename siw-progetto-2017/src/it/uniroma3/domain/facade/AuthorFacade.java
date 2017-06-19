@@ -8,6 +8,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import it.uniroma3.domain.model.Author;
+import it.uniroma3.domain.model.Painting;
 
 import java.util.Date;
 import java.util.List;

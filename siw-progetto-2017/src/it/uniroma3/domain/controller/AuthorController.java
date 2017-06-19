@@ -106,12 +106,6 @@ public class AuthorController {
 		this.sessionMap.remove("editAutore");
 		return "listaAutori";
 	}
-	public String visualizzaQuadriAutore(Long id){
-		Author a=this.authorFacade.getAuthor(id);
-		this.setAuthor(a);
-		return "listaQuadriPerAutore";
-	}
-
 	//getter and setter
 
 	public Long getId() {
