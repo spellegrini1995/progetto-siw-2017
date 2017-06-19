@@ -16,5 +16,6 @@
 - FrameWork utilizzato: JSF
 - Linguaggio di stile utilizzato: CSS
 - Implementazione grafica tramite Bootstrap
-- Deploy su server Cloud AWS: 
-       indirizzo -> http://54.209.199.96:8080/
+- Deploy (funzionante) su server Cloud AWS: 
+       indirizzo -> http://54.209.199.96:8081/     
+       Credenziali di accesso a Manager App ->    username: "tomee"  - password: "tomee"
