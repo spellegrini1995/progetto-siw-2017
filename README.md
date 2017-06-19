@@ -9,7 +9,7 @@
 - Per semplicità supponiamo che le opere d’arte siano quadri e che per ciascuno di essi siano di interesse il titolo, l’anno in cui è stato realizzato, la tecnica, le  dimensioni,  l’autore.  
 - Dell’autore  sono  di  interesse  nome,  cognome,  nazionalità  data  di nascita e data di morte.
 - L’utente  generico  può  accedere  alle  informazioni  della  galleria  attraverso  diversi  percorsi  di navigazione, opportunamente predisposti.
-- Ogni operazione del sistema corrisponde ad un caso d'uso (Autenticazione, registrazione, visualizzazione quadri etc).
+- Ogni operazione del sistema corrisponde ad un caso d'uso (Autenticazione, registrazione, visualizzazione quadri etc). Per una descrizione più dettagliata dei Casi d'Uso e degli sviluppi futuri degli stessi e dell'intera piattaforma, si prega di visionare il file testuale "Casi d'Uso".
 - Gestione della persistenza tramite Base di Dati (monitorata attraverso PgAdmin)
 - Implementazione di algoritmo di cifratura delle password di Amministratore ed Utenti
 - Implementazione delle pagine Web tramite HTML
