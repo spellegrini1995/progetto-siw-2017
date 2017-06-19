@@ -19,6 +19,14 @@
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script
 		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <style>
+    
+    body {
+	background-size:cover;
+	text-shadow: black 1px 1px 1px;
+	}
+	
+    </style>	
 </h:head>
 <h:body>
 	<f:view>
@@ -45,8 +53,10 @@
 									data-toggle="dropdown" href="#">Gestione Utenti<b
 										class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li><h:commandLink action="#{userController.viewUsers}"
-												value="Utenti registrati" /></li>
+										<c:if test="${fn:length(userController.users) ge 1}">
+											<li><h:commandLink action="#{userController.viewUsers}"
+													value="Utenti registrati" /></li>
+										</c:if>
 										<li><h:commandLink
 												action="#{administratorController.signUser}"
 												value="Registra un nuovo utente" /></li>
@@ -67,12 +77,15 @@
 												value="Inserisci un nuovo Autore" /></li>
 										<c:if test="${fn:length(paintingController.opere) ge 1}">
 											<li><h:commandLink
-													action="#{paintingController.searchPaintings}"
-													value="Ricerca quadri" /></li>
+													action="#{paintingController.viewPaintings}"
+													value="Lista quadri" /></li>
 										</c:if>
-										<li><h:commandLink
-												action="#{authorController.viewAuthors}"
-												value="Lista autori" /></li>
+										<c:if test="${fn:length(authorController.autori) ge 1}">
+											<li><h:commandLink
+													action="#{authorController.viewAuthors}"
+													value="Lista autori" /></li>
+										</c:if>
+
 									</ul></li>
 							</c:if>
 
@@ -88,9 +101,12 @@
 													action="#{paintingController.searchPaintings}"
 													value="Ricerca quadri" /></li>
 										</c:if>
-										<li><h:commandLink
-												action="#{authorController.viewAuthors}"
-												value="Visualizza tutti gli Autori" /></li>
+										<c:if test="${fn:length(authorController.autori) ge 1}">
+											<li><h:commandLink
+													action="#{authorController.viewAuthors}"
+													value="Visualizza Autori" /></li>
+										</c:if>
+
 									</ul></li>
 							</c:if>
 						</ul>
@@ -119,8 +135,8 @@
 									<c:if test="${fn:length(paintingController.opere) ge 1}">
 
 										<li><h:commandLink
-												action="#{paintingController.searchPaintings}"
-												value="Ricerca quadri" /></li>
+												action="#{paintingController.viewPaintings}"
+												value="Galleria Quadri" /></li>
 									</c:if>
 									<li><a href='userLogin.xhtml'>Login</a></li>
 									<li><a href='registrazioneUtente.xhtml'>Registrati</a></li>

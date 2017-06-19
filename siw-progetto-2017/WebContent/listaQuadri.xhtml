@@ -19,13 +19,13 @@
 	<f:view>
 		<!-- Menu di testa -->
 		<ui:include src="header.xhtml" />
-		<div align="center" class="text-primary">
+		<div align="center">
 			<h1>
 				<strong>Lista Quadri</strong>
 			</h1>
 
 			<h:form>
-				<table class="table text-primary table-bordered">
+				<table class="table table-bordered">
 					<tr>
 						<th><strong>Titolo</strong></th>
 						<th><strong>Anno Realizzazione</strong></th>
@@ -44,7 +44,7 @@
 					<ui:repeat var="opera" value="#{paintingController.opere}"
 						varStatus="status">
 						<tr>
-							<td><em><strong><h:commandLink
+							<td><em><strong><h:commandLink  class="active"
 											action="#{paintingController.vediOpera(opera.titolo)}"
 											value="#{opera.titolo}" /></strong></em></td>
 							<td><strong>#{opera.annoRealizzazione}</strong></td>

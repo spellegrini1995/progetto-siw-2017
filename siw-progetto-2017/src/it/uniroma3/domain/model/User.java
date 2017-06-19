@@ -6,7 +6,7 @@ import java.util.Date;
 
 import javax.persistence.*;
 
-import it.uniroma3.domain.utility.PwdCoder;
+import it.uniroma3.domain.criptation.PwdCriptation;
 
 
 @Entity
@@ -142,7 +142,7 @@ public class User {
 	
 	private String encodePassword(String pwd){
 		try {
-			return PwdCoder.getEncodedPassword(pwd);
+			return PwdCriptation.getEncodedPassword(pwd);
 		} catch (NoSuchAlgorithmException e) {
 			return pwd;
 		}

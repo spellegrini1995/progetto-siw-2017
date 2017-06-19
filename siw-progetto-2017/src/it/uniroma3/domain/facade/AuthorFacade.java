@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaQuery;
 
 import it.uniroma3.domain.model.Author;
 
@@ -39,10 +38,8 @@ public class AuthorFacade {
 	}
 	
 	public List<Author> getAllAuthors() {
-        CriteriaQuery<Author> cq = em.getCriteriaBuilder().createQuery(Author.class);
-        cq.select(cq.from(Author.class));
-        List<Author> authors = em.createQuery(cq).getResultList();
-		return authors;
+		TypedQuery<Author> query=em.createNamedQuery("findAllAuthors",Author.class);
+		return query.getResultList();
 	}
 
 	public void updateAuthor(Author author) {

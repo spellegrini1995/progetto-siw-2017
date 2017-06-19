@@ -10,7 +10,9 @@ import javax.persistence.NamedQueries;
 
 @NamedQueries({
 	@NamedQuery(name="tuttiIQuadri",query="SELECT q FROM Painting q"),
-	@NamedQuery(name="anniQuadri",query="SELECT DISTINCT q.annoRealizzazione FROM Painting q")})
+	@NamedQuery(name="anniQuadri",query="SELECT DISTINCT q.annoRealizzazione FROM Painting q"),
+	@NamedQuery(name="tecnicheQuadri",query="SELECT DISTINCT q.tecnica FROM Painting q")})
+ 
 @Entity
 public class Painting {
 

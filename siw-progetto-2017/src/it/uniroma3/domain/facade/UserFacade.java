@@ -4,7 +4,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.TypedQuery;
 
 import it.uniroma3.domain.model.Address;
 import it.uniroma3.domain.model.User;
@@ -35,10 +35,8 @@ import java.util.List;
 		}
 		
 		public List<User> getAllUsers() {
-	        CriteriaQuery<User> cq = em.getCriteriaBuilder().createQuery(User.class);
-	        cq.select(cq.from(User.class));
-	        List<User> users = em.createQuery(cq).getResultList();
-			return users;
+			TypedQuery<User> query=em.createNamedQuery("findAllUsers",User.class);
+			return query.getResultList();
 		}
 
 		public void updateUser(User User) {

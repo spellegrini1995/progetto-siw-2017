@@ -7,26 +7,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JSF 2.1 (Apache MyFaces 2.1.5)">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-			<attribute name="owner.project.facets" value="jst.jsf"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jpa">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-			<attribute name="owner.project.facets" value="jst.jsf"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jsp">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-			<attribute name="owner.project.facets" value="jst.jsf"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/home/simone/Scaricati/javax.servlet-3.0.jar"/>
-	<classpathentry kind="lib" path="/home/simone/Scaricati/javaee-api-7.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Downloads/javax.servlet-3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Downloads/javaee-api-7.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Downloads/commons-lang3-3.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

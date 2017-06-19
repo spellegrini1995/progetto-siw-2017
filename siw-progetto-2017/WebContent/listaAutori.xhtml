@@ -13,13 +13,13 @@
 	<f:view>
 		<!-- Menu di testa -->
 		<ui:include src="header.xhtml" />
-		<div align="center" class="text-primary">
+		<div align="center">
 			<h1>
 				<strong>Lista Autori</strong>
 			</h1>
 
 			<h:form>
-				<table class="table text-primary table-bordered">
+				<table class="table table-bordered">
 					<tr>
 						<th><strong>Nome e Cognome</strong></th>
 						<th><strong>Nazionalita</strong></th>
@@ -30,7 +30,7 @@
 					</tr>
 					<c:forEach var="a" items="#{authorController.autori}">
 						<tr>
-							<td><strong><h:commandLink
+							<td><strong><h:commandLink class="active"
 										action="#{authorController.viewAuthor(a.nome,a.cognome)}"
 										value="#{a.nome} #{a.cognome}" /></strong></td>
 							<td><strong>${a.nazionalita}</strong></td>

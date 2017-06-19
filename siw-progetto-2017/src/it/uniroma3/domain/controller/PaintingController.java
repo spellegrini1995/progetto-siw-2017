@@ -11,7 +11,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
 
-import it.uniroma3.domain.facade.AuthorFacade;
 import it.uniroma3.domain.facade.PaintingFacade;
 import it.uniroma3.domain.model.Author;
 import it.uniroma3.domain.model.Painting;
@@ -76,8 +75,8 @@ public class PaintingController {
 	public String selezionaAnno() {
 		return "selezionaAnno";
 	}	
-	public String selezionaNazione() {
-		return "selezionaNazione";
+	public String selezionaTecnica() {
+		return "selezionaTecnica";
 	}
 
 	public String setAuthor(){
@@ -87,6 +86,11 @@ public class PaintingController {
 	public List<Integer> listaAnni(){
 		return paintingFacade.listaAnni();
 	}
+	
+	public List<String> listaTecniche(){
+		return paintingFacade.listaTecniche();
+	}
+	
 	public String nullAuthor() {
 		this.autore=null;
 		this.setAutore(autore);
@@ -97,8 +101,8 @@ public class PaintingController {
 		this.setOpere(opere);
 		return "listaQuadri";
 	}	
-	public String visualizzaQuadriNazione(String nazione){
-		this.opere = paintingFacade.getPaintingByNazione(nazione);
+	public String visualizzaQuadriTecnica(String tecnica){
+		this.opere = paintingFacade.getPaintingByTecnica(tecnica);
 		this.setOpere(opere);
 		return "listaQuadri";
 	}

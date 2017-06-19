@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import it.uniroma3.domain.utility.PwdCoder;
+import it.uniroma3.domain.criptation.PwdCriptation;
 
 @Entity
 public class Administrator {
@@ -92,7 +92,7 @@ public class Administrator {
 	
 	private String encodePassword(String pwd){
 		try {
-			return PwdCoder.getEncodedPassword(pwd);
+			return PwdCriptation.getEncodedPassword(pwd);
 		} catch (NoSuchAlgorithmException e) {
 			return pwd;
 		}

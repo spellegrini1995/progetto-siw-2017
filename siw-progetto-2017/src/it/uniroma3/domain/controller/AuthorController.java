@@ -81,14 +81,9 @@ public class AuthorController {
 		return "datiAutore";
 	}	
 	public String viewAuthors() {
-		try{
 			this.autori = authorFacade.getAllAuthors();
 			this.setAutori(autori);
 			return "listaAutori";
-		}
-		catch(Exception e){
-			return "index";
-		}
 	}	
 	public String viewAuthor(String nome, String cognome) {
 			this.author = authorFacade.getAuthor(nome, cognome);

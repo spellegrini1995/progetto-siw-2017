@@ -9,27 +9,37 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
 </h:head>
 <h:body
-	background="http://www.boorp.com/sfondi_gratis_desktop_pc/sfondi_gratis/sfondi_arte_quadri/arte_orientale.jpg">
+	background="http://it.wallpapersja.com/wp-content/uploads/sites/15/2016/06/Campagna-Widescreen-sfondi-1366x768.jpg">
 	<f:view>
 		<!-- Menu di testa -->
 		<ui:include src="header.xhtml" />
-		<div class="text-primary"  align="center">
+		<div align="center">
 			<h1>
 				<strong>Seleziona la ricerca quadri</strong>
 			</h1>
 			<h:form>
-				<div class="form-group text-primary" align="center">
-						<ul class="list-group">
-							<li class="list-group-item"> <h:commandLink value="Tutti i Quadri"
-								action="#{paintingController.viewPaintings}" /> </li>
-							<li class="list-group-item"> <h:commandLink value="Ricerca quadro per autore"
-								action="#{paintingController.selezionaAutore}" /></li>
-							<li class="list-group-item"> <h:commandLink value="Ricerca quadro per anno"
-								action="#{paintingController.selezionaAnno}" /> </li>
-							<li class="list-group-item"> <h:commandLink value="Ricerca quadro per nazione"
-								action="#{paintingController.selezionaNazione}" /></li>
-						</ul>
-				</div>
+				<table class="table table-bordered">
+					<tr>
+						<th><strong>Tutti</strong></th>
+						<th><strong>Per Autore</strong></th>
+						<th><strong>Per Anno</strong></th>
+						<th><strong>Per Tecnica</strong></th>
+					</tr>
+					<tr>
+						<td><em><strong><h:commandLink class="active"
+										action="#{paintingController.viewPaintings}"
+										value="Tutti i Quadri" /></strong></em></td>
+						<td><em><strong><h:commandLink class="active"
+										action="#{paintingController.selezionaAutore}"
+										value="Ricerca quadri per autore" /></strong></em></td>
+						<td><em><strong><h:commandLink class="active"
+										action="#{paintingController.selezionaAnno}"
+										value="Ricerca quadro per anno" /></strong></em></td>
+						<td><em><strong><h:commandLink class="active"
+										action="#{paintingController.selezionaTecnica}"
+										value="Ricerca quadro per tecnica" /></strong></em></td>
+					</tr>
+				</table>
 			</h:form>
 		</div>
 	</f:view>

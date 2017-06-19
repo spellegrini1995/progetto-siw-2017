@@ -226,6 +226,7 @@ public class UserController {
 	}
 
 	public List<User> getUsers() {
+		users = userFacade.getAllUsers();
 		return users;
 	}
 
