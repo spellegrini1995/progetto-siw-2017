@@ -1,1 +1,166 @@
 - Elenco Casi d'Uso per il Sistema Informativo su Web "Galleria D'Arte"
+
+----------------------------------               Casi D'uso Utente NON Registrato             ------------------------------------------
+
+1)Visualizzazione Lista Quadri
+  Scenario Principale di successo
+ -Un utente non registrato entra nella Home page della Galleria
+ -l'utente clicca sul riquadro "galleria quadri" e viene reindirizzato alla pagina contenente la lista di tutti i quadri della Galleria
+ Scenari di Fallimento
+ -Se non vi sono quadri nel database il tasto "galleria quadri" non verrà visualizzato
+ -Se l'utente non registrato prova a cliccare su un quadro per vederne il dettaglio verrà rispedito alla pagina iniziale 
+ 
+2)Registrazione Utente
+  Scenario Principale di successo
+  -Un utente non registrato entra nella Home Page della Galleria
+  -l'utente clicca sul riquadro "registrazione" e viene reindirizzato alla pagina contenente la form per registrarsi sul sito
+  -l'utente inserisce i dati nella form e le sue informazioni vengono registrate nel database della galleria
+  Scenari di Fallimento
+  -l'utente sbaglia a scrivere i dati nella form oppure non inserisce i dati nei campi obbligatori
+  -l'utente è già registrato nel database
+  
+  
+ ----------------------------------               Casi D'uso Utente Registrato             ------------------------------------------
+
+1)Visualizzazione Lista Autori
+  Scenario Principale di successo
+  -Un utente autenticato entra nella sua UserHome page
+  -l'utente clicca sul riquadro "visualizza Autori" e viene reindirizzato alla pagina contenente la lista di tutti gli autori della galleria
+  -l'utente, cliccando sul nome dell'autore, ne può visualizzare il dettaglio, comprensivo di Nome,Cognome,Data di Nascita e Data di Morte
+
+2)Ricerca Quadri
+  Scenario Principale di Successo
+  -Un utente autenticato entra nella sua UserHome page
+  -l'utente clicca sul riquadro "Ricerca quadri" e viene reindirizzato alla pagina contenente la lista delle varie ricerche 
+  2.1 - l'utente clicca "Tutti i quadri" e viene reindirizzato alla pagina contente tutti i quadri della galleria
+  2.2 - l'utente clicca "Visualizza quadri per Autore" e viene reindirizzato alla pagina contenente gli autori di cui si vogliono i quadri
+      - l'utente sceglie un autore dalla lista e viene reindirizzato alla pagina contenente la lista dei quadri filtrata per quell'autore
+  2.3 - l'utente clicca "Visualizza quadri per Anno" e viene reindirizzato alla pagina contenente gli anni di realizzazione di cui si vogliono i quadri
+      - l'utente sceglie un anno dalla lista e viene reindirizzato alla pagina contenente la lista dei quadri filtrata per quell'anno
+  2.4 - l'utente clicca "Visualizza quadri per Tecnica" e viene reindirizzato alla pagina contenente le tecniche di cui si vogliono i quadri
+      - l'utente sceglie una tecnica dalla lista e viene reindirizzato alla pagina contenente la lista dei quadri filtrata per quella tecnica
+3)Login
+ Scenario Principale di successo
+ -Un utente Non Autenticato si trova nella Home page della galleria
+ -l'utente clicca su "Login" e viene reindirizzato ad una form di registrazione 
+ -l'utente inserisce i propri dati (email e password) e viene autenticato
+ -l'utente viene reindirizzato alla sua UserHome page
+ Scenari di fallimento
+ -l'utente sbaglia a digitare le proprie credenziali
+ -l'utente non compila tutti i campi della form
+ 
+4)Logout
+  Scenario principale di successo
+  -Un utente Autenticato entra nella sua UserHome page
+  -l'utente clicca su "Logout" e viene disconnesso dal server
+  -l'utente è ora considerato un utente NON autenticato e viene riportato alla pagina iniziale 
+  
+  
+  ----------------------------------               Casi D'uso Amministratore             ------------------------------------------
+  
+ 1)Login
+ Scenario Principale di successo
+ -L'amministratore Non Autenticato si trova nella Home page della galleria
+ -l'amministratore clicca su "Login" e viene reindirizzato ad una form di registrazione 
+ -l'amministratore inserisce i propri dati (username e password) e viene autenticato
+ -l'amministratore viene reindirizzato alla sua UserHome page
+ Scenari di fallimento
+ -l'amministratore sbaglia a digitare le proprie credenziali
+ -l'amministratore non compila tutti i campi della form
+ 
+ 2)Logout
+  Scenario principale di successo
+  -Un Amministratore Autenticato entra nella sua AdmninistratorHome page
+  -l'amministratore clicca su "Logout" e viene disconnesso dal server
+  -l'amministratore è ora considerato un utente NON autenticato e viene riportato alla pagina iniziale 
+  
+ 3)Inseirmento Nuovo Quadro
+  Scenario Principale di Successo
+  -Un Amministratore Autenticato entra nella sua AdministratorHome page
+  -l'amministratore clicca su "Inserimento nuovo quadro" nella sezione "Gestione galleria" e viene reindirizzato ad una form apposita
+  -l'amministratore inserisce i dati necessari alla creazione del quadro
+  -l'amministratore clicca su "inserisci" e viene reindirizzato alla pagina di dettaglio del quadro, nella quale se ne può vedere anche l'immagine
+  -Il quadro viene correttamente inserito nel database
+ Scenari di fallimento
+  -l'amministratore non inserisce i dati risultanti obbligatori per la creazione del quadro
+  
+ 3)Inseirmento Nuovo Autore
+  Scenario Principale di Successo
+  -Un Amministratore Autenticato entra nella sua AdministratorHome page
+  -l'amministratore clicca su "Inserimento nuovo autore" nella sezione "gestione Galleria" e viene reindirizzato ad una form apposita
+  -l'amministratore inserisce i dati necessari alla creazione del dell'autore
+  -l'amministratore clicca su "inserisci" e viene reindirizzato alla pagina di dettaglio dell'autore
+  -L'autore viene correttamente inserito nel database
+ Scenari di fallimento
+  -l'amministratore non inserisce i dati risultanti obbligatori per la creazione dell'autore
+  -le date inserite non sono del formato corretto (yyy-mm-dd)
+  
+ 4)Inseirmento Nuovo Utente
+  Scenario Principale di Successo
+  -Un Amministratore Autenticato entra nella sua AdministratorHome page
+  -l'amministratore clicca su "Registra un nuovo utente" nella sezione "Gestione Utenti" e viene reindirizzato ad una form apposita
+  -l'amministratore inserisce i dati necessari alla creazione del dell'utente
+  -l'amministratore clicca su "inserisci" e viene reindirizzato alla AdministratorHome Page
+  -L'utente viene correttamente inserito nel database
+ Scenari di fallimento
+  -l'amministratore non inserisce i dati risultanti obbligatori per la creazione dell'utente
+  -le date inserite non sono del formato corretto (yyy-mm-dd) 
+  -l'utente esiste già nel database
+  
+  3)Modifica Quadro
+  Scenario Principale di Successo
+  -Un Amministratore Autenticato entra nella sua AdministratorHome page
+  -l'amministratore clicca su "Lista Quadri" nella sezione "Gestione galleria" e viene reindirizzato alla lista dei quadri nella galleria
+  -l'amministratore sceglie un determinato quadro e clicca su "modifica"
+  -l'amministratore modifica i dati del quadro
+  -l'amministratore clicca su "inserisci" e viene reindirizzato alla pagina con la lista dei quadri, con il quadro correttamente modificato
+  
+  4)Modifica Autore
+  Scenario Principale di Successo
+  -Un Amministratore Autenticato entra nella sua AdministratorHome page
+  -l'amministratore clicca su "Lista Autori" nella sezione "Gestione galleria" e viene reindirizzato alla lista degli autori nella galleria
+  -l'amministratore sceglie un determinato autore e clicca su "modifica"
+  -l'amministratore modifica i dati dell'autore
+  -l'amministratore clicca su "inserisci" e viene reindirizzato alla pagina con la lista degli autori, con il quadro correttamente modificato
+  
+   5)Elimina Quadro
+  Scenario Principale di Successo
+  -Un Amministratore Autenticato entra nella sua AdministratorHome page
+  -l'amministratore clicca su "Lista Quadri" nella sezione "Gestione galleria" e viene reindirizzato alla lista dei quadri nella galleria
+  -l'amministratore sceglie un determinato quadro e clicca su "elimina"
+  -l'amministratore viene reindirizzato alla pagina con la lista dei quadri, con il quadro correttamente eliminato
+  
+  6)Elimina Autore
+  Scenario Principale di Successo
+  -Un Amministratore Autenticato entra nella sua AdministratorHome page
+  -l'amministratore clicca su "Lista Autori" nella sezione "Gestione galleria" e viene reindirizzato alla lista degli Autori nella galleria
+  -l'amministratore sceglie un determinato Autore e clicca su "elimina"
+  -l'amministratore viene reindirizzato alla pagina con la lista degli Autori, con l'autore correttamente eliminato
+  
+  7)Elimina Utente
+  Scenario Principale di Successo
+  -Un Amministratore Autenticato entra nella sua AdministratorHome page
+  -l'amministratore clicca su "Elimina Un Utente Registrato" nella sezione "Gestione Utenti" e viene reindirizzato ad una form apposita
+  -l'amministratore inserisce i dati dell'utente da eliminare (email)
+  -l'amministratore viene reindirizzato alla sua AdministratorHome Page
+  -l'Utente scelto viene correttamente eliminato dal database
+  
+  8)Visualizza Lista Utenti Registrati
+  Scenario Principale di Successo
+  -Un Amministratore Autenticato entra nella sua AdministratorHome page
+  -l'amministratore clicca su "Lista Utenti registrati" nella sezione "Gestione Utenti" e viene reindirizzato alla lista degli utneti registrati nel sistema
+  -l'amministraotre può visionare i dati degli utenti della galleria
+  
+  9)Cancella Amministratore
+   Scenario Principale di Successo
+  -Un Amministratore Autenticato entra nella sua AdministratorHome page
+  -l'amministratore clicca su "Cancellati Dal Database" nella sezione "Gestione Amministratore"
+  -l'amministratore viene correttamente eliminato dal database
+  -Si viene reindirizzati alla pagina iniziale della galleria e ora si ha il ruolo di utente generico
+  
+  
+  
+
+
+ 
+  
