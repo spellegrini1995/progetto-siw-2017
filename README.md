@@ -1,5 +1,5 @@
 # progetto-siw-2017
-- Autori del Progetto: Nicholas Napolitano - Simone Pellegrini
+- Autori del Progetto: Nicholas Napolitano - Simone Pellegrini (Contatti --> file "contatti_Sviluppatori")
 - Sistema informativo su Web per la gestione di una piccola galleria d’arte.
 - Possono accedere al sistema utenti generici e un amministratore.
 - L’amministratore,  previa  autenticazione, può  inserire  e  rimuovere  le  informazioni  relative alle opere d’arte presenti nella galleria.
