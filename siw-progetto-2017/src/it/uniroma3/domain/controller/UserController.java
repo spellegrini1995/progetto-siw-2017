@@ -74,9 +74,8 @@ public class UserController {
 		}
 	}
 
-	public String logoutUser() throws IOException {
+	public String logoutUser() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/index.xhtml");
 		return "index";
 	}
 

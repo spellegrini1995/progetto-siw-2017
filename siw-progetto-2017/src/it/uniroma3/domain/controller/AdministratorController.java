@@ -58,8 +58,14 @@ public class AdministratorController  {
 	@EJB(beanName="paintingFacade")
 	private PaintingFacade paintingFacade;
 
-	public String createAdministrator() throws IOException {
+	public String createAdministrator(){
 		administratorFacade.createAdministrator("Nicholas","Napolitano","admin1","admin1");
+		return "index";
+	}
+	
+	public String destroyAdministrator() throws IOException{
+		administratorFacade.deleteAdministrator(this.getCurrentAdministrator().getId());
+		setCurrentAdministrator(null);
 		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/index.xhtml");
 		return "index";
 	}
@@ -93,8 +99,8 @@ public class AdministratorController  {
 			this.registrationDate = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
 			userFacade.createUser(firstName, lastName, email, passwordUser, phoneNumber, dateOfBirth, registrationDate,street, city, country, zipcode, state);
 			this.message = "Registrazione utente effettuata!";
-			FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/registrazioneAvvenuta.xhtml");
-			return "registrazioneAvvenuta";
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/administratorHome.xhtml");
+			return "administratorHome";
 		}catch(Exception e){
 			/*Utente gi� registrato*/
 			this.resetUser();
@@ -130,20 +136,18 @@ public class AdministratorController  {
 		this.registrationDate = null;
 	}
 
-	public String logoutAdministrator() throws IOException {
+	public String logoutAdministrator() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/index.xhtml");
 		return "index";
 	}
 
 
-	public String newPainting() throws IOException {
-		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/inserimentoQuadro.xhtml");
+	public String newPainting() {
 		return "inserimentoQuadro";
 	}
 
 	public String signUser() throws IOException{
-		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/registrazioneUtenteByAdmn.xhtml");
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/registrazioneUtenteByAdmin.xhtml");
 		return "registrazioneUtenteByAdmin";
 	}
 

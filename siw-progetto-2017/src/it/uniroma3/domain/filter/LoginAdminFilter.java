@@ -30,7 +30,7 @@ public class LoginAdminFilter implements Filter{
 		AdministratorController controller=(AdministratorController)(req.getSession().getAttribute("administratorController"));
 		
 		if(controller==null||controller.getCurrentAdministrator()==null){
-			RequestDispatcher rd=this.application.getRequestDispatcher("/administratorLogin.xhtml");
+			RequestDispatcher rd=this.application.getRequestDispatcher("/administratorLogin.html");
 			rd.forward(request,response);
 		}
 		chain.doFilter(request,response);

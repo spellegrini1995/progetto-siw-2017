@@ -31,7 +31,7 @@ public class LoginUserFilter implements Filter{
 		UserController controller=(UserController)(req.getSession().getAttribute("userController"));
 		
 		if(controller==null||controller.getCurrentUser()==null){
-			RequestDispatcher rd=this.application.getRequestDispatcher("/userLogin.xhtml");
+			RequestDispatcher rd=this.application.getRequestDispatcher("/userLogin.html");
 			rd.forward(request,response);
 		}
 		chain.doFilter(request,response);

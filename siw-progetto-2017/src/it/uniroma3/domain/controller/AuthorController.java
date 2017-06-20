@@ -38,8 +38,7 @@ public class AuthorController {
 	public String createAuthor() {
 		try{
 			this.author= authorFacade.createAuthor(nome,cognome,nazionalita,dataNascita,dataMorte);
-			this.setAuthor(author);
-			FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/datiAutore.xhtml");
+			this.setAuthor(author);;
 			return "datiAutore"; 			
 		}catch(Exception e){
 			/*Autore gi� registrato*/
