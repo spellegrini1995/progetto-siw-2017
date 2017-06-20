@@ -16,6 +16,8 @@
 - FrameWork utilizzato: JSF
 - Linguaggio di stile utilizzato: CSS
 - Implementazione grafica tramite Bootstrap
+- Pre visualizzare lo Schema della Base di Dati e le Politiche di Fetch e Cascade utilizzate per le classi modello visionare il file pdf     "schema_basi_dati.pdf"
+- Per visionare il Class Diagram delle classi modello visionare il file "class_diagram"
 - Deploy (funzionante) su server Cloud AWS: 
-       indirizzo -> http://54.209.199.96:8081/     
-       Credenziali di accesso a Manager App ->    username: "tomee"  - password: "tomee"
+       indirizzo -> http://34.210.163.175:8080/siw-progetto-2017/    
+       Database gestito da istanza RDS
