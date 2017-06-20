@@ -51,7 +51,7 @@ public class PaintingController {
 	}
 	public String visualizzaOpera(Long id) throws IOException{
 		this.operaCorrente=paintingFacade.find(id);
-		//FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/datiQuadro.xhtml");
+		FacesContext.getCurrentInstance().getExternalContext().redirect("/siw-progetto-2017/datiQuadro.xhtml");
 		return "datiQuadro";
 	}
 	public String vediOpera(String titolo) throws IOException{
