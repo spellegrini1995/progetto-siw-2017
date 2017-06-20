@@ -73,9 +73,9 @@ body {
 										<li><h:commandLink
 												action="#{administratorController.newAuthor}"
 												value="Inserisci un nuovo Autore" /></li>
-										<c:if test="${fn:length(paintingController.opere) ge 1}">
+										<c:if test="${fn:length(paintingController.getAllOpere()) ge 1}">
 											<li><h:commandLink
-													action="#{paintingController.viewPaintings}"
+													action="#{paintingController.visualizzaQuadri}"
 													value="Lista quadri" /></li>
 										</c:if>
 										<c:if test="${fn:length(authorController.autori) ge 1}">
@@ -92,7 +92,7 @@ body {
 									data-toggle="dropdown" href="#">Operazioni Utente <b
 										class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<c:if test="${fn:length(paintingController.opere) ge 1}">
+										<c:if test="${fn:length(paintingController.getAllOpere()) ge 1}">
 											<li><h:commandLink
 													action="#{paintingController.searchPaintings}"
 													value="Ricerca quadri" /></li>
@@ -126,9 +126,9 @@ body {
 							<c:if
 								test="${administratorController.currentAdministrator == null}">
 								<c:if test="${userController.currentUser == null}">
-									<c:if test="${fn:length(paintingController.opere) ge 1}">
+									<c:if test="${fn:length(paintingController.getAllOpere()) ge 1}">
 										<li><h:commandLink
-												action="#{paintingController.viewPaintings}"
+												action="#{paintingController.visualizzaQuadri}"
 												value="Galleria Quadri" /></li>
 									</c:if>
 									<li><a href='userLogin.xhtml'>Login</a></li>

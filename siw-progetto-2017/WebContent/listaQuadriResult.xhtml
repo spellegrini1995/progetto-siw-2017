@@ -5,7 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
-	<title>Quadri Filtrati</title>
+	<title>Quadri</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
 	<style>
 .list-group-item {
@@ -14,13 +14,13 @@
 </style>
 </h:head>
 <h:body
-	background="http://www.pertur.it/wp-content/uploads/2015/12/m2.jpeg">
+	background="http://fondazionesella.org/img/home-slider/mostra_fondazione-sella_andreea-secara.jpg">
 	<f:view>
 		<!-- Menu di testa -->
 		<ui:include src="header.xhtml" />
 		<div align="center">
 			<h1 class="text-danger">
-				<strong>Lista Quadri Filtrata</strong>
+				<strong>Lista Quadri</strong>
 			</h1>
 			<h:form>
 				<table class="table table-bordered">
@@ -30,16 +30,41 @@
 						<th><strong>Dimensioni</strong></th>
 						<th><strong>Tecnica</strong></th>
 						<th><strong>Autore</strong></th>
+						<c:if
+							test="${administratorController.currentAdministrator != null}">
+							<th><strong>Modifica</strong></th>
+						</c:if>
+						<c:if
+							test="${administratorController.currentAdministrator != null}">
+							<th><strong>Cancella</strong></th>
+						</c:if>
 					</tr>
-					<ui:repeat var="opera" value="#{paintingController.opereResult}"
+					<ui:repeat var="opera" value="#{paintingController.opere}"
 						varStatus="status">
-						<tr class="text-warning">
-							<td><em><strong>#{opera.titolo}</strong></em></td>
+						<tr>
+							<td>#{opera.titolo}</td>
 							<td><strong>#{opera.annoRealizzazione}</strong></td>
 							<td><strong>#{opera.dimensioni}</strong></td>
 							<td><strong>#{opera.tecnica}</strong></td>
 							<td><strong>${opera.autore.nome}
 									${opera.autore.cognome}</strong></td>
+							<!-- Sono un amministratore -->
+							<c:if
+								test="${administratorController.currentAdministrator != null}">
+								<td><h:commandButton
+										styleClass="btn
+													btn-warning"
+										action="#{paintingController.modificaQuadro(opera.id)}"
+										value="Modifica" /></td>
+							</c:if>
+							<c:if
+								test="${administratorController.currentAdministrator != null}">
+								<td><h:commandButton
+										styleClass="btn
+													btn-danger"
+										action="#{paintingController.cancellaOpera(opera.id)}"
+										value="Elimina" /></td>
+							</c:if>
 						</tr>
 					</ui:repeat>
 				</table>

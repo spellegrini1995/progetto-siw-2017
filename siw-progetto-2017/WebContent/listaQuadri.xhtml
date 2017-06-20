@@ -39,7 +39,7 @@
 							<th><strong>Cancella</strong></th>
 						</c:if>
 					</tr>
-					<ui:repeat var="opera" value="#{paintingController.opere}"
+					<ui:repeat var="opera" value="#{paintingController.getAllOpere()}"
 						varStatus="status">
 						<tr>
 							<td><c:if test="${(userController.currentUser != null) or (administratorController.currentAdministrator != null)}">

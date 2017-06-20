@@ -7,7 +7,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	<classpathentry kind="lib" path="C:/Users/John/Downloads/javaee-api-7.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/John/Downloads/javax.servlet-3.0.jar"/>
+	<classpathentry kind="lib" path="/home/simone/Scaricati/javax.servlet-3.0.jar"/>
+	<classpathentry kind="lib" path="/home/simone/Scaricati/javaee-api-7.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
